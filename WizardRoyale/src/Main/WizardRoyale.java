@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import Main.WizardRoyale.STATE;
@@ -29,6 +30,8 @@ public class WizardRoyale extends Canvas implements Runnable {
 		INSTURCTIONS
 	}
 	public static STATE State = STATE.MENU;
+	
+	Image image = Toolkit.getDefaultToolkit().getImage("Resources/Background.jpg");
 	
 	public WizardRoyale() {
 		new Window(WIDTH, HEIGHT, "Wizard Royale", this);
@@ -110,6 +113,7 @@ public class WizardRoyale extends Canvas implements Runnable {
 			g.setColor(Color.red);
 			g.fillRect(50, 50, 100, 100);
 		} else if (State == STATE.MENU) {
+			g.drawImage(image, 0, 0, WIDTH, HEIGHT, this);
 			menu.render(g);
 		} else if (State == STATE.INSTURCTIONS) {
 			super.paint(g);
@@ -121,7 +125,7 @@ public class WizardRoyale extends Canvas implements Runnable {
 	}
 
 	public void PaintComponent(Graphics g) {
-		
+
 	}
 	
 }

@@ -3,13 +3,11 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import GameElements.Consumables;
 import GameElements.GameObject;
 
 public class Handler {
 	
 	LinkedList<GameObject> gameObjects = new LinkedList<GameObject>();
-	ArrayList<Consumables> pickables  = new ArrayList<Consumables>();
 	//ArrayList<Obstacles> obstacles  = new ArrayList<Obstacles>();
 	
 	private boolean isUp = false, isDown, isLeft, isRight;

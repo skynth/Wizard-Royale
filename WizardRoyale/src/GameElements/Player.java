@@ -48,7 +48,7 @@ public class Player extends GameObject {
 		
 	}
 	
-	public void collide(ArrayList<Consumables> pickables)
+	public void collide(ArrayList<Consumable> pickables)
 	{
 		
 	}

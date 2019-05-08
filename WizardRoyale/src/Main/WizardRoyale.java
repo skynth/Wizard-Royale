@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import GameElements.PickableProjectile;
+import GameElements.Consumable;
 import GameElements.Player;
 import Main.WizardRoyale.STATE;
 
@@ -41,7 +41,7 @@ public class WizardRoyale extends Canvas implements Runnable {
 		new Window(WIDTH, HEIGHT, "Wizard Royale", this);
 		handler = new Handler();
 		handler.addObject(new Player(50, 50, ID.Player, handler));
-		handler.addObject(new PickableProjectile(300, 300, ID.Item, "blue fireball"));
+		handler.addObject(new Consumable(300, 300, ID.Item, "blue fireball"));
 		this.addMouseListener(new MouseInput(handler));
 		this.addKeyListener(new KeyInput(handler));
 		start();

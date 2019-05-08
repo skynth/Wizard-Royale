@@ -7,6 +7,12 @@ import Main.WizardRoyale.STATE;
 
 public class MouseInput implements MouseListener {
 	
+	Handler handler;
+	
+	public MouseInput(Handler h) {
+		handler = h; 
+	}
+	
 	public void mouseClicked(MouseEvent e) {
 		
 	}
@@ -19,7 +25,6 @@ public class MouseInput implements MouseListener {
 	public void mouseExited(MouseEvent e) {
 		
 	}
-
 
 	public void mousePressed(MouseEvent e) {
 		

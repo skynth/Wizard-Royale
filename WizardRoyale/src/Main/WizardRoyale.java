@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import GameElements.Player;
 import Main.WizardRoyale.STATE;
 
 public class WizardRoyale extends Canvas implements Runnable {
@@ -24,6 +25,8 @@ public class WizardRoyale extends Canvas implements Runnable {
 	private Thread thread; //thread - sub process - created to handle the game, we want to do multiple things simultaneously
 	private boolean running = false;
 	
+	Handler handler;
+	
 	public static enum STATE { //enumerations for the different states of the game
 		MENU, 
 		GAME,
@@ -35,11 +38,13 @@ public class WizardRoyale extends Canvas implements Runnable {
 	
 	public WizardRoyale() {
 		new Window(WIDTH, HEIGHT, "Wizard Royale", this);
-		this.addMouseListener(new MouseInput());
+		handler = new Handler();
+		handler.addObject(new Player(50, 50, ID.Player, handler));
+		this.addMouseListener(new MouseInput(handler));
+		this.addKeyListener(new KeyInput(handler));
 		start();
 	}
 	
-
 	public void start() {
 		running = true;
 		thread = new Thread(this);
@@ -91,7 +96,7 @@ public class WizardRoyale extends Canvas implements Runnable {
 	public void tick() {
 		
 		if (State == STATE.GAME) {
-										//run through tick methods if we are in the proper state
+			handler.tick(); 
 		} else if (State == STATE.MENU) {
 			
 		}
@@ -109,9 +114,10 @@ public class WizardRoyale extends Canvas implements Runnable {
 		Graphics g = bs.getDrawGraphics(); //retrieves an instance of graphics2D from the bufferStrat, lets us draw stuff
 		
 		if (State == STATE.GAME) {
+			
 			super.paint(g);
-			g.setColor(Color.red);
-			g.fillRect(50, 50, 100, 100);
+			handler.render(g);
+			
 		} else if (State == STATE.MENU) {
 			g.drawImage(image, 0, 0, WIDTH, HEIGHT, this);
 			menu.render(g);

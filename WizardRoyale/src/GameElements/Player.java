@@ -2,6 +2,7 @@ package GameElements;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import Main.Handler;
 import Main.ID;
@@ -35,6 +36,7 @@ public class Player extends GameObject {
 			velX = 0;
 		}
 			
+		//this.collide(pickables);
 	}
 
 	public void render(Graphics g) {
@@ -43,6 +45,11 @@ public class Player extends GameObject {
 	}
 	
 	public void setUp(boolean check) {
+		
+	}
+	
+	public void collide(ArrayList<Consumables> pickables)
+	{
 		
 	}
 

@@ -5,12 +5,29 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class MainMenuPanel {
 	
-	private Rectangle playButton = new Rectangle(230, 200, 330, 100);
-	private Rectangle helpButton = new Rectangle(230, 375, 330, 100);
-	private Rectangle quitButton = new Rectangle(230, 550, 330, 100);
+	private Rectangle playButton;
+	private Rectangle helpButton;
+	private Rectangle quitButton;
+	private BufferedImage wizardGif;
+	
+	public MainMenuPanel() {
+		playButton = new Rectangle(230, 200, 330, 100);
+		helpButton = new Rectangle(230, 375, 330, 100);
+		quitButton = new Rectangle(230, 550, 330, 100);
+		try {
+			wizardGif = ImageIO.read(new File("Resources/wizard.gif"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public void render(Graphics g) {
 		
@@ -20,7 +37,7 @@ public class MainMenuPanel {
 		g.setFont(font0);
 		g.setColor(Color.white);
 		g.drawString("Wizard Royale", 230, 100);
-		
+		g.drawImage(wizardGif, 20, 600, 150, 150, null);
 		Font font1 = new Font("SANS_SERIF", Font.BOLD, 50);
 		g.setColor(Color.CYAN);
 		g.setFont(font1);

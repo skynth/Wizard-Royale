@@ -9,7 +9,7 @@ import Main.ID;
  * A class that represents an instance of a projectile. The projectile shoots as soon as it is made.
  * 
  * @author skyfreestylez
- *
+ *@version 5/10/19
  */
 public class Projectile extends GameObject{
 	
@@ -21,7 +21,7 @@ public class Projectile extends GameObject{
 	/**
 	 * Creates an instance of a projectile in which shoots as soon as it's made.
 	 * 
-	 * @param t The type or "name" of the projectile being made
+	 * 
 	 * @param x the x coordinate of the projectile 
 	 * @param y the y coordinate of the projectile
 	 * @param id the id of the projectile
@@ -52,6 +52,14 @@ public class Projectile extends GameObject{
 			handler.getGameObjects().remove(this);
 		
 	}
+<<<<<<< HEAD
+=======
+	
+
+	
+	
+
+>>>>>>> branch 'master' of https://github.com/Leofeng1/APCS-Final.git
 	
 
 }

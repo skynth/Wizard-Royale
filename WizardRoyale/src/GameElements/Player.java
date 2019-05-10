@@ -2,8 +2,10 @@ package GameElements;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import Main.Handler;
 import Main.ID;
@@ -32,6 +34,7 @@ public class Player extends GameObject {
 	public Player(int x, int y, ID id, Handler h) {
 		super(x, y, id);
 		handler = h;
+		collisionRect = new Rectangle(x,y,150,150);
 		for(int i = 0; i < 24; i++)
 			sprite[i] = Toolkit.getDefaultToolkit().createImage("Resources" + MainMenuPanel.FILE_SEP + "wizard" + MainMenuPanel.FILE_SEP + i+".gif");
 
@@ -40,6 +43,8 @@ public class Player extends GameObject {
 	public void tick() {
 		xCoord += velX;
 		yCoord += velY;
+		collisionRect.x = xCoord;
+		collisionRect.y = yCoord;
 		
 		if (handler.isUp()) {
 			velY = -5;
@@ -57,7 +62,8 @@ public class Player extends GameObject {
 			velX = 0;
 		}
 			
-		//this.collide(pickables);
+		this.collide(handler.getGameObjects());
+			
 	}
 
 	public void render(Graphics g) {
@@ -65,6 +71,7 @@ public class Player extends GameObject {
 		step += 0.1;
 		if(step >= 24)
 			step = 0;
+
 	}
 	
 	public void setUp(boolean check) {
@@ -81,9 +88,20 @@ public class Player extends GameObject {
 	 * Checks and performs actions based on collisions.
 	 * @param objects
 	 */
-	public void collide(ArrayList<GameObject> objects)
+	public void collide(LinkedList<GameObject> objects)
 	{
-		
+		//collision with pickables
+			for (int i = 0; i < objects.size(); i++) 
+			{		
+				if (objects.get(i).getID() == ID.Item) 
+				{
+					if (collisionRect.intersects(objects.get(i).getRect())) 
+					{
+						objects.remove(objects.get(i));
+					}
+							
+				}
+			}
 	}
-
+	
 }

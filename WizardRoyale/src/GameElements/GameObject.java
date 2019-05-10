@@ -1,6 +1,7 @@
 package GameElements;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 import Main.ID;
 
@@ -23,7 +24,7 @@ public abstract class GameObject {
 	 */
 	protected int yCoord = 0;
 	
-	/* 
+	/**
 	 * field that represents what specific type of object the object is, e.g armor or health consumable
 	 */
 	
@@ -40,6 +41,12 @@ public abstract class GameObject {
 	 */
 	
 	protected float velY = 0;
+	
+	/**
+	 * field that represents the collision rectangle of an object in the game
+	 */
+	
+	protected Rectangle collisionRect;
 	
 	
 	/**
@@ -97,6 +104,15 @@ public abstract class GameObject {
 	
 	public ID getID() {
 		return id;
+	}
+	
+	/**
+	 * Returns the collision rectangle of the game object
+	 * @return the rectangle the game object
+	 */
+	public Rectangle getRect()
+	{
+		return collisionRect;
 	}
 
 }

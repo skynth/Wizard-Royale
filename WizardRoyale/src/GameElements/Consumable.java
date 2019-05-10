@@ -2,6 +2,7 @@ package GameElements;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 import Main.Handler;
 import Main.ID;
@@ -32,7 +33,7 @@ public class Consumable extends GameObject{
 		super(x, y, id);
 		isPickedUp = false;
 		handler = h;
-		
+		collisionRect = new Rectangle(x,y,150,30);
 	}
 	/**
 	 * 
@@ -57,12 +58,14 @@ public class Consumable extends GameObject{
 
 	@Override
 	public void tick() {
+		collisionRect.x = xCoord;
+		collisionRect.y = yCoord;
 		if(isPickedUp) {
 			handler.getGameObjects().remove(this);
 		}
 	}
 
-
+	
 
 	
 	

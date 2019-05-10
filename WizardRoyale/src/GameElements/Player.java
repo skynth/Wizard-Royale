@@ -20,7 +20,6 @@ public class Player extends GameObject {
 	private Handler handler;
 	private Image sprite[] = new Image[24];
 	private double step = 0;
-	private Projectile currentProjectile;
 
 	/**
 	 * Creates a new instance of a player (Wizard)

@@ -49,13 +49,18 @@ public class Consumable extends GameObject{
 		return isPickedUp;
 	}
 
-	@Override
+	/**
+	 * Continually draws the consumable object onto the game canvas
+	 * @param g the instance of the graphics class that will handle drawing everything in the WizardRoyale class
+	 */
 	public void render(Graphics g) {
 		g.setColor(Color.blue);
 		g.fillRect(xCoord, yCoord, 150, 30);
 	}
 
-	@Override
+	/**
+	 * Continually updates the consumable object by checking if any changes need to be made to it
+	 */
 	public void tick() {
 		if(isPickedUp) {
 			handler.getGameObjects().remove(this);

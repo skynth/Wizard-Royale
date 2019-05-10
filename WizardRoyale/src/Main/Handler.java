@@ -10,7 +10,7 @@ import GameElements.GameObject;
  * GameObjects and shifts through them, while checking for conditions to make changes. This class also calls the tick and render methods of 
  * the GameObjects to make sure they are constantly updated
  * 
- * @author Leofeng
+ * @author Leofeng, Roee
  * @version 5/7/19
  * 
  */

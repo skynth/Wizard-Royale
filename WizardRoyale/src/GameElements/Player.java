@@ -22,6 +22,7 @@ public class Player extends GameObject {
 	private Handler handler;
 	private Image sprite[] = new Image[24];
 	private double step = 0;
+	private int health;
 
 	/**
 	 * Creates a new instance of a player (Wizard)
@@ -36,7 +37,7 @@ public class Player extends GameObject {
 		collisionRect = new Rectangle(x,y,150,150);
 		for(int i = 0; i < 24; i++)
 			sprite[i] = Toolkit.getDefaultToolkit().createImage("Resources" + MainMenuPanel.FILE_SEP + "wizard" + MainMenuPanel.FILE_SEP + i+".gif");
-
+		health = 100;
 	}
 	
 	public void tick() {
@@ -76,13 +77,7 @@ public class Player extends GameObject {
 	public void setUp(boolean check) {
 		
 	}
-	/**
-	 * Shoots the projectile it contains.
-	 */
-	public void shoot() {
-		
-		
-	}
+	
 	/**
 	 * Checks and performs actions based on collisions.
 	 * @param objects

@@ -35,17 +35,22 @@ public class Projectile extends GameObject{
 		handler = h;
 		isOutOfRange = false;
 	}
+	
+	/**
+	 * Continually draws the projectile
+	 * @param g the instance of the graphics class that will handle drawing everything in the WizardRoyale class
+	 */
 
-	@Override
 	public void render(Graphics g) {
-		// TODO Auto-generated method stuba
 		g.setColor(Color.red);
 		g.fillRect(xCoord, yCoord, 50, 10);
 	}
+	
+	/**
+	 * Continually draws the projectile
+	 */
 
-	@Override
 	public void tick() {
-		// TODO Auto-generated method stub
 		xCoord += Math.cos(angle) * 15;
 		yCoord += Math.sin(angle) * 15;
 		if(isOutOfRange)

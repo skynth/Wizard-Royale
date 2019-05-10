@@ -3,19 +3,22 @@ package GameElements;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import Main.Handler;
 import Main.ID;
 
 public class Consumable extends GameObject{
 	
 	private boolean isPickedUp;
 	private  String type;
+	private Handler handler;
 	
 	
 	
-	public Consumable(int x, int y, ID id, String type) {
+	public Consumable(int x, int y, ID id, String type, Handler h) {
 		super(x, y, id);
 		isPickedUp = false;
 		this.type = type;
+		handler = h;
 		
 	}
 
@@ -35,7 +38,7 @@ public class Consumable extends GameObject{
 	@Override
 	public void tick() {
 		if(isPickedUp) {
-			
+			handler.getGameObjects().remove(this);
 		}
 	}
 

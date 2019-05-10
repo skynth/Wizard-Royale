@@ -9,7 +9,7 @@ import Main.ID;
 
 public class Player extends GameObject {
 	
-	Handler handler;
+	private Handler handler;
 
 	public Player(int x, int y, ID id, Handler h) {
 		super(x, y, id);
@@ -48,7 +48,7 @@ public class Player extends GameObject {
 		
 	}
 	
-	public void collide(ArrayList<Consumable> pickables)
+	public void collide(ArrayList<GameObject> objects)
 	{
 		
 	}

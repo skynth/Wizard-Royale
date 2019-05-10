@@ -2,19 +2,23 @@ package GameElements;
 
 import java.awt.Graphics;
 
+import Main.Handler;
 import Main.ID;
 
 public class Projectile extends GameObject{
 	
 	private String type;
 	private int mouseX, mouseY;
+	private Handler handler;
+
 
 	
-	public Projectile(String t, int x, int y, ID id, int mouseX, int mouseY) {
+	public Projectile(String t, int x, int y, ID id, int mouseX, int mouseY, Handler h) {
 		super(x, y, id);
 		type = t;
 		this.mouseX = mouseX;
 		this.mouseY = mouseY;
+		handler = h;
 	}
 
 	@Override
@@ -32,6 +36,7 @@ public class Projectile extends GameObject{
 	public String getType() {
 		return type;
 	}
+	
 	
 
 	

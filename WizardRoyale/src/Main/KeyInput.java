@@ -14,6 +14,7 @@ public class KeyInput implements KeyListener {
 	
 	Handler handler;
 	
+	
 	/**
 	 * Creates a new instance of KeyInput
 	 * @param h the WizardRoyale's class' instance of the handler class, which handles all the events that occur in the game

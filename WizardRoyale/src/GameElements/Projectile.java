@@ -46,8 +46,8 @@ public class Projectile extends GameObject{
 	@Override
 	public void tick() {
 		// TODO Auto-generated method stub
-		xCoord += Math.cos(angle) * 5;
-		yCoord += Math.sin(angle) * 5;
+		xCoord += Math.cos(angle) * 15;
+		yCoord += Math.sin(angle) * 15;
 		if(isOutOfRange)
 			handler.getGameObjects().remove(this);
 		

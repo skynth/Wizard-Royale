@@ -8,7 +8,7 @@ import Main.ID;
 /**
  * This class represents every object in our game, for example a player or an item. It provides methods and fields that all objects in
  * our game share.
- * @author Leofeng
+ * @author Leofeng, Roee
  * @version 5/7/19
  */
 

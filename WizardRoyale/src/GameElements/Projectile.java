@@ -16,7 +16,8 @@ public class Projectile extends GameObject{
 	private double angle;
 	private Handler handler;
 	private boolean isOutOfRange;
-
+	private boolean isRight;
+	private boolean isUp;
 
 	/**
 	 * Creates an instance of a projectile in which shoots as soon as it's made.
@@ -31,9 +32,25 @@ public class Projectile extends GameObject{
 	 */
 	public Projectile(int x, int y, ID id, int mouseX, int mouseY, Handler h) {
 		super(x, y, id);
-		angle = Math.atan((mouseY - y) / (mouseX - x)); //Not sure if this works yet
+
+		angle = Math.atan((double)(mouseY - y) / (mouseX - x)); //Not sure if this works yet
 		handler = h;
 		isOutOfRange = false;
+		
+		if(mouseX > xCoord)
+			isRight = true;
+		else {
+			isRight = false;
+		}
+		
+		if(mouseY< yCoord) {
+			isUp = true;;
+		}
+		else {
+			isUp = false;
+		}
+	
+
 	}
 	
 	/**
@@ -51,8 +68,24 @@ public class Projectile extends GameObject{
 	 */
 
 	public void tick() {
-		xCoord += Math.cos(angle) * 15;
-		yCoord += Math.sin(angle) * 15;
+		if(isRight && isUp) {
+			xCoord += Math.cos(angle) * 15;
+			yCoord -= Math.sin(angle) * 15;
+		}
+		else if(isRight && !isUp){
+			xCoord += Math.cos(angle) * 15;
+			yCoord += Math.sin(angle) * 15;
+		}
+		else if(isUp && !isRight) {
+			xCoord -= Math.cos(angle) * 15;
+			yCoord -= Math.sin(angle) * 15;
+		}
+		else if(!isUp && !isRight){
+			xCoord -= Math.cos(angle) * 15;
+			yCoord += Math.sin(angle) * 15;
+			System.out.println("sdasdsa");
+		}
+
 		if(isOutOfRange)
 			handler.getGameObjects().remove(this);
 		

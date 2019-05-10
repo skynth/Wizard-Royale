@@ -16,7 +16,6 @@ import Main.ID;
 public class Consumable extends GameObject{
 	
 	private boolean isPickedUp;
-	private  String type;
 	private Handler handler;
 	
 	/**
@@ -29,10 +28,9 @@ public class Consumable extends GameObject{
 	 * @param h the handler passed in
 	 */
 
-	public Consumable(int x, int y, ID id, String type, Handler h) {
+	public Consumable(int x, int y, ID id, Handler h) {
 		super(x, y, id);
 		isPickedUp = false;
-		this.type = type;
 		handler = h;
 		
 	}
@@ -63,13 +61,7 @@ public class Consumable extends GameObject{
 			handler.getGameObjects().remove(this);
 		}
 	}
-	/**
-	 * 
-	 * @return the type of "name" of the consumable
-	 */
-	public String getType() {
-		return type;
-	}
+
 
 
 	

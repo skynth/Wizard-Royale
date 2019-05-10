@@ -33,12 +33,8 @@ public class Handler {
 			GameObject tempObject = gameObjects.get(i);
 			tempObject.tick();
 			
-		}
-		
-		
-		}
-		
-	
+		}	
+	}
 	
 	/**
 	 * Shifts through every GameObject currently in the game, and calls the render method in order to constantly draw the object in case

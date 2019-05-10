@@ -47,7 +47,7 @@ public class Projectile extends GameObject{
 	}
 	
 	/**
-	 * Continually draws the projectile
+	 * Continually updates the projetile by moving its coordinates and seeing if it should be removed
 	 */
 
 	public void tick() {

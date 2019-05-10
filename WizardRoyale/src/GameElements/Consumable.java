@@ -12,8 +12,6 @@ public class Consumable extends GameObject{
 	private  String type;
 	private Handler handler;
 	
-	
-	
 	public Consumable(int x, int y, ID id, String type, Handler h) {
 		super(x, y, id);
 		isPickedUp = false;

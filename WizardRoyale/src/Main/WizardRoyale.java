@@ -1,24 +1,33 @@
 package Main;
 
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
-
 import GameElements.Consumable;
 import GameElements.Player;
-import Main.WizardRoyale.STATE;
 
+/**
+ * A class that represents our game. This class controls what is happening in the game and also contains the different screens such as
+ * the instructions, game, and main menu
+ * 
+ * @author Leofeng, skyfreestylez
+ * @version 5/9/19
+ * 
+ */
 public class WizardRoyale extends Canvas implements Runnable {
-
+	
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * field that represents the width of the window in which our game is contained in
+	 */
+	
 	public static final int WIDTH = 800;
+	
+	/**
+	 * field that represents the height of the window in which our game is contained in
+	 */
+	
 	public static final int HEIGHT = 800;
-	public static final int SCALE = 2;
 	
 	private MainMenuPanel menu = new MainMenuPanel();
 	private InstructionsPanel instructions = new InstructionsPanel();
@@ -26,16 +35,31 @@ public class WizardRoyale extends Canvas implements Runnable {
 	private Thread thread; //thread - sub process - created to handle the game, we want to do multiple things simultaneously
 	private boolean running = false;
 	
-	Handler handler;
+	private Handler handler;
 	
-	public static enum STATE { //enumerations for the different states of the game
+	/**
+	 * enum for the different states of our game, such as the state in which the game is in the menu
+	 * @author Leofeng
+	 *
+	 */
+	
+	public static enum STATE { 
 		MENU, 
 		GAME,
 		INSTURCTIONS
 	}
+	
+	/**
+	 * a variable that represents the state of our game
+	 */
 	public static STATE State = STATE.MENU;
 	
-	Image image = Toolkit.getDefaultToolkit().getImage("Resources/Background.jpg");
+	private Image image = Toolkit.getDefaultToolkit().getImage("Resources/Background.jpg");
+	
+	/**
+	 * Constructor that creates a new instance of our game. The constructor also initializes a handler that handles events in the game and
+	 * adds starting objects to the game, as well as listeners to detect mouse and keyboard input
+	 */
 	
 	public WizardRoyale() {
 		new Window(WIDTH, HEIGHT, "Wizard Royale", this);
@@ -47,7 +71,7 @@ public class WizardRoyale extends Canvas implements Runnable {
 		start();
 	}
 	
-	public void start() {
+	private void start() {
 		running = true;
 		thread = new Thread(this);
 		thread.start(); //begins running the game
@@ -61,6 +85,13 @@ public class WizardRoyale extends Canvas implements Runnable {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Method that is called after the thread for the game has been started. This method continually calls the tick and render method as long
+	 * as the game is running, which updates all the objects in the game as well as the game's graphics. 
+	 * @post the boolean variable that represents whether the game is running or not will be set to false
+	 * 
+	 */
 	
 	public void run() {
 		
@@ -79,23 +110,22 @@ public class WizardRoyale extends Canvas implements Runnable {
 		     lastTime = now;
 		     
 		     while(delta >= 1) {
-		    	tick(); //
+		    	tick(); 
 		        delta--;
 		     }
 		     
-		     render(); //render : called thousand of times per second 
+		     render(); 
 		     frames++;
 
 		     if (System.currentTimeMillis() - timer > 1000) {
 		        timer += 1000;
 		        frames = 0;
-		        //updates = 0;
 		     }
 		 }
 		 stop();
 	}
 	
-	public void tick() {
+	private void tick() {
 		
 		if (State == STATE.GAME) {
 			handler.tick(); 
@@ -105,7 +135,7 @@ public class WizardRoyale extends Canvas implements Runnable {
 		
 	}
 	
-	public void render() {
+	private void render() {
 		BufferStrategy bs = this.getBufferStrategy();
 		
 		if (bs == null) {
@@ -130,10 +160,6 @@ public class WizardRoyale extends Canvas implements Runnable {
 		
 		g.dispose();
 		bs.show(); //makes the buffer we just drew the current buffer for the JFrame, and displays everything we drew
-	}
-
-	public void PaintComponent(Graphics g) {
-
 	}
 	
 }

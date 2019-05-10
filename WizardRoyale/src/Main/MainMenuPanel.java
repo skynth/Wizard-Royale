@@ -1,6 +1,7 @@
 package Main;
 
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -8,14 +9,30 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 
+/**
+ * Class that represents the panel for the main menu of our game, seen when the game is first opened. Contains play, help, and quit buttons
+ * that will change the state of the game
+ * 
+ * @author Leofeng, skyfreestylez
+ * @version : 5/9/19
+ * 
+ */
+
 public class MainMenuPanel {
 	
 	private Rectangle playButton;
 	private Rectangle helpButton;
 	private Rectangle quitButton;
 	private Image[] wizardGif = new Image[24];
+	/**
+	 * Constant String variable that acts as a file separator 
+	 */
 	public final static String FILE_SEP = System.getProperty("file.separator");
 	private double step = 0;
+	
+	/**
+	 * Constructs a new instance of the main menu panel by initializing the menu's fields
+	 */
 	
 	public MainMenuPanel() {
 		playButton = new Rectangle(230, 200, 330, 100);
@@ -25,6 +42,12 @@ public class MainMenuPanel {
 			wizardGif[i] = Toolkit.getDefaultToolkit().createImage("Resources" + FILE_SEP + "wizard" + MainMenuPanel.FILE_SEP +i+".gif");
 
 	}
+	
+	/**
+	 * Draws all the images on the main menu screen
+	 * @param g the instance of the graphics class that will handle drawing everything in the WizardRoyale class
+	 * @post the graphics of the main menu will be drawn onto g
+	 */
 
 	public void render(Graphics g) {
 		

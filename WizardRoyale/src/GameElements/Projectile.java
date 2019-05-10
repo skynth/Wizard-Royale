@@ -5,7 +5,12 @@ import java.awt.Graphics;
 
 import Main.Handler;
 import Main.ID;
-
+/**
+ * A class that represents an instance of a projectile. The projectile shoots as soon as it is made.
+ * 
+ * @author skyfreestylez
+ *
+ */
 public class Projectile extends GameObject{
 	
 	private String type;
@@ -15,6 +20,7 @@ public class Projectile extends GameObject{
 
 
 	/**
+	 * Creates an instance of a projectile in which shoots as soon as it's made.
 	 * 
 	 * @param t The type or "name" of the projectile being made
 	 * @param x the x coordinate of the projectile 

@@ -9,6 +9,12 @@ import Main.Handler;
 import Main.ID;
 import Main.MainMenuPanel;
 
+/**
+ * A class which respresents in an instance of a player.
+ * 
+ * @author Leofeng, Roee, Skyfreestylez
+ *
+ */
 public class Player extends GameObject {
 	
 	private Handler handler;

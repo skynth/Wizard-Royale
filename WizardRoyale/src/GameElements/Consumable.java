@@ -13,7 +13,15 @@ public class Consumable extends GameObject{
 	private Handler handler;
 	
 	
-	
+	/**
+	 * 
+	 * 
+	 * @param x The x coordinate of the consumable on the map
+	 * @param y The y coordinate of the consumable on the map
+	 * @param id The id of the consumable
+	 * @param type The type or "Name" of the consumable
+	 * @param h the handler passed in
+	 */
 	public Consumable(int x, int y, ID id, String type, Handler h) {
 		super(x, y, id);
 		isPickedUp = false;
@@ -21,10 +29,17 @@ public class Consumable extends GameObject{
 		handler = h;
 		
 	}
-
+	/**
+	 * 
+	 * @param b sets whether the consumable has been picked up or not to this value
+	 */
 	public void setIsPickedUp(boolean b) {
 		isPickedUp = b;
 	}
+	/**
+	 * 
+	 * @return True if the consumable has been picked up, false if not.
+	 */
 	public boolean getIsPickedUp() {
 		return isPickedUp;
 	}
@@ -41,7 +56,10 @@ public class Consumable extends GameObject{
 			handler.getGameObjects().remove(this);
 		}
 	}
-
+	/**
+	 * 
+	 * @return the type of "name" of the consumable
+	 */
 	public String getType() {
 		return type;
 	}

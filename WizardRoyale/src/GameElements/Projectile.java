@@ -31,7 +31,7 @@ public class Projectile extends GameObject{
 	 */
 	public Projectile(int x, int y, ID id, int mouseX, int mouseY, Handler h) {
 		super(x, y, id);
-		angle = Math.atan((y - mouseY) / (mouseX - x)); //Not sure if this works yet
+		angle = Math.atan((mouseY - y) / (mouseX - x)); //Not sure if this works yet
 		handler = h;
 		isOutOfRange = false;
 	}
@@ -52,14 +52,7 @@ public class Projectile extends GameObject{
 			handler.getGameObjects().remove(this);
 		
 	}
-<<<<<<< HEAD
-=======
-	
 
-	
-	
-
->>>>>>> branch 'master' of https://github.com/Leofeng1/APCS-Final.git
 	
 
 }

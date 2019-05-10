@@ -13,7 +13,6 @@ import Main.ID;
  */
 public class Projectile extends GameObject{
 	
-	private String type;
 	private double angle;
 	private Handler handler;
 	private boolean isOutOfRange;
@@ -30,9 +29,8 @@ public class Projectile extends GameObject{
 	 * @param mouseY the y corrdinate of the mouse when the projectile is made/shot
 	 * @param h the handler passed in
 	 */
-	public Projectile(String t, int x, int y, ID id, int mouseX, int mouseY, Handler h) {
+	public Projectile(int x, int y, ID id, int mouseX, int mouseY, Handler h) {
 		super(x, y, id);
-		type = t;
 		angle = Math.atan((y - mouseY) / (mouseX - x)); //Not sure if this works yet
 		handler = h;
 		isOutOfRange = false;
@@ -40,7 +38,7 @@ public class Projectile extends GameObject{
 
 	@Override
 	public void render(Graphics g) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stuba
 		g.setColor(Color.red);
 		g.fillRect(xCoord, yCoord, 50, 10);
 	}
@@ -54,16 +52,6 @@ public class Projectile extends GameObject{
 			handler.getGameObjects().remove(this);
 		
 	}
-	/**
-	 * 
-	 * @return the type of the projectile
-	 */
-	public String getType() {
-		return type;
-	}
-	
-	
-
 	
 
 }

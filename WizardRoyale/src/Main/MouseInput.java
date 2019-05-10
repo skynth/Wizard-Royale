@@ -3,6 +3,7 @@ package Main;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import GameElements.Projectile;
 import Main.WizardRoyale.STATE;
 
 /**
@@ -64,7 +65,8 @@ public class MouseInput implements MouseListener {
 			}
 			
 		} else if (WizardRoyale.State == STATE.GAME) {
-			//code to handle if user clicks in the game
+			Projectile p = new Projectile(handler.getPlayer().getX(), handler.getPlayer().getY(), ID.Projectile, e.getX(), e.getY(), handler);
+			handler.addObject(p);
 		}
 		
 	}

@@ -1,9 +1,9 @@
 package Main;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import GameElements.GameObject;
+
 
 /**
  * This class is the class that handles all changes made to all game objects while users are playing the game. It uses an array list of 
@@ -61,6 +61,20 @@ public class Handler {
 	
 	public LinkedList<GameObject> getGameObjects() {
 		return gameObjects;
+	}
+	
+	public GameObject getPlayer() {
+		
+		for (int i = 0; i < gameObjects.size(); i++) {
+			
+			if (gameObjects.get(i).getID() == ID.Player) {
+				return gameObjects.get(i);
+			}
+			
+		}
+		
+		return null;
+		
 	}
 	
 	/**

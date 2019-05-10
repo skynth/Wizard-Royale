@@ -64,7 +64,7 @@ public class WizardRoyale extends Canvas implements Runnable {
 	public WizardRoyale() {
 		new Window(WIDTH, HEIGHT, "Wizard Royale", this);
 		handler = new Handler();
-		handler.addObject(new Player(50, 50, ID.Player, handler));
+		handler.addObject(new Player(0, 0, ID.Player, handler));
 		handler.addObject(new Consumable(300, 300, ID.Item, handler));
 		this.addMouseListener(new MouseInput(handler));
 		this.addKeyListener(new KeyInput(handler));

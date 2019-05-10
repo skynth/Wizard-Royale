@@ -52,14 +52,6 @@ public class Projectile extends GameObject{
 			handler.getGameObjects().remove(this);
 		
 	}
-<<<<<<< HEAD
-=======
-	
-
-	
-	
-
->>>>>>> branch 'master' of https://github.com/Leofeng1/APCS-Final.git
 	
 
 }

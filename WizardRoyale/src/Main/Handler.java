@@ -35,6 +35,19 @@ public class Handler {
 			
 		}
 		
+		for (int i = 0; i < gameObjects.size(); i++) {
+			
+			if (gameObjects.get(i).getID() == ID.Item) {
+			
+				if (this.getPlayer().getX() - 10 < gameObjects.get(i).getX() && this.getPlayer().getX() + 10 > gameObjects.get(i).getX() && 
+					this.getPlayer().getY() - 10 <  gameObjects.get(i).getY() && this.getPlayer().getY() + 10 > gameObjects.get(i).getY()) {
+					gameObjects.remove(gameObjects.get(i));
+				}
+					
+			}
+			
+		}
+		
 	}
 	
 	/**

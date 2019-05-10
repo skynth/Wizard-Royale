@@ -22,7 +22,7 @@ public class MainMenuPanel {
 		helpButton = new Rectangle(230, 375, 330, 100);
 		quitButton = new Rectangle(230, 550, 330, 100);
 		for(int i = 0; i < 24; i++)
-			wizardGif[i] = Toolkit.getDefaultToolkit().createImage("Resources" + FILE_SEP + i+".gif");
+			wizardGif[i] = Toolkit.getDefaultToolkit().createImage("Resources" + FILE_SEP + "wizard" + MainMenuPanel.FILE_SEP +i+".gif");
 
 	}
 

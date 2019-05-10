@@ -20,7 +20,7 @@ public class Player extends GameObject {
 		super(x, y, id);
 		handler = h;
 		for(int i = 0; i < 24; i++)
-			sprite[i] = Toolkit.getDefaultToolkit().createImage("Resources" + MainMenuPanel.FILE_SEP + i+".gif");
+			sprite[i] = Toolkit.getDefaultToolkit().createImage("Resources" + MainMenuPanel.FILE_SEP + "wizard" + MainMenuPanel.FILE_SEP + i+".gif");
 
 	}
 	

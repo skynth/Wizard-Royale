@@ -1,18 +1,33 @@
 package Main;
 
-import java.awt.event.KeyAdapter;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import GameElements.GameObject;
+/**
+ * A class that handles input from the user's keyboard to the game
+ * @author Leofeng
+ * @version 5/7/19
+ */
 
-public class KeyInput extends KeyAdapter {
+public class KeyInput implements KeyListener {
 	
 	Handler handler;
+	
+	/**
+	 * Creates a new instance of KeyInput
+	 * @param h the WizardRoyale's class' instance of the handler class, which handles all the events that occur in the game
+	 */
 	
 	public KeyInput(Handler h) {
 		handler = h;
 	}
+	
+	/**
+	 * @pre user has clicked a key that holds a function in the game
+	 * Method that handles what to do after the user has pressed a certain key that has a function in the game
+	 * @param e e an instance of KeyEvent that represents a keystroke by the user
+	 */
 
 	public void keyPressed(KeyEvent e) {
 		
@@ -41,6 +56,12 @@ public class KeyInput extends KeyAdapter {
 		}
 		
 	}
+	
+	/**
+	 * @pre user has released a key that holds a function in the game
+	 * Method that handles what to do after the user has released a certain key that has a function in the game
+	 * @param e e an instance of KeyEvent that represents a keystroke by the user
+	 */
 
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();

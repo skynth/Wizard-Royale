@@ -5,9 +5,21 @@ import java.awt.event.MouseListener;
 
 import Main.WizardRoyale.STATE;
 
+/**
+ * A class that handles input from the user's mouse to the game
+ * @author Leofeng 
+ * @version 5/7/19
+ *
+ */
+
 public class MouseInput implements MouseListener {
 	
-	Handler handler;
+	private Handler handler; //will be used later
+
+	/**
+	 * Creates a new instance of MouseInput
+	 * @param h the WizardRoyale's class' instance of the handler class, which handles all the events that occur in the game
+	 */
 	
 	public MouseInput(Handler h) {
 		handler = h; 
@@ -25,6 +37,12 @@ public class MouseInput implements MouseListener {
 	public void mouseExited(MouseEvent e) {
 		
 	}
+	
+	/**
+	 * Method that states what actions to take after the user has pressed the mouse
+	 * @param e an instance of MouseEvent that represents the user's mouse click
+	 * @post the game's state may be changed after the user clicks on a button in the main menu
+	 */
 
 	public void mousePressed(MouseEvent e) {
 		

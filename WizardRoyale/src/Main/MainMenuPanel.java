@@ -4,29 +4,26 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
+import java.awt.Toolkit;
 
 public class MainMenuPanel {
 	
 	private Rectangle playButton;
 	private Rectangle helpButton;
 	private Rectangle quitButton;
-	private BufferedImage wizardGif;
+	private Image[] wizardGif = new Image[24];
+	public final static String FILE_SEP = System.getProperty("file.separator");
+	private double step = 0;
 	
 	public MainMenuPanel() {
 		playButton = new Rectangle(230, 200, 330, 100);
 		helpButton = new Rectangle(230, 375, 330, 100);
 		quitButton = new Rectangle(230, 550, 330, 100);
-		try {
-			wizardGif = ImageIO.read(new File("Resources/wizard.gif"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		for(int i = 0; i < 24; i++)
+			wizardGif[i] = Toolkit.getDefaultToolkit().createImage("Resources" + FILE_SEP + i+".gif");
+
 	}
 
 	public void render(Graphics g) {
@@ -37,7 +34,10 @@ public class MainMenuPanel {
 		g.setFont(font0);
 		g.setColor(Color.white);
 		g.drawString("Wizard Royale", 230, 100);
-		g.drawImage(wizardGif, 20, 600, 150, 150, null);
+		g.drawImage(wizardGif[(int) step], 10, 550, 200, 200, null);
+		step += 0.1;
+		if(step >= 24)
+			step = 0;
 		Font font1 = new Font("SANS_SERIF", Font.BOLD, 50);
 		g.setColor(Color.CYAN);
 		g.setFont(font1);

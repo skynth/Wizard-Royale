@@ -2,18 +2,24 @@ package GameElements;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import Main.Handler;
 import Main.ID;
+import Main.MainMenuPanel;
 
 public class Player extends GameObject {
 	
 	private Handler handler;
+	private Image sprite;
 
 	public Player(int x, int y, ID id, Handler h) {
 		super(x, y, id);
 		handler = h;
+		sprite = Toolkit.getDefaultToolkit().createImage("Resources" + MainMenuPanel.FILE_SEP + "wizard.gif");
+		
 	}
 	
 	public void tick() {
@@ -40,8 +46,8 @@ public class Player extends GameObject {
 	}
 
 	public void render(Graphics g) {
-		g.setColor(Color.red);
-		g.fillRect(xCoord, yCoord, 100, 100);
+		g.drawImage(sprite, xCoord, yCoord, 100, 100, null);
+
 	}
 	
 	public void setUp(boolean check) {

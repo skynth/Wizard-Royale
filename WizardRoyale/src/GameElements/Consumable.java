@@ -6,6 +6,13 @@ import java.awt.Graphics;
 import Main.Handler;
 import Main.ID;
 
+/**
+ * A class representing all items in which are picked up on the map.
+ * 
+ * @author skyfreestylez
+ * @version 5/10/19
+ *
+ */
 public class Consumable extends GameObject{
 	
 	private boolean isPickedUp;
@@ -13,7 +20,7 @@ public class Consumable extends GameObject{
 	private Handler handler;
 	
 	/**
-	 * 
+	 * Constructs an instance of Consumable, given its type
 	 * 
 	 * @param x The x coordinate of the consumable on the map
 	 * @param y The y coordinate of the consumable on the map

@@ -10,18 +10,25 @@ import Main.ID;
 import Main.MainMenuPanel;
 
 /**
- * A class which respresents in an instance of a player.
+ * A class which represents in an instance of a player.
  * 
  * @author Leofeng, Roee, Skyfreestylez
- *
+ *@version 5/10/19
  */
 public class Player extends GameObject {
 	
 	private Handler handler;
 	private Image sprite[] = new Image[24];
 	private double step = 0;
+	private Projectile currentProjectile;
 
-
+	/**
+	 * Creates a new instance of a player (Wizard)
+	 * @param x the X coordinate the wizard spawns at
+	 * @param y the Y coordinate the wizard spawns at
+	 * @param id the Id of the wizard
+	 * @param h the handler passed in
+	 */
 	public Player(int x, int y, ID id, Handler h) {
 		super(x, y, id);
 		handler = h;
@@ -63,7 +70,17 @@ public class Player extends GameObject {
 	public void setUp(boolean check) {
 		
 	}
-	
+	/**
+	 * Shoots the projectile it contains.
+	 */
+	public void shoot() {
+		
+		
+	}
+	/**
+	 * Checks and performs actions based on collisions.
+	 * @param objects
+	 */
 	public void collide(ArrayList<GameObject> objects)
 	{
 		

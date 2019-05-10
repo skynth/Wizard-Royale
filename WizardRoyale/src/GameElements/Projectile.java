@@ -9,7 +9,7 @@ import Main.ID;
  * A class that represents an instance of a projectile. The projectile shoots as soon as it is made.
  * 
  * @author skyfreestylez
- *
+ *@version 5/10/19
  */
 public class Projectile extends GameObject{
 	

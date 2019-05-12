@@ -66,6 +66,7 @@ public class MouseInput implements MouseListener {
 			
 		} else if (WizardRoyale.State == STATE.GAME) {
 			Projectile p = new Projectile(handler.getPlayer().getX(), handler.getPlayer().getY(), ID.Projectile, e.getX(), e.getY(), handler);
+			
 			handler.addObject(p);
 		}
 		

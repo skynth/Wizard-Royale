@@ -20,9 +20,13 @@ import Main.MainMenuPanel;
 public class Player extends GameObject {
 	
 	private Handler handler;
-	private Image sprite[] = new Image[24];
-	private double step = 0;
+	private Image spriteRight[] = new Image[24];
+	private Image spriteLeft[] = new Image[24];
+	private Image spriteShoot[] = new Image[15];
+	private double step, shootStep;
 	private int health;
+	private boolean isRight;
+	private boolean isShoot;
 
 	/**
 	 * Creates a new instance of a player (Wizard)
@@ -35,9 +39,17 @@ public class Player extends GameObject {
 		super(x, y, id);
 		handler = h;
 		collisionRect = new Rectangle(x,y,150,150);
-		for(int i = 0; i < 24; i++)
-			sprite[i] = Toolkit.getDefaultToolkit().createImage("Resources" + MainMenuPanel.FILE_SEP + "wizard" + MainMenuPanel.FILE_SEP + i+".gif");
+		for(int i = 0; i < 24; i++) {
+			spriteRight[i] = Toolkit.getDefaultToolkit().createImage("Resources" + MainMenuPanel.FILE_SEP + "wizard" + MainMenuPanel.FILE_SEP + i+".gif");
+			spriteLeft[i] = Toolkit.getDefaultToolkit().createImage("Resources" + MainMenuPanel.FILE_SEP + "Wizard Left" + MainMenuPanel.FILE_SEP + i+"L.gif");
+			if(i < 15) {
+				spriteShoot[i] = Toolkit.getDefaultToolkit().createImage("Resources" + MainMenuPanel.FILE_SEP + "wizard shoot" + MainMenuPanel.FILE_SEP + i+"shoot" + (i+1)+".gif");
+			}
+		}
 		health = 100;
+		isRight = true;
+		step = 0;
+		shootStep = 0;
 	}
 	
 	public void tick() {
@@ -56,8 +68,10 @@ public class Player extends GameObject {
 		
 		if (handler.isLeft()) {
 			velX = -5;
+			isRight = false;
 		} else if (handler.isRight()) {
 			velX = 5;
+			isRight = true;
 		} else if (!handler.isLeft() && !handler.isRight()) {
 			velX = 0;
 		}
@@ -67,15 +81,30 @@ public class Player extends GameObject {
 	}
 
 	public void render(Graphics g) {
-		g.drawImage(sprite[(int)step], xCoord, yCoord, 150, 150, null);
+		if(isShoot) {
+			g.drawImage(spriteShoot[(int)shootStep], xCoord, yCoord, 150, 150, null);
+			shootStep += 0.5;
+		}
+		if(isRight)
+			g.drawImage(spriteRight[(int)step], xCoord, yCoord, 150, 150, null);
+		else if(!isRight)
+			g.drawImage(spriteLeft[(int)step], xCoord, yCoord, 150, 150, null);
+
 		step += 0.1;
 		if(step >= 24)
 			step = 0;
+		if(shootStep >= 15) {
+			isShoot = false;
+			shootStep = 0;
+		}
 
 	}
 	
 	public void setUp(boolean check) {
 		
+	}
+	public void setIsShoot(boolean s) {
+		isShoot = s;
 	}
 	
 	/**

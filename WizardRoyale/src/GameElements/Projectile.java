@@ -70,7 +70,9 @@ public class Projectile extends GameObject{
 	public void tick() {
 		if(isRight && isUp) {
 			xCoord += Math.cos(angle) * 15;
-			yCoord -= Math.sin(angle) * 15;
+			yCoord += Math.sin(angle) * 15;
+			System.out.println("sdasdsa");
+
 		}
 		else if(isRight && !isUp){
 			xCoord += Math.cos(angle) * 15;
@@ -82,8 +84,7 @@ public class Projectile extends GameObject{
 		}
 		else if(!isUp && !isRight){
 			xCoord -= Math.cos(angle) * 15;
-			yCoord += Math.sin(angle) * 15;
-			System.out.println("sdasdsa");
+			yCoord -= Math.sin(angle) * 15;
 		}
 
 		if(isOutOfRange)

@@ -71,7 +71,7 @@ public class WizardRoyale extends Canvas implements Runnable {
 		gameCamera = new Camera(0, 0);
 		
 		BufferedImageLoader loader = new BufferedImageLoader();
-		backgroundImage = loader.loadImage("/worldmap.png");
+		backgroundImage = loader.loadImage("Resources" + MainMenuPanel.FILE_SEP + "worldmap.png");
 		
 		handler.addObject(new Player(0, 0, ID.Player, handler));
 		handler.addObject(new Consumable(300, 300, ID.Item, handler));
@@ -159,7 +159,7 @@ public class WizardRoyale extends Canvas implements Runnable {
 		if (State == STATE.GAME) {
 			
 			super.paint(g);
-			//g.drawImage(backGroundImage, 0, 0, WIDTH * 2, HEIGHT * 2, this);
+			g.drawImage(backgroundImage, 0, 0, WIDTH * 5, HEIGHT * 5, this);
 			handler.render(g);
 			
 		} else if (State == STATE.MENU) {

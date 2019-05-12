@@ -3,6 +3,7 @@ import java.awt.*;
 import java.util.LinkedList;
 
 import GameElements.GameObject;
+import GameElements.Player;
 
 
 /**
@@ -62,12 +63,12 @@ public class Handler {
 		return gameObjects;
 	}
 	
-	public GameObject getPlayer() {
+	public Player getPlayer() {
 		
 		for (int i = 0; i < gameObjects.size(); i++) {
 			
 			if (gameObjects.get(i).getID() == ID.Player) {
-				return gameObjects.get(i);
+				return (Player) gameObjects.get(i);
 			}
 			
 		}

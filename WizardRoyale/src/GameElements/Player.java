@@ -23,6 +23,7 @@ public class Player extends GameObject {
 	private Image spriteRight[] = new Image[24];
 	private Image spriteLeft[] = new Image[24];
 	private Image spriteShoot[] = new Image[15];
+	private Image spriteShootLeft[] = new Image[15];
 	private double step, shootStep;
 	private int health;
 	private boolean isRight;
@@ -43,7 +44,9 @@ public class Player extends GameObject {
 			spriteRight[i] = Toolkit.getDefaultToolkit().createImage("Resources" + MainMenuPanel.FILE_SEP + "wizard" + MainMenuPanel.FILE_SEP + i+".gif");
 			spriteLeft[i] = Toolkit.getDefaultToolkit().createImage("Resources" + MainMenuPanel.FILE_SEP + "Wizard Left" + MainMenuPanel.FILE_SEP + i+"L.gif");
 			if(i < 15) {
-				spriteShoot[i] = Toolkit.getDefaultToolkit().createImage("Resources" + MainMenuPanel.FILE_SEP + "wizard shoot" + MainMenuPanel.FILE_SEP + i+"shoot" + (i+1)+".gif");
+				spriteShoot[i] = Toolkit.getDefaultToolkit().createImage("Resources" + MainMenuPanel.FILE_SEP + "wizard shoot" + MainMenuPanel.FILE_SEP + "shoot" + (i+1)+".gif");
+				spriteShootLeft[i] = Toolkit.getDefaultToolkit().createImage("Resources" + MainMenuPanel.FILE_SEP + "wizard shoot left" + MainMenuPanel.FILE_SEP + i+".gif");
+
 			}
 		}
 		health = 100;
@@ -82,10 +85,14 @@ public class Player extends GameObject {
 
 	public void render(Graphics g) {
 		if(isShoot) {
-			g.drawImage(spriteShoot[(int)shootStep], xCoord, yCoord, 150, 150, null);
-			shootStep += 0.5;
+			if(isRight)
+				g.drawImage(spriteShoot[(int)shootStep], xCoord - 75, yCoord, 300, 150, null);
+			else if(!isRight)
+				g.drawImage(spriteShootLeft[(int)shootStep], xCoord - 75, yCoord, 300, 150, null);
+
+			shootStep += 0.2;
 		}
-		if(isRight)
+		else if(isRight)
 			g.drawImage(spriteRight[(int)step], xCoord, yCoord, 150, 150, null);
 		else if(!isRight)
 			g.drawImage(spriteLeft[(int)step], xCoord, yCoord, 150, 150, null);
@@ -105,6 +112,9 @@ public class Player extends GameObject {
 	}
 	public void setIsShoot(boolean s) {
 		isShoot = s;
+	}
+	public boolean getIsRight() {
+		return isRight;
 	}
 	
 	/**

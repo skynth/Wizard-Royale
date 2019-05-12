@@ -71,7 +71,6 @@ public class Projectile extends GameObject{
 		if(isRight && isUp) {
 			xCoord += Math.cos(angle) * 15;
 			yCoord += Math.sin(angle) * 15;
-			System.out.println("sdasdsa");
 
 		}
 		else if(isRight && !isUp){

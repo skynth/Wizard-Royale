@@ -50,8 +50,7 @@ public class WizardRoyale extends Canvas implements Runnable {
 	public static enum STATE { 
 		MENU, 
 		GAME,
-		INSTURCTIONS,
-		SERVER;
+		INSTURCTIONS;
 	}
 	
 	/**

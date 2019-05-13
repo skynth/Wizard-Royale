@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 
 import GameElements.Consumable;
 import GameElements.Player;
+import GameElements.Wall;
 
 /**
  * A class that represents our game. This class controls what is happening in the game and also contains the different screens such as
@@ -68,15 +69,16 @@ public class WizardRoyale extends Canvas implements Runnable {
 	public WizardRoyale() {
 		new Window(WIDTH, HEIGHT, "Wizard Royale", this);
 		handler = new Handler();
-		gameCamera = new Camera(0, 0);
+		gameCamera = new Camera(0, 0, handler);
 		
 		BufferedImageLoader loader = new BufferedImageLoader();
-		backgroundImage = loader.loadImage("Resources" + MainMenuPanel.FILE_SEP + "worldmap.png");
+		backgroundImage = loader.loadImage("Resources" + MainMenuPanel.FILE_SEP + "WizardBackground.png");
 		
 		handler.addObject(new Player(0, 0, ID.Player, handler));
 		handler.addObject(new Consumable(300, 300, ID.Item, handler));
 		this.addMouseListener(new MouseInput(handler));
 		this.addKeyListener(new KeyInput(handler));
+		loadLevel(backgroundImage);
 		start();
 	}
 	
@@ -149,7 +151,7 @@ public class WizardRoyale extends Canvas implements Runnable {
 		BufferStrategy bs = this.getBufferStrategy();
 		
 		if (bs == null) {
-			this.createBufferStrategy(5); 
+			this.createBufferStrategy(3); 
 			return;
 		}
 		
@@ -159,8 +161,10 @@ public class WizardRoyale extends Canvas implements Runnable {
 		if (State == STATE.GAME) {
 			
 			super.paint(g);
-			g.drawImage(backgroundImage, 0, 0, WIDTH * 5, HEIGHT * 5, this);
+			
+			g2d.translate(-gameCamera.getX(), -gameCamera.getY());
 			handler.render(g);
+			g2d.translate(gameCamera.getX(), gameCamera.getY());
 			
 		} else if (State == STATE.MENU) {
 			g.drawImage(image, 0, 0, WIDTH, HEIGHT, this);
@@ -170,10 +174,32 @@ public class WizardRoyale extends Canvas implements Runnable {
 			instructions.render(g);
 		}
 		
-		g2d.translate(-gameCamera.getX(), -gameCamera.getY());
-		
 		g.dispose();
 		bs.show(); //makes the buffer we just drew the current buffer for the JFrame, and displays everything we drew
+	}
+	
+	private void loadLevel(BufferedImage image) {
+		int w = image.getWidth();
+		int h = image.getHeight();
+		
+		for (int i = 0; i < w; i++) {
+			
+			for (int j = 0; j < h; j++) {
+				
+				int pixel = image.getRGB(i, j);
+				int red = (pixel >> 16) & 0xff;
+				int green = (pixel >> 8) & 0xff;
+				int blue = (pixel) & 0xff;
+				
+				if (red == 255) {
+					handler.addObject(new Wall(i * 32, j * 32));
+				}
+				
+			}
+		}
+		
+		
+		
 	}
 	
 }

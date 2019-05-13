@@ -172,5 +172,10 @@ public class Handler {
 	public boolean isRight() {
 		return isRight;
 	}
+	
+	public boolean isMoving() {
+		return isRight || isLeft || isUp || isDown;
+				
+	}
 
 }

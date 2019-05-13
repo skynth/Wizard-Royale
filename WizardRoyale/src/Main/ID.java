@@ -12,6 +12,5 @@ public enum ID {
 	Wall(),
 	Item(),
 	Projectile();
-	
 
 }

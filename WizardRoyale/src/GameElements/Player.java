@@ -62,19 +62,57 @@ public class Player extends GameObject {
 		collisionRect.y = yCoord;
 		
 		if (handler.isUp()) {
-			velY = -5;
+			velY = -7.5f;
+			
+			if (handler.isLeft()) {
+				velY = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);
+				velX = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);	
+			}
+			else if (handler.isRight()) {
+				velY = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);
+				velX = (float) Math.sqrt(Math.pow(7.5, 2) / 2);	
+			}
+			
 		} else if (handler.isDown()) {
-			velY = 5;
+			velY = 7.5f;
+			
+			if (handler.isLeft()) {
+				velY = (float) Math.sqrt(Math.pow(7.5, 2) / 2);
+				velX = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);	
+			}
+			else if (handler.isRight()) {
+				velY = (float) Math.sqrt(Math.pow(7.5, 2) / 2);
+				velX = (float) Math.sqrt(Math.pow(7.5, 2) / 2);	
+			}
+			
 		} else if (!handler.isDown() && !handler.isUp()) {
 			velY = 0;
 		}
 		
 		if (handler.isLeft()) {
-			velX = -5;
-			isRight = false;
+			velX = -7.5f;
+			
+			if (handler.isDown()) {
+				velX = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);
+				velY = (float) Math.sqrt(Math.pow(7.5, 2) / 2);
+			}
+			else if (handler.isUp()) {
+				velX = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);
+				velY = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);
+			}
+			
 		} else if (handler.isRight()) {
-			velX = 5;
-			isRight = true;
+			velX = 7.5f;
+			
+			if (handler.isDown()) {
+				velX = (float) Math.sqrt(Math.pow(7.5, 2) / 2);
+				velY = (float) Math.sqrt(Math.pow(7.5, 2) / 2);
+			}
+			else if (handler.isUp()) {
+				velX = (float) Math.sqrt(Math.pow(7.5, 2) / 2);
+				velY = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);
+			}
+			
 		} else if (!handler.isLeft() && !handler.isRight()) {
 			velX = 0;
 		}

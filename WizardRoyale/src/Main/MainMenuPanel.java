@@ -10,6 +10,8 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 
+import javax.swing.JFrame;
+
 /**
  * Class that represents the panel for the main menu of our game, seen when the game is first opened. Contains play, help, and quit buttons
  * that will change the state of the game
@@ -31,16 +33,21 @@ public class MainMenuPanel {
 	 */
 	public final static String FILE_SEP = System.getProperty("file.separator");
 	private double step = 0;
+	public final int WIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+	public final int HEIGHT = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+
 	
 	/**
 	 * Constructs a new instance of the main menu panel by initializing the menu's fields
 	 */
 	
 	public MainMenuPanel() {
-		playButton = new Rectangle(704, 250, 490, 100);
-		helpButton = new Rectangle(704, 425, 490, 100);
-		serverButton = new Rectangle(704, 600, 490, 100);
-		quitButton = new Rectangle(704, 775, 490, 100);
+		playButton = new Rectangle(WIDTH / 3, (int)(HEIGHT / 4.5), (int)(WIDTH / 2.94), HEIGHT / 9);
+		System.out.println(WIDTH);
+		System.out.println(HEIGHT);
+		helpButton = new Rectangle(WIDTH / 3, (int)(HEIGHT / 2.57), (int)(WIDTH / 2.94), HEIGHT / 9);
+		serverButton = new Rectangle(WIDTH / 3, (int)(HEIGHT / 1.8), (int)(WIDTH / 2.94),  HEIGHT / 9);
+		quitButton = new Rectangle(WIDTH / 3, (int)(HEIGHT / 1.38), (int)(WIDTH / 2.94), HEIGHT / 9);
 		for(int i = 0; i < 24; i++)
 			wizardGif[i] = Toolkit.getDefaultToolkit().createImage("Resources" + FILE_SEP + "wizard" + MainMenuPanel.FILE_SEP +i+".gif");
 
@@ -66,7 +73,7 @@ public class MainMenuPanel {
 	    g.setFont(font0);
 
 	    g.drawString("Wizard Royale", x, y);
-		g.drawImage(wizardGif[(int) step], 10, 800, 200, 200, null);
+		g.drawImage(wizardGif[(int) step], WIDTH / 48, (int)(HEIGHT / 1.7), (int)(WIDTH / 5.76), (int)(HEIGHT / 3.6), null);
 		step += 0.1;
 		if(step >= 24)
 			step = 0;

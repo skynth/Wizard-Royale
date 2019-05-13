@@ -1,5 +1,6 @@
 package GameElements;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -57,7 +58,7 @@ public class Player extends GameObject {
 	public void tick() {
 		xCoord += velX;
 		yCoord += velY;
-		
+	
 		if (handler.isUp()) {
 			velY = -7.5f;
 			
@@ -113,6 +114,19 @@ public class Player extends GameObject {
 		} else if (!handler.isLeft() && !handler.isRight()) {
 			velX = 0;
 		}
+		
+		
+		if (handler.isUp()) velY = -5;
+		else if (!handler.isDown()) velY = 0;
+		
+		if (handler.isDown()) velY = 5;
+		else if (!handler.isUp()) velY = 0;
+		
+		if (handler.isRight()) velX = 5;
+		else if (!handler.isLeft()) velX = 0;
+		
+		if (handler.isLeft()) velX = -5;
+		else if (!handler.isRight()) velX = 0;
 			
 		this.collide(handler.getGameObjects());
 			
@@ -121,16 +135,16 @@ public class Player extends GameObject {
 	public void render(Graphics g) {
 		if(isShoot) {
 			if(isRight)
-				g.drawImage(spriteShoot[(int)shootStep], xCoord - 75, yCoord, 300, 150, null);
+				g.drawImage(spriteShoot[(int)shootStep], xCoord - 50, yCoord, 200, 100, null);
 			else if(!isRight)
-				g.drawImage(spriteShootLeft[(int)shootStep], xCoord - 75, yCoord, 300, 150, null);
+				g.drawImage(spriteShootLeft[(int)shootStep], xCoord - 50, yCoord, 200, 100, null);
 
 			shootStep += 0.2;
 		}
 		else if(isRight)
-			g.drawImage(spriteRight[(int)step], xCoord, yCoord, 150, 150, null);
+			g.drawImage(spriteRight[(int)step], xCoord, yCoord, 100, 100, null);
 		else if(!isRight)
-			g.drawImage(spriteLeft[(int)step], xCoord, yCoord, 150, 150, null);
+			g.drawImage(spriteLeft[(int)step], xCoord, yCoord, 100, 100, null);
 
 		step += 0.1;
 		if(step >= 24)
@@ -150,11 +164,6 @@ public class Player extends GameObject {
 	}
 	public boolean getIsRight() {
 		return isRight;
-	}
-	
-	public void stop() {
-		velX = 0;
-		velY = 0;
 	}
 	
 	/**
@@ -177,8 +186,9 @@ public class Player extends GameObject {
 				
 				if (objects.get(i).getID() == ID.Wall) {
 					
-					if (handler.isMoving() && getBounds().intersects(objects.get(i).getBounds())) {
-						
+					if (getBounds().intersects(objects.get(i).getBounds())) {
+						xCoord += velX * - 1;
+						yCoord += velY * - 1;
 					}
 					
 				}
@@ -186,7 +196,7 @@ public class Player extends GameObject {
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(xCoord, yCoord, 50, 50);
+		return new Rectangle(xCoord, yCoord, 100, 100);
 	}
 	
 }

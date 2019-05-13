@@ -33,8 +33,7 @@ public class MainMenuPanel {
 	 */
 	public final static String FILE_SEP = System.getProperty("file.separator");
 	private double step = 0;
-	public final int WIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-	public final int HEIGHT = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+
 
 	
 	/**
@@ -42,12 +41,12 @@ public class MainMenuPanel {
 	 */
 	
 	public MainMenuPanel() {
-		playButton = new Rectangle(WIDTH / 3, (int)(HEIGHT / 4.5), (int)(WIDTH / 2.94), HEIGHT / 9);
-		System.out.println(WIDTH);
-		System.out.println(HEIGHT);
-		helpButton = new Rectangle(WIDTH / 3, (int)(HEIGHT / 2.57), (int)(WIDTH / 2.94), HEIGHT / 9);
-		serverButton = new Rectangle(WIDTH / 3, (int)(HEIGHT / 1.8), (int)(WIDTH / 2.94),  HEIGHT / 9);
-		quitButton = new Rectangle(WIDTH / 3, (int)(HEIGHT / 1.38), (int)(WIDTH / 2.94), HEIGHT / 9);
+		playButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 4.5), (int)(WizardRoyale.WIDTH / 2.94), WizardRoyale.HEIGHT / 9);
+//		System.out.println(WizardRoyale.WIDTH);
+//		System.out.println(WizardRoyale.HEIGHT);
+		helpButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 2.57), (int)(WizardRoyale.WIDTH / 2.94), WizardRoyale.HEIGHT / 9);
+		serverButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 1.8), (int)(WizardRoyale.WIDTH / 2.94),  WizardRoyale.HEIGHT / 9);
+		quitButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 1.38), (int)(WizardRoyale.WIDTH / 2.94), WizardRoyale.HEIGHT / 9);
 		for(int i = 0; i < 24; i++)
 			wizardGif[i] = Toolkit.getDefaultToolkit().createImage("Resources" + FILE_SEP + "wizard" + MainMenuPanel.FILE_SEP +i+".gif");
 
@@ -73,7 +72,7 @@ public class MainMenuPanel {
 	    g.setFont(font0);
 
 	    g.drawString("Wizard Royale", x, y);
-		g.drawImage(wizardGif[(int) step], WIDTH / 48, (int)(HEIGHT / 1.7), (int)(WIDTH / 5.76), (int)(HEIGHT / 3.6), null);
+		g.drawImage(wizardGif[(int) step], WizardRoyale.WIDTH / 48, (int)(WizardRoyale.HEIGHT / 1.7), (int)(WizardRoyale.WIDTH / 5.76), (int)(WizardRoyale.HEIGHT / 3.6), null);
 		step += 0.1;
 		if(step >= 24)
 			step = 0;

@@ -53,19 +53,24 @@ public class MouseInput implements MouseListener {
 		
 		if (WizardRoyale.State == STATE.MENU) {
 			
-			if (mouseX >= 704 && mouseY >= 250 && mouseX <= 1194 && mouseY <= 350) {
+			if (mouseX >= WizardRoyale.WIDTH / 2.045 && mouseY >= WizardRoyale.HEIGHT / 4.4 && mouseX <= WizardRoyale.WIDTH / 1.206 && mouseY <= WizardRoyale.HEIGHT / 2.57) {
 				WizardRoyale.State = STATE.GAME;
 			}
 			
-			if (mouseX >= 704 && mouseY >= 425 && mouseX <= 1194 && mouseY <= 525) {
+			if (mouseX >= WizardRoyale.WIDTH / 2.045 && mouseY >= WizardRoyale.HEIGHT / 2.11 && mouseX <= WizardRoyale.WIDTH / 1.206 && mouseY <= WizardRoyale.HEIGHT / 1.714) {
 				WizardRoyale.State = STATE.INSTURCTIONS;
 			}
 			
+<<<<<<< HEAD
 			if (mouseX >= 704 && mouseY >= 600 && mouseX <= 1194 && mouseY <= 700) {
+=======
+			if (mouseX >= WizardRoyale.WIDTH /2.045 && mouseY >= WizardRoyale.HEIGHT /1.5 && mouseX <= WizardRoyale.WIDTH / 1.206 && mouseY <= WizardRoyale.HEIGHT / 1.286) {
+				WizardRoyale.State = STATE.SERVER;
+>>>>>>> branch 'master' of https://github.com/Leofeng1/APCS-Final.git
 				NetworkManagementPanel serverPanel= new NetworkManagementPanel();
 			}
 			
-			if (mouseX >= 704 && mouseY >= 775 && mouseX <= 1194 && mouseY <= 875) {
+			if (mouseX >= WizardRoyale.WIDTH / 2.045 && mouseY >= WizardRoyale.HEIGHT / 1.16 && mouseX <= WizardRoyale.WIDTH / 1.206 && mouseY <= WizardRoyale.HEIGHT / 1.03) {
 				System.exit(1);
 			}
 			

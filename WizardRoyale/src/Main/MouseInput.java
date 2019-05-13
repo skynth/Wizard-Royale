@@ -63,6 +63,7 @@ public class MouseInput implements MouseListener {
 			
 			if (mouseX >= 704 && mouseY >= 600 && mouseX <= 1194 && mouseY <= 700) {
 				WizardRoyale.State = STATE.SERVER;
+				NetworkManagementPanel serverPanel= new NetworkManagementPanel();
 			}
 			
 			if (mouseX >= 704 && mouseY >= 775 && mouseX <= 1194 && mouseY <= 875) {

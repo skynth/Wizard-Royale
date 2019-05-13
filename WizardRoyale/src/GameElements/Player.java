@@ -39,7 +39,6 @@ public class Player extends GameObject {
 	public Player(int x, int y, ID id, Handler h) {
 		super(x, y, id);
 		handler = h;
-		collisionRect = new Rectangle(x,y,150,150);
 		for(int i = 0; i < 24; i++) {
 			spriteRight[i] = Toolkit.getDefaultToolkit().createImage("Resources" + MainMenuPanel.FILE_SEP + "wizard" + MainMenuPanel.FILE_SEP + i+".gif");
 			spriteLeft[i] = Toolkit.getDefaultToolkit().createImage("Resources" + MainMenuPanel.FILE_SEP + "Wizard Left" + MainMenuPanel.FILE_SEP + i+"L.gif");
@@ -58,8 +57,6 @@ public class Player extends GameObject {
 	public void tick() {
 		xCoord += velX;
 		yCoord += velY;
-		collisionRect.x = xCoord;
-		collisionRect.y = yCoord;
 		
 		if (handler.isUp()) {
 			velY = -7.5f;
@@ -155,6 +152,11 @@ public class Player extends GameObject {
 		return isRight;
 	}
 	
+	public void stop() {
+		velX = 0;
+		velY = 0;
+	}
+	
 	/**
 	 * Checks and performs actions based on collisions.
 	 * @param objects
@@ -166,13 +168,25 @@ public class Player extends GameObject {
 			{		
 				if (objects.get(i).getID() == ID.Item) 
 				{
-					if (collisionRect.intersects(objects.get(i).getRect())) 
+					if (getBounds().intersects(objects.get(i).getBounds())) 
 					{
 						objects.remove(objects.get(i));
 					}
 							
 				}
+				
+				if (objects.get(i).getID() == ID.Wall) {
+					
+					if (handler.isMoving() && getBounds().intersects(objects.get(i).getBounds())) {
+						
+					}
+					
+				}
 			}
+	}
+	
+	public Rectangle getBounds() {
+		return new Rectangle(xCoord, yCoord, 50, 50);
 	}
 	
 }

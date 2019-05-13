@@ -110,9 +110,6 @@ public abstract class GameObject {
 	 * Returns the collision rectangle of the game object
 	 * @return the rectangle the game object
 	 */
-	public Rectangle getRect()
-	{
-		return collisionRect;
-	}
+	public abstract Rectangle getBounds();
 
 }

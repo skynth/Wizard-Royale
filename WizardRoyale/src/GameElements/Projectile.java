@@ -2,6 +2,7 @@ package GameElements;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 import Main.Handler;
 import Main.ID;
@@ -89,6 +90,10 @@ public class Projectile extends GameObject{
 		if(isOutOfRange)
 			handler.getGameObjects().remove(this);
 		
+	}
+
+	public Rectangle getBounds() {
+		return null;
 	}
 
 	

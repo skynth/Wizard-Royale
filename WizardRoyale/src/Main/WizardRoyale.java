@@ -76,7 +76,7 @@ public class WizardRoyale extends Canvas implements Runnable {
 		BufferedImageLoader loader = new BufferedImageLoader();
 		backgroundImage = loader.loadImage("Resources" + MainMenuPanel.FILE_SEP + "WizardBackground.png");
 		
-		handler.addObject(new Player(0, 0, ID.Player, handler));
+		handler.addObject(new Player(40, 40, ID.Player, handler));
 		handler.addObject(new Consumable(300, 300, ID.Item, handler));
 		this.addMouseListener(new MouseInput(handler));
 		this.addKeyListener(new KeyInput(handler));

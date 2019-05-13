@@ -2,6 +2,7 @@ package GameElements;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 import Main.ID;
 
@@ -11,15 +12,18 @@ public class Wall extends GameObject {
 		super(x , y, ID.Wall);
 	}
 
-	@Override
 	public void render(Graphics g) {
 		g.setColor(Color.black);
 		g.fillRect(xCoord, yCoord, 32, 32);
 	}
 
-	@Override
+
 	public void tick() {
 		
+	}
+	
+	public Rectangle getBounds() {
+		return new Rectangle(xCoord, yCoord, 32, 32);
 	}
 
 }

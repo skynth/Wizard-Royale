@@ -33,7 +33,6 @@ public class Consumable extends GameObject{
 		super(x, y, id);
 		isPickedUp = false;
 		handler = h;
-		collisionRect = new Rectangle(x,y,150,30);
 	}
 	/**
 	 * 
@@ -63,11 +62,13 @@ public class Consumable extends GameObject{
 	 * Continually updates the consumable object by checking if any changes need to be made to it
 	 */
 	public void tick() {
-		collisionRect.x = xCoord;
-		collisionRect.y = yCoord;
 		if(isPickedUp) {
 			handler.getGameObjects().remove(this);
 		}
+	}
+	
+	public Rectangle getBounds() {
+		return new Rectangle(xCoord, yCoord, 150, 150);
 	}
 
 	

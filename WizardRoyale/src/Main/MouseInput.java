@@ -1,5 +1,6 @@
 package Main;
 
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -52,15 +53,19 @@ public class MouseInput implements MouseListener {
 		
 		if (WizardRoyale.State == STATE.MENU) {
 			
-			if (mouseX >= 230 && mouseY >= 175 && mouseX <= 560 && mouseY <= 275) {
+			if (mouseX >= 704 && mouseY >= 250 && mouseX <= 1194 && mouseY <= 350) {
 				WizardRoyale.State = STATE.GAME;
 			}
 			
-			if (mouseX >= 230 && mouseY >= 350 && mouseX <= 560 && mouseY <= 450) {
+			if (mouseX >= 704 && mouseY >= 425 && mouseX <= 1194 && mouseY <= 525) {
 				WizardRoyale.State = STATE.INSTURCTIONS;
 			}
 			
-			if (mouseX >= 230 && mouseY >= 525 && mouseX <= 560 && mouseY <= 625) {
+			if (mouseX >= 704 && mouseY >= 600 && mouseX <= 1194 && mouseY <= 700) {
+				WizardRoyale.State = STATE.SERVER;
+			}
+			
+			if (mouseX >= 704 && mouseY >= 775 && mouseX <= 1194 && mouseY <= 875) {
 				System.exit(1);
 			}
 			

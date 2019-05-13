@@ -24,13 +24,13 @@ public class WizardRoyale extends Canvas implements Runnable {
 	 * field that represents the width of the window in which our game is contained in
 	 */
 	
-	public static final int WIDTH = 800;
+	public static final int WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
 	
 	/**
 	 * field that represents the height of the window in which our game is contained in
 	 */
 	
-	public static final int HEIGHT = 800;
+	public static final int HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
 	
 	private MainMenuPanel menu = new MainMenuPanel();
 	private InstructionsPanel instructions = new InstructionsPanel();
@@ -50,7 +50,8 @@ public class WizardRoyale extends Canvas implements Runnable {
 	public static enum STATE { 
 		MENU, 
 		GAME,
-		INSTURCTIONS
+		INSTURCTIONS,
+		SERVER;
 	}
 	
 	/**
@@ -60,6 +61,7 @@ public class WizardRoyale extends Canvas implements Runnable {
 	
 	private Image image = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "Background.jpg");
 	private BufferedImage backgroundImage = null;
+	
 	
 	/**
 	 * Constructor that creates a new instance of our game. The constructor also initializes a handler that handles events in the game and

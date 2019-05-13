@@ -1,6 +1,8 @@
 package Main;
 
 import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import javax.swing.JFrame;
 
 /**
@@ -26,7 +28,7 @@ public class Window {
 		JFrame window = new JFrame("Wizard Royale");
 		window.add(wizardRoyale);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setPreferredSize(new Dimension(width, height));
+		window.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
 		window.setResizable(false);
 		window.pack();
 		window.setVisible(true);

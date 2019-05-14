@@ -73,10 +73,14 @@ public class MouseInput extends MouseAdapter {
 			}	
 		} else if (WizardRoyale.State == STATE.GAME) {
 			Projectile p = null;
-			//if(handler.getPlayer().getIsRight())
-			p = new Projectile(handler.getPlayer().getX() + 16, handler.getPlayer().getY() + 24, ID.Projectile, e.getX(), e.getY(), handler);
-			//else {
-				// p = new Projectile(handler.getPlayer().getX()  + 16, handler.getPlayer().getY() + 24, ID.Projectile, e.getX(), e.getY(), handler);
+			
+			if (handler.getPlayer().getIsRight()) {
+				p = new Projectile(handler.getPlayer().getX() + 120, handler.getPlayer().getY() + 24, ID.Projectile, e.getX(), e.getY(), handler);
+			}
+			else {
+				p = new Projectile(handler.getPlayer().getX() + 16, handler.getPlayer().getY() + 24, ID.Projectile, e.getX(), e.getY(), handler);
+			}
+			
 			handler.getPlayer().setIsShoot(true);
 			handler.addObject(p);
 		}

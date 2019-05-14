@@ -63,10 +63,12 @@ public class Player extends GameObject {
 			velY = -7.5f;
 			
 			if (handler.isLeft()) {
+				isRight = false;
 				velY = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);
 				velX = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);	
 			}
 			else if (handler.isRight()) {
+				isRight = true;
 				velY = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);
 				velX = (float) Math.sqrt(Math.pow(7.5, 2) / 2);	
 			}
@@ -75,10 +77,12 @@ public class Player extends GameObject {
 			velY = 7.5f;
 			
 			if (handler.isLeft()) {
+				isRight = false;
 				velY = (float) Math.sqrt(Math.pow(7.5, 2) / 2);
 				velX = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);	
 			}
 			else if (handler.isRight()) {
+				isRight = true;
 				velY = (float) Math.sqrt(Math.pow(7.5, 2) / 2);
 				velX = (float) Math.sqrt(Math.pow(7.5, 2) / 2);	
 			}
@@ -89,6 +93,7 @@ public class Player extends GameObject {
 		
 		if (handler.isLeft()) {
 			velX = -7.5f;
+			isRight = false;
 			
 			if (handler.isDown()) {
 				velX = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);
@@ -101,6 +106,7 @@ public class Player extends GameObject {
 			
 		} else if (handler.isRight()) {
 			velX = 7.5f;
+			isRight = true;
 			
 			if (handler.isDown()) {
 				velX = (float) Math.sqrt(Math.pow(7.5, 2) / 2);
@@ -114,19 +120,6 @@ public class Player extends GameObject {
 		} else if (!handler.isLeft() && !handler.isRight()) {
 			velX = 0;
 		}
-		
-		
-		if (handler.isUp()) velY = -5;
-		else if (!handler.isDown()) velY = 0;
-		
-		if (handler.isDown()) velY = 5;
-		else if (!handler.isUp()) velY = 0;
-		
-		if (handler.isRight()) velX = 5;
-		else if (!handler.isLeft()) velX = 0;
-		
-		if (handler.isLeft()) velX = -5;
-		else if (!handler.isRight()) velX = 0;
 			
 		this.collide(handler.getGameObjects());
 			

@@ -16,7 +16,7 @@ public class Camera {
 	}
 	
 	public void tick(GameObject object) {
-		
+				
 		if (handler.isMoving()) {
 		
 			if (handler.isDown()) {

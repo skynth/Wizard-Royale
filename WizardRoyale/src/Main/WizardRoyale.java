@@ -195,16 +195,14 @@ public class WizardRoyale extends Canvas implements Runnable {
 					handler.addObject(new Tile(i * 32, j * 32, ID.Wall));
 				}
 				
-				if (blue == 255) {
-					handler.addObject(new Player(40, 40, ID.Player, handler));
-				}
-				
 				/*if (red == 0 && green == 0 && blue == 0) {
 					handler.addObject(new Tile(i * 32, j * 32, ID.Floor));
 				}*/
 				
 			}
 		}
+		
+		handler.addObject(new Player(40, 40, ID.Player, handler));
 		
 		
 		

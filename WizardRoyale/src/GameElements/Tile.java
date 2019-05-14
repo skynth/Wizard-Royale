@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 
 import Main.ID;
 import Main.MainMenuPanel;
+import Main.WizardRoyale;
 
 public class Tile extends GameObject {
 	
@@ -20,7 +21,7 @@ public class Tile extends GameObject {
 
 	public void render(Graphics g) {
 		if (id == ID.Wall) {
-			g.drawImage(wallImage, xCoord, yCoord, 32, 32, null);
+			g.drawImage(wallImage, xCoord, yCoord, (int)(WizardRoyale.WIDTH / 45), (int)(WizardRoyale.HEIGHT / 28.125), null);
 		}
 	}
 
@@ -30,7 +31,7 @@ public class Tile extends GameObject {
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(xCoord, yCoord, 32, 32);
+		return new Rectangle(xCoord, yCoord, (int)(WizardRoyale.WIDTH / 45), (int)(WizardRoyale.HEIGHT / 28.125));
 	}
 
 }

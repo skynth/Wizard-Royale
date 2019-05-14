@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 
 import Main.Handler;
 import Main.ID;
+import Main.WizardRoyale;
 /**
  * A class that represents an instance of a projectile. The projectile shoots as soon as it is made.
  * 
@@ -62,7 +63,7 @@ public class Projectile extends GameObject{
 
 	public void render(Graphics g) {
 		g.setColor(Color.PINK);
-		g.fillOval(xCoord, yCoord, 16, 16);
+		g.fillOval(xCoord, yCoord, (int)(WizardRoyale.WIDTH / 90), (int)(WizardRoyale.HEIGHT / 56.25));
 	}
 	
 	/**
@@ -106,7 +107,7 @@ public class Projectile extends GameObject{
 	}
 
 	public Rectangle getBounds() {
-		return new Rectangle(xCoord, yCoord, 16, 16);
+		return new Rectangle(xCoord, yCoord, (int)(WizardRoyale.WIDTH / 90), (int)(WizardRoyale.HEIGHT / 56.25));
 	}
 
 	

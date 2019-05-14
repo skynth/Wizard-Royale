@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 
 import Main.Handler;
 import Main.ID;
+import Main.WizardRoyale;
 
 /**
  * A class representing all items in which are picked up on the map.
@@ -55,7 +56,7 @@ public class Consumable extends GameObject{
 	 */
 	public void render(Graphics g) {
 		g.setColor(Color.blue);
-		g.fillRect(xCoord, yCoord, 150, 30);
+		g.fillRect(xCoord, yCoord, (int)(WizardRoyale.WIDTH / 9.6), (int)(WizardRoyale.HEIGHT / 30));
 	}
 
 	/**
@@ -68,7 +69,7 @@ public class Consumable extends GameObject{
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(xCoord, yCoord, 150, 150);
+		return new Rectangle(xCoord, yCoord, (int)(WizardRoyale.WIDTH / 9.6), (int)(WizardRoyale.WIDTH / 6));
 	}
 
 	

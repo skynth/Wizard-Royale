@@ -76,26 +76,29 @@ public class Player extends GameObject {
 			yCoord = 20;
 		}
 		
-		if (yCoord > WizardRoyale.HEIGHT - 55) {
-			yCoord = WizardRoyale.HEIGHT - 55;
+		if (yCoord > WizardRoyale.HEIGHT - WizardRoyale.HEIGHT / 17.09) {
+			yCoord = (int) (WizardRoyale.HEIGHT - WizardRoyale.HEIGHT / 17.09);
 		}
 		
 			
 	}
 
 	public void render(Graphics g) {
+		System.out.println(WizardRoyale.WIDTH);
+		System.out.println(WizardRoyale.HEIGHT);
+
 		if(isShoot) {
 			if(isRight)
-				g.drawImage(spriteShoot[(int)shootStep], xCoord - 50, yCoord, 200, 100, null);
+				g.drawImage(spriteShoot[(int)shootStep], xCoord - (int)(WizardRoyale.WIDTH / 28.8), yCoord, (int)(WizardRoyale.WIDTH / 7.2), (int)(WizardRoyale.HEIGHT / 9), null);
 			else if(!isRight)
-				g.drawImage(spriteShootLeft[(int)shootStep], xCoord - 50, yCoord, 200, 100, null);
+				g.drawImage(spriteShootLeft[(int)shootStep], xCoord - (int)(WizardRoyale.WIDTH / 28.8), yCoord, (int)(WizardRoyale.WIDTH / 7.2), (int)(WizardRoyale.HEIGHT / 9), null);
 
 			shootStep += 0.2;
 		}
 		else if(isRight)
-			g.drawImage(spriteRight[(int)step], xCoord, yCoord, 100, 100, null);
+			g.drawImage(spriteRight[(int)step], xCoord, yCoord, (int)(WizardRoyale.WIDTH / 14.4), (int)(WizardRoyale.HEIGHT / 9), null);
 		else if(!isRight)
-			g.drawImage(spriteLeft[(int)step], xCoord, yCoord, 100, 100, null);
+			g.drawImage(spriteLeft[(int)step], xCoord, yCoord, (int)(WizardRoyale.WIDTH / 14.4), (int)(WizardRoyale.HEIGHT / 9), null);
 
 		step += 0.1;
 		if(step >= 24)
@@ -211,7 +214,7 @@ public class Player extends GameObject {
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(xCoord, yCoord, 100, 100);
+		return new Rectangle(xCoord, yCoord, (int)(WizardRoyale.WIDTH / 14.4), (int)(WizardRoyale.HEIGHT / 9));
 	}
 	
 }

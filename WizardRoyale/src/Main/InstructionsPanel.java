@@ -22,10 +22,10 @@ public class InstructionsPanel {
 
 	public void render(Graphics g) {
 		
-		Font font0 = new Font("arial", Font.BOLD, 50);
+		Font font0 = new Font("arial", Font.BOLD, (int)(WizardRoyale.WIDTH / 28.8));
 		g.setFont(font0);
 		g.setColor(Color.black);
-		g.drawString("INSTRUCTIONS", 205, 100);
+		g.drawString("INSTRUCTIONS", (int)(WizardRoyale.WIDTH / 3), (int)(WizardRoyale.HEIGHT / 10));
 		
 	}
 

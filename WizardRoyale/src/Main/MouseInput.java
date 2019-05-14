@@ -75,10 +75,10 @@ public class MouseInput extends MouseAdapter {
 			Projectile p = null;
 			
 			if (handler.getPlayer().getIsRight()) {
-				p = new Projectile(handler.getPlayer().getX() + 120, handler.getPlayer().getY() + 24, ID.Projectile, e.getX(), e.getY(), handler);
+				p = new Projectile(handler.getPlayer().getX() + 120, handler.getPlayer().getY() + 24, ID.Projectile, mouseX, mouseY, handler);
 			}
 			else {
-				p = new Projectile(handler.getPlayer().getX() + 16, handler.getPlayer().getY() + 24, ID.Projectile, e.getX(), e.getY(), handler);
+				p = new Projectile(handler.getPlayer().getX() + 16, handler.getPlayer().getY() + 24, ID.Projectile, mouseX, mouseY, handler);
 			}
 			
 			handler.getPlayer().setIsShoot(true);

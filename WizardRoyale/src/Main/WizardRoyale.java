@@ -74,8 +74,7 @@ public class WizardRoyale extends Canvas implements Runnable {
 		
 		BufferedImageLoader loader = new BufferedImageLoader();
 		backgroundImage = loader.loadImage("Resources" + MainMenuPanel.FILE_SEP + "WizardBackground.png");
-		
-		handler.addObject(new Player(40, 40, ID.Player, handler));
+	
 		handler.addObject(new Consumable(300, 300, ID.Item, handler));
 		this.addMouseListener(new MouseInput(handler, gameCamera));
 		this.addKeyListener(new KeyInput(handler));
@@ -194,6 +193,10 @@ public class WizardRoyale extends Canvas implements Runnable {
 				
 				if (red == 255) {
 					handler.addObject(new Tile(i * 32, j * 32, ID.Wall));
+				}
+				
+				if (blue == 255) {
+					handler.addObject(new Player(40, 40, ID.Player, handler));
 				}
 				
 				/*if (red == 0 && green == 0 && blue == 0) {

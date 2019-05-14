@@ -121,7 +121,7 @@ public class Player extends GameObject {
 			velX = 0;
 		}
 			
-		this.collide(handler.getGameObjects());
+		//this.collide(handler.getGameObjects());
 			
 	}
 

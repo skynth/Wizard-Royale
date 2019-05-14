@@ -61,8 +61,8 @@ public class Projectile extends GameObject{
 	 */
 
 	public void render(Graphics g) {
-		g.setColor(Color.green);
-		g.fillOval(xCoord, yCoord, 8, 8);
+		g.setColor(Color.PINK);
+		g.fillOval(xCoord, yCoord, 16, 16);
 	}
 	
 	/**
@@ -87,6 +87,18 @@ public class Projectile extends GameObject{
 			xCoord -= Math.cos(angle) * 15;
 			yCoord -= Math.sin(angle) * 15;
 		}
+		
+		for (int i = 0; i < handler.getGameObjects().size(); i++) {
+			
+			if (handler.getGameObjects().get(i).getID() == ID.Wall) {
+				
+				if (this.getBounds().intersects(handler.getGameObjects().get(i).getBounds())) {
+					handler.getGameObjects().remove(this);
+				}
+				
+			}
+			
+		}
 
 		if(isOutOfRange)
 			handler.getGameObjects().remove(this);
@@ -94,7 +106,7 @@ public class Projectile extends GameObject{
 	}
 
 	public Rectangle getBounds() {
-		return null;
+		return new Rectangle(xCoord, yCoord, 16, 16);
 	}
 
 	

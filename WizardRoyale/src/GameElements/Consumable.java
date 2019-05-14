@@ -69,7 +69,7 @@ public class Consumable extends GameObject{
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(xCoord, yCoord, (int)(WizardRoyale.WIDTH / 9.6), (int)(WizardRoyale.WIDTH / 6));
+		return new Rectangle(xCoord, yCoord, (int)(WizardRoyale.WIDTH / 9.6), (int)(WizardRoyale.HEIGHT / 30));
 	}
 
 	

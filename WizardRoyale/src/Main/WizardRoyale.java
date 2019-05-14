@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 
 import GameElements.Consumable;
 import GameElements.Player;
-import GameElements.Wall;
+import GameElements.Tile;
 
 /**
  * A class that represents our game. This class controls what is happening in the game and also contains the different screens such as
@@ -77,7 +77,7 @@ public class WizardRoyale extends Canvas implements Runnable {
 		
 		handler.addObject(new Player(40, 40, ID.Player, handler));
 		handler.addObject(new Consumable(300, 300, ID.Item, handler));
-		this.addMouseListener(new MouseInput(handler));
+		this.addMouseListener(new MouseInput(handler, gameCamera));
 		this.addKeyListener(new KeyInput(handler));
 		loadLevel(backgroundImage);
 		start();
@@ -193,8 +193,12 @@ public class WizardRoyale extends Canvas implements Runnable {
 				int blue = (pixel) & 0xff;
 				
 				if (red == 255) {
-					handler.addObject(new Wall(i * 32, j * 32));
+					handler.addObject(new Tile(i * 32, j * 32, ID.Wall));
 				}
+				
+				/*if (red == 0 && green == 0 && blue == 0) {
+					handler.addObject(new Tile(i * 32, j * 32, ID.Floor));
+				}*/
 				
 			}
 		}

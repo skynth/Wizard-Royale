@@ -33,7 +33,8 @@ public class Projectile extends GameObject{
 	 */
 	public Projectile(int x, int y, ID id, int mouseX, int mouseY, Handler h) {
 		super(x, y, id);
-
+		handler = h;
+		
 		angle = Math.atan((double)(mouseY - y) / (mouseX - x)); //Not sure if this works yet
 		handler = h;
 		isOutOfRange = false;
@@ -60,8 +61,8 @@ public class Projectile extends GameObject{
 	 */
 
 	public void render(Graphics g) {
-		g.setColor(Color.red);
-		g.fillRect(xCoord, yCoord, 50, 10);
+		g.setColor(Color.green);
+		g.fillOval(xCoord, yCoord, 8, 8);
 	}
 	
 	/**

@@ -11,6 +11,7 @@ public enum ID {
 	Player(),
 	Wall(),
 	Item(),
-	Projectile();
+	Projectile(),
+	Floor();
 
 }

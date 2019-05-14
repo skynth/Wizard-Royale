@@ -22,9 +22,6 @@ public class Tile extends GameObject {
 		if (id == ID.Wall) {
 			g.drawImage(wallImage, xCoord, yCoord, 32, 32, null);
 		}
-		else if (id == ID.Floor) {
-			g.drawImage(floorImage, xCoord, yCoord, 32, 32, null);
-		}
 	}
 
 

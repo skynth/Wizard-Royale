@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import Main.Handler;
 import Main.ID;
 import Main.MainMenuPanel;
+import Main.WizardRoyale;
 
 /**
  * A class which represents in an instance of a player.
@@ -27,6 +28,7 @@ public class Player extends GameObject {
 	private Image spriteShootLeft[] = new Image[15];
 	private double step, shootStep;
 	private int health;
+	private int speed = 7;
 	private boolean isRight;
 	private boolean isShoot;
 
@@ -58,7 +60,93 @@ public class Player extends GameObject {
 	public void tick() {
 		xCoord += velX;
 		yCoord += velY;
+		
+		this.collide(handler.getGameObjects());
+		this.movement();
+		
+		if (xCoord < 15) {
+			xCoord = 15;
+		}
+		
+		if (xCoord > WizardRoyale.WIDTH) {
+			xCoord = WizardRoyale.WIDTH;
+		}
+		
+		if (yCoord < 20) {
+			yCoord = 20;
+		}
+		
+		if (yCoord > WizardRoyale.HEIGHT - 55) {
+			yCoord = WizardRoyale.HEIGHT - 55;
+		}
+		
+			
+	}
+
+	public void render(Graphics g) {
+		if(isShoot) {
+			if(isRight)
+				g.drawImage(spriteShoot[(int)shootStep], xCoord - 50, yCoord, 200, 100, null);
+			else if(!isRight)
+				g.drawImage(spriteShootLeft[(int)shootStep], xCoord - 50, yCoord, 200, 100, null);
+
+			shootStep += 0.2;
+		}
+		else if(isRight)
+			g.drawImage(spriteRight[(int)step], xCoord, yCoord, 100, 100, null);
+		else if(!isRight)
+			g.drawImage(spriteLeft[(int)step], xCoord, yCoord, 100, 100, null);
+
+		step += 0.1;
+		if(step >= 24)
+			step = 0;
+		if(shootStep >= 15) {
+			isShoot = false;
+			shootStep = 0;
+		}
+
+	}
 	
+	public void setUp(boolean check) {
+		
+	}
+	public void setIsShoot(boolean s) {
+		isShoot = s;
+	}
+	public boolean getIsRight() {
+		return isRight;
+	}
+	
+	/**
+	 * Checks and performs actions based on collisions.
+	 * @param objects
+	 */
+	public void collide(LinkedList<GameObject> objects)
+	{
+		//collision with pickables
+			for (int i = 0; i < objects.size(); i++) 
+			{		
+				if (objects.get(i).getID() == ID.Item) 
+				{
+					if (getBounds().intersects(objects.get(i).getBounds())) 
+					{
+						objects.remove(objects.get(i));
+					}
+							
+				}
+				
+				if (objects.get(i).getID() == ID.Wall) {
+					
+					if (getBounds().intersects(objects.get(i).getBounds())) {
+						this.xCoord += this.velX * -1;
+						this.yCoord += this.velY * -1;
+					
+					}
+				}
+			}
+	}
+	
+	private void movement() {
 		if (handler.isUp()) {
 			velY = -7.5f;
 			
@@ -120,72 +208,6 @@ public class Player extends GameObject {
 		} else if (!handler.isLeft() && !handler.isRight()) {
 			velX = 0;
 		}
-			
-		//this.collide(handler.getGameObjects());
-			
-	}
-
-	public void render(Graphics g) {
-		if(isShoot) {
-			if(isRight)
-				g.drawImage(spriteShoot[(int)shootStep], xCoord - 50, yCoord, 200, 100, null);
-			else if(!isRight)
-				g.drawImage(spriteShootLeft[(int)shootStep], xCoord - 50, yCoord, 200, 100, null);
-
-			shootStep += 0.2;
-		}
-		else if(isRight)
-			g.drawImage(spriteRight[(int)step], xCoord, yCoord, 100, 100, null);
-		else if(!isRight)
-			g.drawImage(spriteLeft[(int)step], xCoord, yCoord, 100, 100, null);
-
-		step += 0.1;
-		if(step >= 24)
-			step = 0;
-		if(shootStep >= 15) {
-			isShoot = false;
-			shootStep = 0;
-		}
-
-	}
-	
-	public void setUp(boolean check) {
-		
-	}
-	public void setIsShoot(boolean s) {
-		isShoot = s;
-	}
-	public boolean getIsRight() {
-		return isRight;
-	}
-	
-	/**
-	 * Checks and performs actions based on collisions.
-	 * @param objects
-	 */
-	public void collide(LinkedList<GameObject> objects)
-	{
-		//collision with pickables
-			for (int i = 0; i < objects.size(); i++) 
-			{		
-				if (objects.get(i).getID() == ID.Item) 
-				{
-					if (getBounds().intersects(objects.get(i).getBounds())) 
-					{
-						objects.remove(objects.get(i));
-					}
-							
-				}
-				
-				if (objects.get(i).getID() == ID.Wall) {
-					
-					if (getBounds().intersects(objects.get(i).getBounds())) {
-						xCoord += velX * - 1;
-						yCoord += velY * - 1;
-					}
-					
-				}
-			}
 	}
 	
 	public Rectangle getBounds() {

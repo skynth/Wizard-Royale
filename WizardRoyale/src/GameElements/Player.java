@@ -62,6 +62,11 @@ public class Player extends GameObject {
 		x += velX;
 		y += velY;
 		
+		if(health == 0)
+		{
+			handler.getGameObjects().remove(this);
+		}
+		
 		this.collide(handler.getGameObjects());
 		this.movement();
 		

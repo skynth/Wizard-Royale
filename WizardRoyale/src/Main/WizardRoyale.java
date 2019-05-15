@@ -149,6 +149,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		if (State == STATE.GAME) {
 			gameCamera.tick(handler.getPlayer());
 			handler.tick(); 
+			
 		} else if (State == STATE.MENU) {
 			
 		}

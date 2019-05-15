@@ -3,6 +3,7 @@ package Main;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.util.Queue;
 
 import GameElements.Consumable;
 import GameElements.Player;
@@ -24,6 +25,11 @@ import networking.frontend.NetworkMessenger;
 public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	
 	private static final long serialVersionUID = 1L;
+	
+	private static final String messageTypeInit = "CREATE_CURSOR";
+	private static final String messageTypeMove = "MOUSE_MOVE";
+	private static final String messageTypePress = "MOUSE_PRESS";
+	private static final String messageTypeColor = "COLOR_SWITCH";
 	
 	/**
 	 * field that represents the width of the window in which our game is contained in
@@ -243,6 +249,22 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 	public void networkMessageReceived(NetworkDataObject ndo) {
 
+		
+		
+	}
+	
+	public void processNetworkMessages() {
+		
+		Queue<NetworkDataObject> queue = nm.getQueuedMessages();
+		
+		while (!queue.isEmpty()) {
+			NetworkDataObject ndo = queue.poll();
+			
+			if (ndo.messageType.equals(NetworkDataObject.CLIENT_LIST)) {
+				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeInit, handler.getPlayer().getX(), handler.getPlayer().getY(), ID.Player, handler);
+			}
+			
+		}
 		
 	}
 	

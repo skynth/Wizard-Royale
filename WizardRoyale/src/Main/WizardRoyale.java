@@ -59,7 +59,7 @@ public class WizardRoyale extends Canvas implements Runnable {
 	public static STATE State = STATE.MENU;
 	
 	private Image image = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "Background.jpg");
-	private Image floorImage = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "mesh3.png");
+	private Image floorImage = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "Floor.png");
 	
 	private BufferedImage backgroundImage = null;
 	
@@ -166,13 +166,14 @@ public class WizardRoyale extends Canvas implements Runnable {
 			
 			g2d.translate(-gameCamera.getX(), -gameCamera.getY());
 			
-			for (int i = 0; i < 128 * 32; i+=32) {
+			for (int i = 0; i < 128 * 32; i+=71) {
 				
-				for (int j = 0; j < 128 * 32; j+=32) {
+				for (int j = 0; j < 128 * 32; j+=71) {
 					g.drawImage(floorImage, i, j, null);
 				}
 				
 			}
+			
 			
 			handler.render(g);
 			g2d.translate(gameCamera.getX(), gameCamera.getY());
@@ -203,19 +204,19 @@ public class WizardRoyale extends Canvas implements Runnable {
 				int blue = (pixel) & 0xff;
 				
 				if (red == 255) {
-					handler.addObject(new Tile(i * 32, j * 32, ID.Wall, ID.Wall));
+					handler.addObject(new Tile(i * 32, j * 31, ID.Wall, ID.Wall));
 				}
 				
 				if (red == 127) {
-					handler.addObject(new Tile(i * 32, j * 32, ID.Wall, ID.WallLeft));
+					handler.addObject(new Tile(i * 32, j * 31, ID.Wall, ID.WallLeft));
 				}
 				
 				if (red == 255 && green == 106) {
-					handler.addObject(new Tile(i * 32, j * 32, ID.Wall, ID.WallRight));
+					handler.addObject(new Tile(i * 32, j * 31, ID.Wall, ID.WallRight));
 				}
 				
 				if (red == 127 && green == 51) {
-					handler.addObject(new Tile(i * 32, j * 32, ID.Wall, ID.WallUp));
+					handler.addObject(new Tile(i * 32, j * 31, ID.Wall, ID.WallUp));
 				}
 				
 			}

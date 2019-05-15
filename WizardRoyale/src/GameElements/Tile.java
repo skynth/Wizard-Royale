@@ -38,6 +38,7 @@ public class Tile extends GameObject {
 		if (subID == ID.WallUp) {
 			g.drawImage(wallImageUp, x, y, (int)(WizardRoyale.WIDTH / 45), (int)(WizardRoyale.HEIGHT / 28.125), null);
 		}
+		
 	}
 
 

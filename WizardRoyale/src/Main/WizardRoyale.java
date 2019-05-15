@@ -37,8 +37,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	
 	public static final int HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
 	
-	
-	private SchoolServer server;
+	private NetworkMessenger nm;
 	private MainMenuPanel menu = new MainMenuPanel();
 	private InstructionsPanel instructions = new InstructionsPanel();
 	
@@ -230,7 +229,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 		}
 		
-		handler.addObject(new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, handler,""));
+		handler.addObject(new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, handler));
 		
 	}
 
@@ -238,27 +237,12 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		
 	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-		if (message[0].equals(NetworkListener.HANDSHAKE)) {
-			server.sendMessage(NetworkListener.MESSAGE, new Player(500, 500, ID.Player, handler,""));
-			//handler.addObject(new Player(500, 500, ID.Player, handler));
-		}
-=======
-	@Override
-=======
->>>>>>> branch 'master' of https://github.com/Leofeng1/APCS-Final.git
 	public void connectedToServer(NetworkMessenger nm) {
-
+		this.nm = nm;
 	}
 
 	public void networkMessageReceived(NetworkDataObject ndo) {
-<<<<<<< HEAD
-		// TODO Auto-generated method stub
->>>>>>> branch 'master' of https://github.com/Leofeng1/APCS-Final.git
-=======
 
->>>>>>> branch 'master' of https://github.com/Leofeng1/APCS-Final.git
 		
 	}
 	

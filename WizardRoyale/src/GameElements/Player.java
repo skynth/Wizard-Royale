@@ -93,14 +93,14 @@ public class Player extends GameObject {
 			else if(!isRight)
 				g.drawImage(spriteShootLeft[(int)shootStep], x - (int) (WizardRoyale.WIDTH / 48), y, (int)(WizardRoyale.WIDTH / 12), (int)(WizardRoyale.HEIGHT / 15), null);
 
-			shootStep += 2;
+			shootStep += 1;
 		}
 		else if(isRight)
 			g.drawImage(spriteRight[(int)step], x, y, (int)(WizardRoyale.WIDTH / 24), (int)(WizardRoyale.HEIGHT / 15), null);
 		else if(!isRight)
 			g.drawImage(spriteLeft[(int)step], x, y, (int)(WizardRoyale.WIDTH / 24), (int)(WizardRoyale.HEIGHT / 15), null);
 
-		step += 1;
+		step += 0.5;
 		if(step >= 24)
 			step = 0;
 		if(shootStep >= 15) {
@@ -146,6 +146,14 @@ public class Player extends GameObject {
 									health +=50;
 								}
 						}
+//						else if(objects.get(i).getSubID() == ID.invincibility) {
+//							
+//						}
+//						else if(objects.get(i).getSubID() == ID.twoTimesDamage) {
+//							
+//						}
+						
+
 						objects.remove(objects.get(i));
 					}
 							

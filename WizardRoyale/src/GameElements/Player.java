@@ -93,14 +93,14 @@ public class Player extends GameObject {
 			else if(!isRight)
 				g.drawImage(spriteShootLeft[(int)shootStep], x - (int) (WizardRoyale.WIDTH / 48), y, (int)(WizardRoyale.WIDTH / 12), (int)(WizardRoyale.HEIGHT / 15), null);
 
-			shootStep += 0.2;
+			shootStep += 2;
 		}
 		else if(isRight)
 			g.drawImage(spriteRight[(int)step], x, y, (int)(WizardRoyale.WIDTH / 24), (int)(WizardRoyale.HEIGHT / 15), null);
 		else if(!isRight)
 			g.drawImage(spriteLeft[(int)step], x, y, (int)(WizardRoyale.WIDTH / 24), (int)(WizardRoyale.HEIGHT / 15), null);
 
-		step += 0.1;
+		step += 1;
 		if(step >= 24)
 			step = 0;
 		if(shootStep >= 15) {
@@ -228,11 +228,14 @@ public class Player extends GameObject {
 		}
 		if (handler.isLeft()) {
 			this.velX = -speed;
+			isRight = false;
 		} else if (!handler.isRight()) {
 			this.velX = 0;
+			
 		}
 		if (handler.isRight()) {
 			this.velX = speed;
+			isRight = true;
 		} else if (!handler.isLeft()) {
 			this.velX = 0;
 		}

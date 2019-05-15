@@ -5,6 +5,8 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+import networking.frontend.NetworkManagementPanel;
+
 /**
  * The JFrame of our game, stores the canvas in the game class that contains and controls the graphics for our game
  * @author Leofeng 
@@ -39,7 +41,8 @@ public class Window {
 
 	public static void main (String[] args) {
 		
-		NetworkManagementPanel nmp = new NetworkManagementPanel();
+		NetworkManagementPanel nmp = new NetworkManagementPanel("SwingChat", 20, window);  
+
 		
 		new WizardRoyale(nmp.getMessageServer());
 		

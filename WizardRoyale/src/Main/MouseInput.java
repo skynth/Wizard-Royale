@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 
 import GameElements.Projectile;
 import Main.WizardRoyale.STATE;
+import networking.frontend.NetworkManagementPanel;
 
 /**
  * A class that handles input from the user's mouse to the game

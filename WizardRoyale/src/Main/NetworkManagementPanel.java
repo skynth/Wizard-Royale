@@ -170,6 +170,10 @@ public class NetworkManagementPanel extends JPanel implements ActionListener, Ne
 			InetAddress host = hostList.getSelectedValue();
 			if (host != null) {
 				boolean success = ss.connect(host);
+				if (success) {
+					System.out.print("yes");
+				}
+				
 				if (!success) {
 					JOptionPane.showMessageDialog(this, "Could not connect!");
 				}

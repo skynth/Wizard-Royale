@@ -7,6 +7,8 @@ import java.awt.image.BufferedImage;
 import GameElements.Consumable;
 import GameElements.Player;
 import GameElements.Tile;
+import Networking.NetworkListener;
+import Networking.SchoolServer;
 
 /**
  * A class that represents our game. This class controls what is happening in the game and also contains the different screens such as
@@ -16,7 +18,7 @@ import GameElements.Tile;
  * @version 5/9/19
  * 
  */
-public class WizardRoyale extends Canvas implements Runnable {
+public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -32,6 +34,8 @@ public class WizardRoyale extends Canvas implements Runnable {
 	
 	public static final int HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
 	
+	
+	private SchoolServer server;
 	private MainMenuPanel menu = new MainMenuPanel();
 	private InstructionsPanel instructions = new InstructionsPanel();
 	
@@ -69,7 +73,9 @@ public class WizardRoyale extends Canvas implements Runnable {
 	 * adds starting objects to the game, as well as listeners to detect mouse and keyboard input
 	 */
 	
-	public WizardRoyale() {
+	public WizardRoyale(SchoolServer ss) {
+		server = ss;
+		server.addNetworkListener(this);
 		new Window(WIDTH, HEIGHT, "Wizard Royale", this);
 		handler = new Handler();
 		gameCamera = new Camera(0, 0, handler);
@@ -225,6 +231,15 @@ public class WizardRoyale extends Canvas implements Runnable {
 		handler.addObject(new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, handler));
 		
 		
+		
+	}
+
+	public void receiveUpdate(String hostname, Object[] message) {
+		
+		if (message[0].equals(NetworkListener.MESSAGE)) {
+			
+		}
+
 		
 	}
 	

@@ -39,7 +39,9 @@ public class Window {
 
 	public static void main (String[] args) {
 		
-		new WizardRoyale();
+		NetworkManagementPanel nmp = new NetworkManagementPanel();
+		
+		new WizardRoyale(nmp.getMessageServer());
 		
 	}
 	

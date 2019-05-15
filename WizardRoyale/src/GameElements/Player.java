@@ -127,7 +127,7 @@ public class Player extends GameObject {
 	 * Checks and performs actions based on collisions.
 	 * @param objects
 	 */
-	public void collide(LinkedList<GameObject> objects)
+	public void collide(ArrayList<GameObject> objects)
 	{
 			for (int i = 0; i < objects.size(); i++) 
 			{		

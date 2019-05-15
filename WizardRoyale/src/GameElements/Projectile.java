@@ -2,10 +2,13 @@ package GameElements;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 
 import Main.Handler;
 import Main.ID;
+import Main.MainMenuPanel;
 import Main.WizardRoyale;
 /**
  * A class that represents an instance of a projectile. The projectile shoots as soon as it is made.
@@ -20,7 +23,8 @@ public class Projectile extends GameObject{
 	private boolean isOutOfRange;
 	private boolean isRight;
 	private boolean isUp;
-
+	
+	Image fireball = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "fireball.png");
 	/**
 	 * Creates an instance of a projectile in which shoots as soon as it's made.
 	 * 
@@ -62,8 +66,7 @@ public class Projectile extends GameObject{
 	 */
 
 	public void render(Graphics g) {
-		g.setColor(Color.PINK);
-		g.fillOval(x, y, (int)(WizardRoyale.WIDTH / 90), (int)(WizardRoyale.HEIGHT / 56.25));
+		g.drawImage(fireball, x, y, null);
 	}
 	
 	/**

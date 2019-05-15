@@ -1,5 +1,6 @@
 package Main;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import GameElements.GameObject;
@@ -18,7 +19,7 @@ import GameElements.Player;
 
 public class Handler {
 	
-	LinkedList<GameObject> gameObjects = new LinkedList<GameObject>();
+	ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 	
 	private boolean isUp = false, isDown, isLeft, isRight;
 	
@@ -59,7 +60,7 @@ public class Handler {
 	 * @return the array list containing all the GameObjects currently in the game
 	 */
 	
-	public LinkedList<GameObject> getGameObjects() {
+	public ArrayList<GameObject> getGameObjects() {
 		return gameObjects;
 	}
 	

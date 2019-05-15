@@ -120,6 +120,9 @@ public class Player extends GameObject {
 	public void setUp(boolean check) {
 		
 	}
+	public boolean getIsShoot() {
+		return isShoot;
+	}
 	public void setIsShoot(boolean s) {
 		isShoot = s;
 	}

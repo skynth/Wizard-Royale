@@ -20,7 +20,7 @@ public class MouseInput extends MouseAdapter {
 	
 	private Handler handler; 
 	private Camera camera;
-
+	
 	/**
 	 * Creates a new instance of MouseInput
 	 * @param h the WizardRoyale's class' instance of the handler class, which handles all the events that occur in the game

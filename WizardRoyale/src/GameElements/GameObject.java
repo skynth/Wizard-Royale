@@ -31,6 +31,12 @@ public abstract class GameObject {
 	protected ID id;
 	
 	/**
+	 * field that represents what specific type of object the object is, e.g armor or health consumable
+	 */
+	
+	protected ID subID;
+	
+	/**
 	 * field that represents the X direction velocity of an object in the game
 	 */
 
@@ -107,9 +113,23 @@ public abstract class GameObject {
 	}
 	
 	/**
-	 * Returns the collision rectangle of the game object
-	 * @return the rectangle the game object
+	 * Returns the subID of the game object
+	 * @return the subID the game object
 	 */
-	public abstract Rectangle getBounds();
+	public ID getSubID()
+	{
+		return subID;
+	}
+	
+	/**
+	 * Returns the collision rectangle of the game object
+	 * @return the rectangle of the game object
+	 */
+	public Rectangle getBounds()
+	{
+		return collisionRect;
+	}
 
+	
+	
 }

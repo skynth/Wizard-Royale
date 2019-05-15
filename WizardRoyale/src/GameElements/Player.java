@@ -135,12 +135,23 @@ public class Player extends GameObject {
 				{
 					if (getBounds().intersects(objects.get(i).getBounds())) 
 					{
+						if(objects.get(i).getSubID() == ID.MedKit)
+						{	
+								if(health>=50) 
+								{
+									health = 100;
+								}
+								else 
+								{
+									health +=50;
+								}
+						}
 						objects.remove(objects.get(i));
 					}
 							
 				}
 				
-				if (objects.get(i).getID() == ID.Wall) {
+				else if (objects.get(i).getID() == ID.Wall) {
 					
 					if (getBounds().intersects(objects.get(i).getBounds())) {
 						this.x += this.velX * -1;
@@ -148,6 +159,9 @@ public class Player extends GameObject {
 					
 					}
 				}
+			
+				
+				
 			}
 	}
 	

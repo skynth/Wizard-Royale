@@ -241,6 +241,7 @@ public class Player extends GameObject {
 			velX = 0;
 		}
 	}*/
+
 	
 	private void movement() {
 		if (handler.isUp()) {
@@ -269,6 +270,10 @@ public class Player extends GameObject {
 	}
 	public int getHealth() {
 		return health;
+	}
+	
+	public void setRight(boolean check) {
+		isRight = check;
 	}
 	
 	public Rectangle getBounds() {

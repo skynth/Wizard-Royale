@@ -75,10 +75,22 @@ public class MouseInput extends MouseAdapter {
 			Projectile p = null;
 			
 			if (handler.getPlayer().getIsRight()) {
+				
+				if (mouseX < handler.getPlayer().getX()) {
+					handler.getPlayer().setRight(false);
+				}
+				
 				p = new Projectile(handler.getPlayer().getX() + (int)(WizardRoyale.WIDTH / 21), handler.getPlayer().getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler);
+				
 			}
 			else {
+				
+				if (mouseX > handler.getPlayer().getX()) {
+					handler.getPlayer().setRight(true);
+				}
+				
 				p = new Projectile(handler.getPlayer().getX() - (int)(WizardRoyale.WIDTH / 60), handler.getPlayer().getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler);
+			
 			}
 			
 			handler.getPlayer().setIsShoot(true);

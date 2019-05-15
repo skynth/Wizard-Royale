@@ -84,8 +84,6 @@ public class Player extends GameObject {
 	}
 
 	public void render(Graphics g) {
-		System.out.println(WizardRoyale.WIDTH);
-		System.out.println(WizardRoyale.HEIGHT);
 
 		if(isShoot) {
 			if(isRight)
@@ -100,7 +98,7 @@ public class Player extends GameObject {
 		else if(!isRight)
 			g.drawImage(spriteLeft[(int)step], x, y, (int)(WizardRoyale.WIDTH / 24), (int)(WizardRoyale.HEIGHT / 15), null);
 
-		step += 0.5;
+		step += 0.;
 		if(step >= 24)
 			step = 0;
 		if(shootStep >= 15) {
@@ -109,7 +107,7 @@ public class Player extends GameObject {
 		}
 		
 		g.setColor(Color.green);
-		g.fillRect(this.x, this.y + WizardRoyale.HEIGHT / 15, WizardRoyale.WIDTH / 24, 10);
+		g.fillRect(this.x, this.y + WizardRoyale.HEIGHT / 15, (WizardRoyale.WIDTH / 24) * health/100, 10);
 
 	}
 	
@@ -149,13 +147,12 @@ public class Player extends GameObject {
 //						else if(objects.get(i).getSubID() == ID.invincibility) {
 //							
 //						}
-//						else if(objects.get(i).getSubID() == ID.twoTimesDamage) {
-//							
-//						}
+
 						
 
 						objects.remove(objects.get(i));
 					}
+
 							
 				}
 				
@@ -166,6 +163,11 @@ public class Player extends GameObject {
 						this.y += this.velY * -1;
 					
 					}
+				}
+				else if(objects.get(i).getID() == ID.Projectile) {
+					health -= 10;
+					objects.remove(objects.get(i));
+					System.out.println(health);
 				}
 			
 				

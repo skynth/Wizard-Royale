@@ -66,7 +66,6 @@ public class MouseInput extends MouseAdapter {
 			}
 
 			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 1.8 && mouseX <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94 && mouseY <= WizardRoyale.HEIGHT / 1.8 + WizardRoyale.HEIGHT / 9) {
-				NetworkManagementPanel serverPanel= new NetworkManagementPanel();
 			}
 			
 			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 1.38 && mouseX <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94 && mouseY <= WizardRoyale.HEIGHT / 1.38 + WizardRoyale.HEIGHT / 9) {

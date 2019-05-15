@@ -8,6 +8,7 @@ import java.util.Queue;
 import GameElements.Consumable;
 import GameElements.GameObject;
 import GameElements.Player;
+import GameElements.Projectile;
 import GameElements.Tile;
 import networking.backend.SchoolServer;
 import networking.frontend.NetworkDataObject;
@@ -29,6 +30,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	
 	private static final String messageTypeInit = "CREATE_CURSOR";
 	private static final String messageTypeMove = "MOUSE_MOVE";
+	private static final String messageTypeShoot = "MOUSE_SHOOT";
 	private static final String messageTypePress = "MOUSE_PRESS";
 	private static final String messageTypeColor = "COLOR_SWITCH";
 	
@@ -156,7 +158,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		if (State == STATE.GAME) {
 			
 			for (Player p : handler.getPlayers()) {
-				if (p.getIp() == nm)
+				
+				if (p.getIp() == nm.id)
 			}
 			
 			handler.tick(); 
@@ -164,7 +167,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		} else if (State == STATE.MENU) {
 			
 		}
-		
+		processNetworkMessages();
+
 	}
 	
 	private void render() {
@@ -287,6 +291,24 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			
 			if (ndo.messageType.equals(NetworkDataObject.CLIENT_LIST)) {
 				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeInit, 200, 200, ID.Player, handler);
+			}
+			else if(ndo.message[0].equals(messageTypeMove)) {
+				for (Player p : handler.getPlayers()) {
+					
+					if (p.getIp().equals(host)) {
+						p.setX((int)ndo.message[1]);
+						p.setY((int)ndo.message[2]);
+						
+						return;
+
+					}
+					}
+			}
+			else if(ndo.message[0].equals(messageTypeShoot)) {
+					Projectile p = new Projectile((int)ndo.message[1], (int)ndo.message[2], ID.Projectile, (int)ndo.message[3], (int)ndo.message[4], handler);
+					handler.addObject(p);
+				}
+				
 			}
 			
 		}

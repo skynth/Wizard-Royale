@@ -228,11 +228,14 @@ public class Player extends GameObject {
 		}
 		if (handler.isLeft()) {
 			this.velX = -speed;
+			isRight = false;
 		} else if (!handler.isRight()) {
 			this.velX = 0;
+			
 		}
 		if (handler.isRight()) {
 			this.velX = speed;
+			isRight = true;
 		} else if (!handler.isLeft()) {
 			this.velX = 0;
 		}

@@ -14,6 +14,7 @@ public enum ID {
 	WallLeft(),
 	WallUp(),
 	Item(),
-	Projectile(),
+	Projectile(), 
+	MedKit(),
 
 }

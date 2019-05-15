@@ -30,10 +30,11 @@ public class Consumable extends GameObject{
 	 * @param h the handler passed in
 	 */
 
-	public Consumable(int x, int y, ID id, Handler h) {
+	public Consumable(int x, int y, ID id, Handler h, ID subID) {
 		super(x, y, id);
 		isPickedUp = false;
 		handler = h;
+		this.subID = subID;
 	}
 	/**
 	 * 
@@ -56,7 +57,7 @@ public class Consumable extends GameObject{
 	 */
 	public void render(Graphics g) {
 		g.setColor(Color.blue);
-		g.fillRect(x, y, (int)(WizardRoyale.WIDTH / 9.6), (int)(WizardRoyale.HEIGHT / 30));
+		g.fillRect(x, y, (int)(WizardRoyale.WIDTH / 25), (int)(WizardRoyale.HEIGHT / 30));
 	}
 
 	/**

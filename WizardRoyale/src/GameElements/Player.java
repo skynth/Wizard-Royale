@@ -31,7 +31,7 @@ public class Player extends GameObject {
 	private int speed = 8;
 	private boolean isRight;
 	private boolean isShoot;
-	private int playerNumber;
+	private String ip;
 
 	/**
 	 * Creates a new instance of a player (Wizard)
@@ -40,7 +40,7 @@ public class Player extends GameObject {
 	 * @param id the Id of the wizard
 	 * @param h the handler passed in
 	 */
-	public Player(int x, int y, ID id, Handler h) {
+	public Player(int x, int y, ID id, Handler h, String compIP) {
 		super(x, y, id);
 		handler = h;
 		for(int i = 0; i < 24; i++) {
@@ -56,13 +56,14 @@ public class Player extends GameObject {
 		isRight = true;
 		step = 0;
 		shootStep = 0;
+		ip = compIP;
 	}
 	
 	public void tick() {
 		x += velX;
 		y += velY;
 		
-		if(health == 0)
+		if(health <= 0)
 		{
 			handler.getGameObjects().remove(this);
 		}

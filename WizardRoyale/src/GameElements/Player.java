@@ -79,7 +79,7 @@ public class Player extends GameObject {
 		if (y > 31 * 128) {
 			y = 31 * 128;
 		}
-		
+
 			
 	}
 
@@ -165,9 +165,12 @@ public class Player extends GameObject {
 					}
 				}
 				else if(objects.get(i).getID() == ID.Projectile) {
-					health -= 10;
-					objects.remove(objects.get(i));
-					System.out.println(health);
+					if (getBounds().intersects(objects.get(i).getBounds())) {
+				
+						health -= 10;
+						objects.remove(objects.get(i));
+						System.out.println(health);
+					}
 				}
 			
 				
@@ -263,6 +266,9 @@ public class Player extends GameObject {
 		} else if (!handler.isLeft()) {
 			this.velX = 0;
 		}
+	}
+	public int getHealth() {
+		return health;
 	}
 	
 	public Rectangle getBounds() {

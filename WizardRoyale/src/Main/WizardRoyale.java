@@ -7,8 +7,10 @@ import java.awt.image.BufferedImage;
 import GameElements.Consumable;
 import GameElements.Player;
 import GameElements.Tile;
-import Networking.NetworkListener;
-import Networking.SchoolServer;
+import networking.backend.SchoolServer;
+import networking.frontend.NetworkDataObject;
+import networking.frontend.NetworkListener;
+import networking.frontend.NetworkMessenger;
 
 /**
  * A class that represents our game. This class controls what is happening in the game and also contains the different screens such as
@@ -20,6 +22,8 @@ import Networking.SchoolServer;
  */
 public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	
+	private NetworkMessenger nm;
+
 	private static final long serialVersionUID = 1L;
 	
 	/**
@@ -233,12 +237,25 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		
 	}
 
-	public void receiveUpdate(String hostname, Object[] message) {
+//	public void receiveUpdate(String hostname, Object[] message) {
+//
+//		if (message[0].equals(NetworkListener.HANDSHAKE)) {
+//			server.sendMessage(NetworkListener.MESSAGE, new Player(500, 500, ID.Player, handler));
+//			//handler.addObject(new Player(500, 500, ID.Player, handler));
+//		}
+//		
+//	}
 
-		if (message[0].equals(NetworkListener.HANDSHAKE)) {
-			server.sendMessage(NetworkListener.MESSAGE, new Player(500, 500, ID.Player, handler));
-			//handler.addObject(new Player(500, 500, ID.Player, handler));
-		}
+	@Override
+	public void connectedToServer(NetworkMessenger nm) {
+		// TODO Auto-generated method stub
+		this.nm = nm;
+
+	}
+
+	@Override
+	public void networkMessageReceived(NetworkDataObject ndo) {
+		// TODO Auto-generated method stub
 		
 	}
 	

@@ -9,7 +9,6 @@ import GameElements.Consumable;
 import GameElements.GameObject;
 import GameElements.Player;
 import GameElements.Tile;
-import gui.DrawingSurface.Cursor;
 import networking.backend.SchoolServer;
 import networking.frontend.NetworkDataObject;
 import networking.frontend.NetworkListener;
@@ -155,7 +154,11 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	private void tick() {
 		
 		if (State == STATE.GAME) {
-			gameCamera.tick(handler.getPlayer());
+			
+			for (Player p : handler.getPlayers()) {
+				if (p.getIp() == nm)
+			}
+			
 			handler.tick(); 
 			
 		} else if (State == STATE.MENU) {
@@ -257,30 +260,33 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	
 	public void processNetworkMessages() {
 		
+		if (nm == null)
+			return;
+		
 		Queue<NetworkDataObject> queue = nm.getQueuedMessages();
 		
 		while (!queue.isEmpty()) {
 			NetworkDataObject ndo = queue.poll();
 			String host = ndo.getSourceIP();
 			
-		if (ndo.message[0].equals(messageTypeInit)) {
+			if (ndo.message[0].equals(messageTypeInit)) {
 			
-			for (GameObject o : handler.getGameObjects()) {
+				for (Player p : handler.getPlayers()) {
 				
-				if (o.getID() == ID.Player) {
-					
-					
-					
-				}
+					if (p.getIp().equals(host)) {
+						return;
+					}
 				
 			}
+				
 			Player player = new Player((Integer)ndo.message[1], (Integer)ndo.message[2], (ID)ndo.message[3], (Handler)ndo.message[4]);
 			handler.addObject(player);
+			
 
 		} 
 			
 			if (ndo.messageType.equals(NetworkDataObject.CLIENT_LIST)) {
-				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeInit, handler.getPlayer().getX(), handler.getPlayer().getY(), ID.Player, handler);
+				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeInit, 200, 200, ID.Player, handler);
 			}
 			
 		}

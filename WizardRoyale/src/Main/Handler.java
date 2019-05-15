@@ -64,17 +64,19 @@ public class Handler {
 		return gameObjects;
 	}
 	
-	public Player getPlayer() {
+	public ArrayList<Player> getPlayers() {
+		
+		ArrayList<Player> players = new ArrayList<Player>();
 		
 		for (int i = 0; i < gameObjects.size(); i++) {
 			
 			if (gameObjects.get(i).getID() == ID.Player) {
-				return (Player) gameObjects.get(i);
+				players.add((Player)gameObjects.get(i));
 			}
 			
 		}
 		
-		return null;
+		return players;
 		
 	}
 	

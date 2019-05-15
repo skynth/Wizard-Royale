@@ -10,6 +10,9 @@ public enum ID {
 	
 	Player(),
 	Wall(),
+	WallRight(),
+	WallLeft(),
+	WallUp(),
 	Item(),
 	Projectile(),
 

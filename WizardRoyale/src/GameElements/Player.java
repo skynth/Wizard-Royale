@@ -28,7 +28,7 @@ public class Player extends GameObject {
 	private Image spriteShootLeft[] = new Image[15];
 	private double step, shootStep;
 	private int health;
-	private int speed = 7;
+	private int speed = 50;
 	private boolean isRight;
 	private boolean isShoot;
 
@@ -58,13 +58,13 @@ public class Player extends GameObject {
 	}
 	
 	public void tick() {
-		xCoord += velX;
-		yCoord += velY;
+		x += velX;
+		y += velY;
 		
-		this.collide(handler.getGameObjects());
+		//this.collide(handler.getGameObjects());
 		this.movement();
 		
-		if (xCoord < 15) {
+		/*if (xCoord < 15) {
 			xCoord = 15;
 		}
 		
@@ -76,9 +76,11 @@ public class Player extends GameObject {
 			yCoord = 20;
 		}
 		
+		System.out.print(WizardRoyale.WIDTH + "" + WizardRoyale.HEIGHT);
+		
 		if (yCoord > WizardRoyale.HEIGHT - WizardRoyale.HEIGHT / 17.09) {
 			yCoord = (int) (WizardRoyale.HEIGHT - WizardRoyale.HEIGHT / 17.09);
-		}
+		}*/
 		
 			
 	}
@@ -89,16 +91,16 @@ public class Player extends GameObject {
 
 		if(isShoot) {
 			if(isRight)
-				g.drawImage(spriteShoot[(int)shootStep], xCoord - (int)(WizardRoyale.WIDTH / 28.8), yCoord, (int)(WizardRoyale.WIDTH / 7.2), (int)(WizardRoyale.HEIGHT / 9), null);
+				g.drawImage(spriteShoot[(int)shootStep], x - (int)(WizardRoyale.WIDTH / 28.8), y, (int)(WizardRoyale.WIDTH / 7.2), (int)(WizardRoyale.HEIGHT / 9), null);
 			else if(!isRight)
-				g.drawImage(spriteShootLeft[(int)shootStep], xCoord - (int)(WizardRoyale.WIDTH / 28.8), yCoord, (int)(WizardRoyale.WIDTH / 7.2), (int)(WizardRoyale.HEIGHT / 9), null);
+				g.drawImage(spriteShootLeft[(int)shootStep], x - (int)(WizardRoyale.WIDTH / 28.8), y, (int)(WizardRoyale.WIDTH / 7.2), (int)(WizardRoyale.HEIGHT / 9), null);
 
 			shootStep += 0.2;
 		}
 		else if(isRight)
-			g.drawImage(spriteRight[(int)step], xCoord, yCoord, (int)(WizardRoyale.WIDTH / 14.4), (int)(WizardRoyale.HEIGHT / 9), null);
+			g.drawImage(spriteRight[(int)step], x, y, (int)(WizardRoyale.WIDTH / 14.4), (int)(WizardRoyale.HEIGHT / 9), null);
 		else if(!isRight)
-			g.drawImage(spriteLeft[(int)step], xCoord, yCoord, (int)(WizardRoyale.WIDTH / 14.4), (int)(WizardRoyale.HEIGHT / 9), null);
+			g.drawImage(spriteLeft[(int)step], x, y, (int)(WizardRoyale.WIDTH / 14.4), (int)(WizardRoyale.HEIGHT / 9), null);
 
 		step += 0.1;
 		if(step >= 24)
@@ -141,8 +143,8 @@ public class Player extends GameObject {
 				if (objects.get(i).getID() == ID.Wall) {
 					
 					if (getBounds().intersects(objects.get(i).getBounds())) {
-						this.xCoord += this.velX * -1;
-						this.yCoord += this.velY * -1;
+						this.x += this.velX * -1;
+						this.y += this.velY * -1;
 					
 					}
 				}
@@ -214,7 +216,7 @@ public class Player extends GameObject {
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(xCoord, yCoord, (int)(WizardRoyale.WIDTH / 14.4), (int)(WizardRoyale.HEIGHT / 9));
+		return new Rectangle(x, y, (int)(WizardRoyale.WIDTH / 14.4), (int)(WizardRoyale.HEIGHT / 9));
 	}
 	
 }

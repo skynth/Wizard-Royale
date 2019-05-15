@@ -40,13 +40,13 @@ public class Projectile extends GameObject{
 		handler = h;
 		isOutOfRange = false;
 		
-		if(mouseX > xCoord)
+		if(mouseX > x)
 			isRight = true;
 		else {
 			isRight = false;
 		}
 		
-		if(mouseY< yCoord) {
+		if(mouseY< y) {
 			isUp = true;;
 		}
 		else {
@@ -63,7 +63,7 @@ public class Projectile extends GameObject{
 
 	public void render(Graphics g) {
 		g.setColor(Color.PINK);
-		g.fillOval(xCoord, yCoord, (int)(WizardRoyale.WIDTH / 90), (int)(WizardRoyale.HEIGHT / 56.25));
+		g.fillOval(x, y, (int)(WizardRoyale.WIDTH / 90), (int)(WizardRoyale.HEIGHT / 56.25));
 	}
 	
 	/**
@@ -72,21 +72,21 @@ public class Projectile extends GameObject{
 
 	public void tick() {
 		if(isRight && isUp) {
-			xCoord += Math.cos(angle) * 15;
-			yCoord += Math.sin(angle) * 15;
+			x += Math.cos(angle) * 15;
+			y += Math.sin(angle) * 15;
 
 		}
 		else if(isRight && !isUp){
-			xCoord += Math.cos(angle) * 15;
-			yCoord += Math.sin(angle) * 15;
+			x += Math.cos(angle) * 15;
+			y += Math.sin(angle) * 15;
 		}
 		else if(isUp && !isRight) {
-			xCoord -= Math.cos(angle) * 15;
-			yCoord -= Math.sin(angle) * 15;
+			x -= Math.cos(angle) * 15;
+			y -= Math.sin(angle) * 15;
 		}
 		else if(!isUp && !isRight){
-			xCoord -= Math.cos(angle) * 15;
-			yCoord -= Math.sin(angle) * 15;
+			x -= Math.cos(angle) * 15;
+			y -= Math.sin(angle) * 15;
 		}
 		
 		for (int i = 0; i < handler.getGameObjects().size(); i++) {
@@ -107,7 +107,7 @@ public class Projectile extends GameObject{
 	}
 
 	public Rectangle getBounds() {
-		return new Rectangle(xCoord, yCoord, (int)(WizardRoyale.WIDTH / 90), (int)(WizardRoyale.HEIGHT / 56.25));
+		return new Rectangle(x, y, (int)(WizardRoyale.WIDTH / 90), (int)(WizardRoyale.HEIGHT / 56.25));
 	}
 
 	

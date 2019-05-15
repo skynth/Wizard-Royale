@@ -54,21 +54,26 @@ public class MouseInput extends MouseAdapter {
 		int mouseX = (int) (e.getX() + camera.getX());
 		int mouseY = (int) (e.getY() + camera.getY());
 		
+		/*playButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 4.5), (int)(WizardRoyale.WIDTH / 2.94), WizardRoyale.HEIGHT / 9);
+		helpButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 2.57), (int)(WizardRoyale.WIDTH / 2.94), WizardRoyale.HEIGHT / 9);
+		serverButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 1.8), (int)(WizardRoyale.WIDTH / 2.94),  WizardRoyale.HEIGHT / 9);
+		quitButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 1.38), (int)(WizardRoyale.WIDTH / 2.94), WizardRoyale.HEIGHT / 9);*/
+		
 		if (WizardRoyale.State == STATE.MENU) {
 			
-			if (mouseX >= WizardRoyale.WIDTH / 2.045 && mouseY >= WizardRoyale.HEIGHT / 4.4 && mouseX <= WizardRoyale.WIDTH / 1.206 && mouseY <= WizardRoyale.HEIGHT / 2.57) {
+			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 4.5 && mouseX <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94 && mouseY <= WizardRoyale.HEIGHT / 4.5 + WizardRoyale.HEIGHT / 9) {
 				WizardRoyale.State = STATE.GAME;
 			}
 			
-			if (mouseX >= WizardRoyale.WIDTH / 2.045 && mouseY >= WizardRoyale.HEIGHT / 2.11 && mouseX <= WizardRoyale.WIDTH / 1.206 && mouseY <= WizardRoyale.HEIGHT / 1.714) {
+			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 2.57 && mouseX <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94 && mouseY <= WizardRoyale.HEIGHT / 2.57 + WizardRoyale.HEIGHT / 9) {
 				WizardRoyale.State = STATE.INSTURCTIONS;
 			}
 
-			if (mouseX >= WizardRoyale.WIDTH /2.045 && mouseY >= WizardRoyale.HEIGHT /1.5 && mouseX <= WizardRoyale.WIDTH / 1.206 && mouseY <= WizardRoyale.HEIGHT / 1.286) {
+			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 1.8 && mouseX <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94 && mouseY <= WizardRoyale.HEIGHT / 1.8 + WizardRoyale.HEIGHT / 9) {
 				NetworkManagementPanel serverPanel= new NetworkManagementPanel();
 			}
 			
-			if (mouseX >= WizardRoyale.WIDTH / 2.045 && mouseY >= WizardRoyale.HEIGHT / 1.16 && mouseX <= WizardRoyale.WIDTH / 1.206 && mouseY <= WizardRoyale.HEIGHT / 1.03) {
+			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 1.38 && mouseX <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94 && mouseY <= WizardRoyale.HEIGHT / 1.38 + WizardRoyale.HEIGHT / 9) {
 				System.exit(1);
 			}	
 		} else if (WizardRoyale.State == STATE.GAME) {

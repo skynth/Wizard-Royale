@@ -42,8 +42,6 @@ public class MainMenuPanel {
 	
 	public MainMenuPanel() {
 		playButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 4.5), (int)(WizardRoyale.WIDTH / 2.94), WizardRoyale.HEIGHT / 9);
-//		System.out.println(WizardRoyale.WIDTH);
-//		System.out.println(WizardRoyale.HEIGHT);
 		helpButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 2.57), (int)(WizardRoyale.WIDTH / 2.94), WizardRoyale.HEIGHT / 9);
 		serverButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 1.8), (int)(WizardRoyale.WIDTH / 2.94),  WizardRoyale.HEIGHT / 9);
 		quitButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 1.38), (int)(WizardRoyale.WIDTH / 2.94), WizardRoyale.HEIGHT / 9);

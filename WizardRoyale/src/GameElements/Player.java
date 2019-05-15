@@ -28,7 +28,6 @@ public class Player extends GameObject {
 	private Image spriteShootLeft[] = new Image[15];
 	private double step, shootStep;
 	private int health;
-	private int speed = 50;
 	private boolean isRight;
 	private boolean isShoot;
 
@@ -64,23 +63,21 @@ public class Player extends GameObject {
 		//this.collide(handler.getGameObjects());
 		this.movement();
 		
-		/*if (xCoord < 15) {
-			xCoord = 15;
+		if (x < 15) {
+			x = 15;
 		}
 		
-		if (xCoord > WizardRoyale.WIDTH) {
-			xCoord = WizardRoyale.WIDTH;
+		if (x > 31 * 128) {
+			x = 31 * 128;
 		}
 		
-		if (yCoord < 20) {
-			yCoord = 20;
+		if (y < 20) {
+			y = 20;
 		}
 		
-		System.out.print(WizardRoyale.WIDTH + "" + WizardRoyale.HEIGHT);
-		
-		if (yCoord > WizardRoyale.HEIGHT - WizardRoyale.HEIGHT / 17.09) {
-			yCoord = (int) (WizardRoyale.HEIGHT - WizardRoyale.HEIGHT / 17.09);
-		}*/
+		if (y > 31 * 128) {
+			y = 31 * 128;
+		}
 		
 			
 	}

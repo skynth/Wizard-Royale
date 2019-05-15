@@ -28,6 +28,7 @@ public class Player extends GameObject {
 	private Image spriteShootLeft[] = new Image[15];
 	private double step, shootStep;
 	private int health;
+	private int speed = 8;
 	private boolean isRight;
 	private boolean isShoot;
 
@@ -60,7 +61,7 @@ public class Player extends GameObject {
 		x += velX;
 		y += velY;
 		
-		//this.collide(handler.getGameObjects());
+		this.collide(handler.getGameObjects());
 		this.movement();
 		
 		if (x < 15) {
@@ -88,16 +89,16 @@ public class Player extends GameObject {
 
 		if(isShoot) {
 			if(isRight)
-				g.drawImage(spriteShoot[(int)shootStep], x - (int)(WizardRoyale.WIDTH / 28.8), y, (int)(WizardRoyale.WIDTH / 7.2), (int)(WizardRoyale.HEIGHT / 9), null);
+				g.drawImage(spriteShoot[(int)shootStep], x - (int) (WizardRoyale.WIDTH / 48), y, (int)(WizardRoyale.WIDTH / 12), (int)(WizardRoyale.HEIGHT / 15), null);
 			else if(!isRight)
-				g.drawImage(spriteShootLeft[(int)shootStep], x - (int)(WizardRoyale.WIDTH / 28.8), y, (int)(WizardRoyale.WIDTH / 7.2), (int)(WizardRoyale.HEIGHT / 9), null);
+				g.drawImage(spriteShootLeft[(int)shootStep], x - (int) (WizardRoyale.WIDTH / 48), y, (int)(WizardRoyale.WIDTH / 12), (int)(WizardRoyale.HEIGHT / 15), null);
 
 			shootStep += 0.2;
 		}
 		else if(isRight)
-			g.drawImage(spriteRight[(int)step], x, y, (int)(WizardRoyale.WIDTH / 14.4), (int)(WizardRoyale.HEIGHT / 9), null);
+			g.drawImage(spriteRight[(int)step], x, y, (int)(WizardRoyale.WIDTH / 24), (int)(WizardRoyale.HEIGHT / 15), null);
 		else if(!isRight)
-			g.drawImage(spriteLeft[(int)step], x, y, (int)(WizardRoyale.WIDTH / 14.4), (int)(WizardRoyale.HEIGHT / 9), null);
+			g.drawImage(spriteLeft[(int)step], x, y, (int)(WizardRoyale.WIDTH / 24), (int)(WizardRoyale.HEIGHT / 15), null);
 
 		step += 0.1;
 		if(step >= 24)
@@ -106,6 +107,9 @@ public class Player extends GameObject {
 			isShoot = false;
 			shootStep = 0;
 		}
+		
+		g.setColor(Color.green);
+		g.fillRect(this.x, this.y + WizardRoyale.HEIGHT / 15, WizardRoyale.WIDTH / 24, 10);
 
 	}
 	
@@ -125,7 +129,6 @@ public class Player extends GameObject {
 	 */
 	public void collide(LinkedList<GameObject> objects)
 	{
-		//collision with pickables
 			for (int i = 0; i < objects.size(); i++) 
 			{		
 				if (objects.get(i).getID() == ID.Item) 
@@ -148,7 +151,7 @@ public class Player extends GameObject {
 			}
 	}
 	
-	private void movement() {
+	/*private void movement() {
 		if (handler.isUp()) {
 			velY = -7.5f;
 			
@@ -210,10 +213,33 @@ public class Player extends GameObject {
 		} else if (!handler.isLeft() && !handler.isRight()) {
 			velX = 0;
 		}
+	}*/
+	
+	private void movement() {
+		if (handler.isUp()) {
+			this.velY = -speed;
+		} else if (!handler.isDown()) {
+			this.velY = 0;
+		}
+		if (handler.isDown()) {
+			this.velY = speed;
+		} else if (!handler.isUp()) {
+			this.velY = 0;
+		}
+		if (handler.isLeft()) {
+			this.velX = -speed;
+		} else if (!handler.isRight()) {
+			this.velX = 0;
+		}
+		if (handler.isRight()) {
+			this.velX = speed;
+		} else if (!handler.isLeft()) {
+			this.velX = 0;
+		}
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(x, y, (int)(WizardRoyale.WIDTH / 14.4), (int)(WizardRoyale.HEIGHT / 9));
+		return new Rectangle(x, y, (int)(WizardRoyale.WIDTH / 24), (int)(WizardRoyale.HEIGHT / 15));
 	}
 	
 }

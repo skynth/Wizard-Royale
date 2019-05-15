@@ -231,16 +231,13 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		
 		handler.addObject(new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, handler));
 		
-		
-		
 	}
 
 	public void receiveUpdate(String hostname, Object[] message) {
-		
-		if (message[0].equals(NetworkListener.MESSAGE)) {
-			
-		}
 
+		if (message[0].equals(NetworkListener.HANDSHAKE)) {
+			handler.addObject(new Player(500, 500, ID.Player, handler));
+		}
 		
 	}
 	

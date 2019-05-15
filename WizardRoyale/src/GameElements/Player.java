@@ -31,6 +31,7 @@ public class Player extends GameObject {
 	private int speed = 8;
 	private boolean isRight;
 	private boolean isShoot;
+	private int playerNumber;
 
 	/**
 	 * Creates a new instance of a player (Wizard)

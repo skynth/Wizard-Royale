@@ -6,8 +6,10 @@ import java.awt.image.BufferedImage;
 import java.util.Queue;
 
 import GameElements.Consumable;
+import GameElements.GameObject;
 import GameElements.Player;
 import GameElements.Tile;
+import gui.DrawingSurface.Cursor;
 import networking.backend.SchoolServer;
 import networking.frontend.NetworkDataObject;
 import networking.frontend.NetworkListener;
@@ -259,6 +261,23 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		
 		while (!queue.isEmpty()) {
 			NetworkDataObject ndo = queue.poll();
+			String host = ndo.getSourceIP();
+			
+		if (ndo.message[0].equals(messageTypeInit)) {
+			
+			for (GameObject o : handler.getGameObjects()) {
+				
+				if (o.getID() == ID.Player) {
+					
+					
+					
+				}
+				
+			}
+			Player player = new Player((Integer)ndo.message[1], (Integer)ndo.message[2], (ID)ndo.message[3], (Handler)ndo.message[4]);
+			handler.addObject(player);
+
+		} 
 			
 			if (ndo.messageType.equals(NetworkDataObject.CLIENT_LIST)) {
 				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeInit, handler.getPlayer().getX(), handler.getPlayer().getY(), ID.Player, handler);

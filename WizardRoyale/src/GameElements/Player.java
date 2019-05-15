@@ -282,6 +282,10 @@ public class Player extends GameObject {
 		isRight = check;
 	}
 	
+	public String getIp() {
+		return ip;
+	}
+	
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, (int)(WizardRoyale.WIDTH / 24), (int)(WizardRoyale.HEIGHT / 15));
 	}

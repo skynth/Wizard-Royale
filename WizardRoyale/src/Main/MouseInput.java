@@ -54,11 +54,6 @@ public class MouseInput extends MouseAdapter {
 		int mouseX = (int) (e.getX() + camera.getX());
 		int mouseY = (int) (e.getY() + camera.getY());
 		
-		/*playButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 4.5), (int)(WizardRoyale.WIDTH / 2.94), WizardRoyale.HEIGHT / 9);
-		helpButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 2.57), (int)(WizardRoyale.WIDTH / 2.94), WizardRoyale.HEIGHT / 9);
-		serverButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 1.8), (int)(WizardRoyale.WIDTH / 2.94),  WizardRoyale.HEIGHT / 9);
-		quitButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 1.38), (int)(WizardRoyale.WIDTH / 2.94), WizardRoyale.HEIGHT / 9);*/
-		
 		if (WizardRoyale.State == STATE.MENU) {
 			
 			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 4.5 && mouseX <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94 && mouseY <= WizardRoyale.HEIGHT / 4.5 + WizardRoyale.HEIGHT / 9) {
@@ -80,10 +75,10 @@ public class MouseInput extends MouseAdapter {
 			Projectile p = null;
 			
 			if (handler.getPlayer().getIsRight()) {
-				p = new Projectile(handler.getPlayer().getX() + (int)(WizardRoyale.WIDTH / 12), handler.getPlayer().getY() + (int)(WizardRoyale.HEIGHT / 37.5), ID.Projectile, mouseX, mouseY, handler);
+				p = new Projectile(handler.getPlayer().getX() + (int)(WizardRoyale.WIDTH / 24), handler.getPlayer().getY() + (int)(WizardRoyale.HEIGHT / 37.5), ID.Projectile, mouseX, mouseY, handler);
 			}
 			else {
-				p = new Projectile(handler.getPlayer().getX() + (int)(WizardRoyale.WIDTH / 90), handler.getPlayer().getY() + (int)(WizardRoyale.HEIGHT / 37.5), ID.Projectile, mouseX, mouseY, handler);
+				p = new Projectile(handler.getPlayer().getX(), handler.getPlayer().getY() + (int)(WizardRoyale.HEIGHT / 37.5), ID.Projectile, mouseX, mouseY, handler);
 			}
 			
 			handler.getPlayer().setIsShoot(true);

@@ -56,7 +56,7 @@ public class Consumable extends GameObject{
 	 */
 	public void render(Graphics g) {
 		g.setColor(Color.blue);
-		g.fillRect(xCoord, yCoord, (int)(WizardRoyale.WIDTH / 9.6), (int)(WizardRoyale.HEIGHT / 30));
+		g.fillRect(x, y, (int)(WizardRoyale.WIDTH / 9.6), (int)(WizardRoyale.HEIGHT / 30));
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class Consumable extends GameObject{
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(xCoord, yCoord, (int)(WizardRoyale.WIDTH / 9.6), (int)(WizardRoyale.HEIGHT / 30));
+		return new Rectangle(x, y, (int)(WizardRoyale.WIDTH / 9.6), (int)(WizardRoyale.HEIGHT / 30));
 	}
 
 	

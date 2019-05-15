@@ -17,12 +17,12 @@ public abstract class GameObject {
 	/**
 	 * field that represents the X coordinate of an object in the game 
 	 */
-	protected int xCoord = 0;
+	protected int x = 0;
 	
 	/**
 	 * field that represents the Y coordinate of an object in the game 
 	 */
-	protected int yCoord = 0;
+	protected int y = 0;
 	
 	/**
 	 * field that represents what specific type of object the object is, e.g armor or health consumable
@@ -59,8 +59,8 @@ public abstract class GameObject {
 	 */
 
 	public GameObject(int x, int y, ID id) {
-		xCoord = x;
-		yCoord = y;
+		this.x = x;
+		this.y = y;
 		this.id = id;
 	}
 	
@@ -85,7 +85,7 @@ public abstract class GameObject {
 	 */
 	
 	public int getX() {
-		return xCoord;
+		return x;
 	}
 	
 	/**
@@ -94,7 +94,7 @@ public abstract class GameObject {
 	 */
 	
 	public int getY() {
-		return yCoord;
+		return y;
 	}
 	
 	/**

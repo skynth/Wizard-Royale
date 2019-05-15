@@ -28,7 +28,7 @@ public class Player extends GameObject {
 	private Image spriteShootLeft[] = new Image[15];
 	private double step, shootStep;
 	private int health;
-	private int speed = 7;
+	private int speed = 8;
 	private boolean isRight;
 	private boolean isShoot;
 
@@ -58,26 +58,26 @@ public class Player extends GameObject {
 	}
 	
 	public void tick() {
-		xCoord += velX;
-		yCoord += velY;
+		x += velX;
+		y += velY;
 		
 		this.collide(handler.getGameObjects());
 		this.movement();
 		
-		if (xCoord < 15) {
-			xCoord = 15;
+		if (x < 15) {
+			x = 15;
 		}
 		
-		if (xCoord > WizardRoyale.WIDTH) {
-			xCoord = WizardRoyale.WIDTH;
+		if (x > 31 * 128) {
+			x = 31 * 128;
 		}
 		
-		if (yCoord < 20) {
-			yCoord = 20;
+		if (y < 20) {
+			y = 20;
 		}
 		
-		if (yCoord > WizardRoyale.HEIGHT - WizardRoyale.HEIGHT / 17.09) {
-			yCoord = (int) (WizardRoyale.HEIGHT - WizardRoyale.HEIGHT / 17.09);
+		if (y > 31 * 128) {
+			y = 31 * 128;
 		}
 		
 			
@@ -89,16 +89,16 @@ public class Player extends GameObject {
 
 		if(isShoot) {
 			if(isRight)
-				g.drawImage(spriteShoot[(int)shootStep], xCoord - (int)(WizardRoyale.WIDTH / 28.8), yCoord, (int)(WizardRoyale.WIDTH / 7.2), (int)(WizardRoyale.HEIGHT / 9), null);
+				g.drawImage(spriteShoot[(int)shootStep], x - (int) (WizardRoyale.WIDTH / 48), y, (int)(WizardRoyale.WIDTH / 12), (int)(WizardRoyale.HEIGHT / 15), null);
 			else if(!isRight)
-				g.drawImage(spriteShootLeft[(int)shootStep], xCoord - (int)(WizardRoyale.WIDTH / 28.8), yCoord, (int)(WizardRoyale.WIDTH / 7.2), (int)(WizardRoyale.HEIGHT / 9), null);
+				g.drawImage(spriteShootLeft[(int)shootStep], x - (int) (WizardRoyale.WIDTH / 48), y, (int)(WizardRoyale.WIDTH / 12), (int)(WizardRoyale.HEIGHT / 15), null);
 
 			shootStep += 0.2;
 		}
 		else if(isRight)
-			g.drawImage(spriteRight[(int)step], xCoord, yCoord, (int)(WizardRoyale.WIDTH / 14.4), (int)(WizardRoyale.HEIGHT / 9), null);
+			g.drawImage(spriteRight[(int)step], x, y, (int)(WizardRoyale.WIDTH / 24), (int)(WizardRoyale.HEIGHT / 15), null);
 		else if(!isRight)
-			g.drawImage(spriteLeft[(int)step], xCoord, yCoord, (int)(WizardRoyale.WIDTH / 14.4), (int)(WizardRoyale.HEIGHT / 9), null);
+			g.drawImage(spriteLeft[(int)step], x, y, (int)(WizardRoyale.WIDTH / 24), (int)(WizardRoyale.HEIGHT / 15), null);
 
 		step += 0.1;
 		if(step >= 24)
@@ -107,6 +107,9 @@ public class Player extends GameObject {
 			isShoot = false;
 			shootStep = 0;
 		}
+		
+		g.setColor(Color.green);
+		g.fillRect(this.x, this.y + WizardRoyale.HEIGHT / 15, WizardRoyale.WIDTH / 24, 10);
 
 	}
 	
@@ -126,7 +129,6 @@ public class Player extends GameObject {
 	 */
 	public void collide(LinkedList<GameObject> objects)
 	{
-		//collision with pickables
 			for (int i = 0; i < objects.size(); i++) 
 			{		
 				if (objects.get(i).getID() == ID.Item) 
@@ -141,15 +143,15 @@ public class Player extends GameObject {
 				if (objects.get(i).getID() == ID.Wall) {
 					
 					if (getBounds().intersects(objects.get(i).getBounds())) {
-						this.xCoord += this.velX * -1;
-						this.yCoord += this.velY * -1;
+						this.x += this.velX * -1;
+						this.y += this.velY * -1;
 					
 					}
 				}
 			}
 	}
 	
-	private void movement() {
+	/*private void movement() {
 		if (handler.isUp()) {
 			velY = -7.5f;
 			
@@ -211,10 +213,33 @@ public class Player extends GameObject {
 		} else if (!handler.isLeft() && !handler.isRight()) {
 			velX = 0;
 		}
+	}*/
+	
+	private void movement() {
+		if (handler.isUp()) {
+			this.velY = -speed;
+		} else if (!handler.isDown()) {
+			this.velY = 0;
+		}
+		if (handler.isDown()) {
+			this.velY = speed;
+		} else if (!handler.isUp()) {
+			this.velY = 0;
+		}
+		if (handler.isLeft()) {
+			this.velX = -speed;
+		} else if (!handler.isRight()) {
+			this.velX = 0;
+		}
+		if (handler.isRight()) {
+			this.velX = speed;
+		} else if (!handler.isLeft()) {
+			this.velX = 0;
+		}
 	}
 	
 	public Rectangle getBounds() {
-		return new Rectangle(xCoord, yCoord, (int)(WizardRoyale.WIDTH / 14.4), (int)(WizardRoyale.HEIGHT / 9));
+		return new Rectangle(x, y, (int)(WizardRoyale.WIDTH / 24), (int)(WizardRoyale.HEIGHT / 15));
 	}
 	
 }

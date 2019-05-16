@@ -290,7 +290,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			NetworkDataObject ndo = queue.poll();
 			String host = ndo.getSourceIP();
 			
-			if (ndo.message[0].equals(messageTypeInit)) {
+			/*if (ndo.message[0].equals(messageTypeInit)) {
 			
 				for (Player p : handler.getPlayers()) {
 				
@@ -303,10 +303,20 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			Player player = new Player((Integer)ndo.message[1], (Integer)ndo.message[2], (ID)ndo.message[3], (String) ndo.message[4], (Handler) ndo.message[5]);
 			handler.addObject(player);
 
-			} 
+			} */
 			
-			else if (ndo.messageType.equals(NetworkDataObject.HANDSHAKE)) {
-				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeInit, 200, 200, ID.Player, myIP, handler);
+			 if (ndo.messageType.equals(NetworkDataObject.HANDSHAKE)) {
+					
+				for (Player p : handler.getPlayers()) {
+					
+						if (p.getIp().equals(host)) {
+							return;
+						}
+					
+				}
+					
+				Player player = new Player(50, 50, ID.Player, ndo.getSourceIP(), handler);
+				handler.addObject(player);
 			}
 			
 			Player player = null;

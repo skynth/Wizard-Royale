@@ -294,7 +294,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			
 				for (Player p : handler.getPlayers()) {
 				
-					if (p.getIp().equals(myIP)) {
+					if (p.getIp().equals(host)) {
 						return;
 					}
 				
@@ -306,12 +306,12 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			} 
 			
 			else if (ndo.messageType.equals(NetworkDataObject.HANDSHAKE)) {
-				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeInit, 200, 200, ID.Player, ndo.getSourceIP(), handler);
+				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeInit, 200, 200, ID.Player, myIP, handler);
 			}
 			
 			Player player = null;
 			for (Player p : handler.getPlayers()) {	
-				System.out.println(p.getIp() + ", sdaffdsfdsfdsfds" + handler.getPlayers().size() + ", " +ndo.getSourceIP() );
+				System.out.println(p.getIp() + ", sdaffdsfdsfdsfds" + handler.getPlayers().size() + ", " +ndo.getSourceIP());
 				if (p.getIp().equals(ndo.getSourceIP())) {
 						System.out.println("yay");
 						player = p;
@@ -343,9 +343,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 
 			if(MouseInput.isProjectileMade())
-					nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeShoot,handler.getProjectiles().get(handler.getProjectiles().size() - 1));
-			
-				
+				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeShoot,handler.getProjectiles().get(handler.getProjectiles().size() - 1));
 			}
 			
 		}

@@ -27,10 +27,10 @@ public class Player extends GameObject implements Serializable{
 	 */
 	private static final long serialVersionUID = 5L;
 	private Handler handler;
-	private Image spriteRight[] = new Image[24];
-	private Image spriteLeft[] = new Image[24];
-	private Image spriteShoot[] = new Image[15];
-	private Image spriteShootLeft[] = new Image[15];
+	private transient Image spriteRight[] = new Image[24];
+	private transient Image spriteLeft[] = new Image[24];
+	private transient Image spriteShoot[] = new Image[15];
+	private transient Image spriteShootLeft[] = new Image[15];
 	private double step, shootStep;
 	private int health;
 	private int speed = 8;

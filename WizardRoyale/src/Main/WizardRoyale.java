@@ -305,6 +305,9 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 			} */
 			
+			if (ndo.messageType.equals(NetworkDataObject.HANDSHAKE)) {
+				System.out.println("Handshake");
+				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeInit, 200, 200, ID.Player, myIP, handler);
 			 if (ndo.messageType.equals(NetworkDataObject.HANDSHAKE)) {
 					
 				for (Player p : handler.getPlayers()) {
@@ -359,6 +362,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		}
 		
 	}
+}
 
 
 	

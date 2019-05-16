@@ -259,7 +259,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 		}
 		
-		handler.addObject(new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, myIP.toString(), handler));
+		handler.addObject(new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, myIP.getAddress().toString(), handler));
 		
 	}
 
@@ -304,7 +304,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			} 
 			
 			else if (ndo.messageType.equals(NetworkDataObject.HANDSHAKE)) {
-				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeInit, 200, 200, ID.Player, myIP.toString(), handler);
+				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeInit, 200, 200, ID.Player, myIP.getAddress().toString(), handler);
 			}
 			
 			Player player = null;

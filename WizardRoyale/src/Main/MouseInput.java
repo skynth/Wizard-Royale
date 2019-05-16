@@ -5,6 +5,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import GameElements.GameObject;
+import GameElements.Player;
 import GameElements.Projectile;
 import Main.WizardRoyale.STATE;
 import networking.frontend.NetworkManagementPanel;
@@ -72,28 +74,39 @@ public class MouseInput extends MouseAdapter {
 				System.exit(1);
 			}	
 		} else if (WizardRoyale.State == STATE.GAME) {
-			Projectile p = null;
 			
-			if (handler.getPlayers().getIsRight()) {
+			Player player = null;
+			
+			for (Player p : handler.getPlayers()) {
 				
-				if (mouseX < handler.getPlayers().getX()) {
-					handler.getPlayers().setRight(false);
+				if (p.getIp().equals(WizardRoyale.myIP.toString())) {
+					player = p;
 				}
 				
-				p = new Projectile(handler.getPlayers().getX() + (int)(WizardRoyale.WIDTH / 21), handler.getPlayer().getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler);
+			}
+			
+			Projectile p = null;
+			
+			if (player.getIsRight()) {
+				
+				if (mouseX < player.getX()) {
+					player.setRight(false);
+				}
+				
+				p = new Projectile(player.getX() + (int)(WizardRoyale.WIDTH / 21), player.getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler);
 				
 			}
 			else {
 				
-				if (mouseX > handler.getPlayers().getX()) {
-					handler.getPlayers().setRight(true);
+				if (mouseX > player.getX()) {
+					player.setRight(true);
 				}
 				
-				p = new Projectile(handler.getPlayers().getX() - (int)(WizardRoyale.WIDTH / 60), handler.getPlayer().getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler);
+				p = new Projectile(player.getX() - (int)(WizardRoyale.WIDTH / 60), player.getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler);
 			
 			}
 			
-			handler.getPlayers().setIsShoot(true);
+			player.setIsShoot(true);
 			handler.addObject(p);
 		}
 		}

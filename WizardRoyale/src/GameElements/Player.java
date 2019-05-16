@@ -40,7 +40,7 @@ public class Player extends GameObject {
 	 * @param id the Id of the wizard
 	 * @param h the handler passed in
 	 */
-	public Player(int x, int y, ID id, Handler h) {
+	public Player(int x, int y, ID id, String ip, Handler h) {
 		super(x, y, id);
 		handler = h;
 		for(int i = 0; i < 24; i++) {
@@ -56,6 +56,7 @@ public class Player extends GameObject {
 		isRight = true;
 		step = 0;
 		shootStep = 0;
+		this.ip = ip;
 	}
 	
 	public void tick() {

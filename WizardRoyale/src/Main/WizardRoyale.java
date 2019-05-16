@@ -301,42 +301,37 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			Player player = new Player((Integer)ndo.message[1], (Integer)ndo.message[2], (ID)ndo.message[3], (String) ndo.message[4], (Handler) ndo.message[5]);
 			handler.addObject(player);
 
-		} 
+			} 
 			
 			else if (ndo.messageType.equals(NetworkDataObject.HANDSHAKE)) {
 				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeInit, 200, 200, ID.Player, ndo.getSourceIP(), handler);
-
 			}
 			
-				Player player = null;
-				for (Player p : handler.getPlayers()) {
-					if (p.getIp().equals(host)) {
+			
+			Player player = null;
+			for (Player p : handler.getPlayers()) {
+				if (p.getIp().equals(host)) {
 						player = p;
-					}
 				}
+			}
 				//Not sure if this is in the right place
-				if(player != null)
-					nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, player.getX(), player.getY());
+			if(player != null) {
+				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, player.getX(), player.getY());
+				System.out.println("sent Move");
+
+			}
 				
 				//needs to send over projectiles
-				if(MouseInput.isProjectileMade())
-						nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeShoot,handler.getProjectiles().get(handler.getProjectiles().size() - 1));
-
-				
-			
-				
-			else if(ndo.message[0].equals(messageTypeMove)) {
-				for (Player p : handler.getPlayers()) {
-					
-					if (p.getIp().equals(host)) {
-						p.setX((int)ndo.message[1]);
-						p.setY((int)ndo.message[2]);
-						
-
-					}
-				}
+			if(MouseInput.isProjectileMade())
+					nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeShoot,handler.getProjectiles().get(handler.getProjectiles().size() - 1));
+		
+			if(ndo.message[0].equals(messageTypeMove)) {
+				System.out.println("gotmove");
+				player.setX((int)ndo.message[1]);
+				player.setY((int)ndo.message[2]);			
 			}
-			else if(ndo.message[0].equals(messageTypeShoot)) {
+			
+			if(ndo.message[0].equals(messageTypeShoot)) {
 					Projectile p = (Projectile)ndo.message[1];
 					handler.addObject(p);
 				}

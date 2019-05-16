@@ -261,7 +261,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 		}
 		
-		handler.addObject(new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, myIP, handler));
+		nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeInit, (int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, myIP, handler);
 		
 	}
 
@@ -290,7 +290,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			NetworkDataObject ndo = queue.poll();
 			String host = ndo.getSourceIP();
 			
-			/*if (ndo.message[0].equals(messageTypeInit)) {
+			if (ndo.message[0].equals(messageTypeInit)) {
 			
 				for (Player p : handler.getPlayers()) {
 				
@@ -303,7 +303,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			Player player = new Player((Integer)ndo.message[1], (Integer)ndo.message[2], (ID)ndo.message[3], (String) ndo.message[4], (Handler) ndo.message[5]);
 			handler.addObject(player);
 
-			} */
+			} 
 			
 			if (ndo.messageType.equals(NetworkDataObject.HANDSHAKE)) {
 				System.out.println("Handshake");

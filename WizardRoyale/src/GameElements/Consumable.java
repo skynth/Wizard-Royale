@@ -3,6 +3,7 @@ package GameElements;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.io.Serializable;
 
 import Main.Handler;
 import Main.ID;
@@ -15,8 +16,12 @@ import Main.WizardRoyale;
  * @version 5/10/19
  *
  */
-public class Consumable extends GameObject{
+public class Consumable extends GameObject implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2L;
 	private boolean isPickedUp;
 	private Handler handler;
 	

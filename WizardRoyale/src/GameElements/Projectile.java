@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.io.Serializable;
 
 import Main.Handler;
 import Main.ID;
@@ -16,8 +17,12 @@ import Main.WizardRoyale;
  * @author skyfreestylez
  *@version 5/10/19
  */
-public class Projectile extends GameObject{
+public class Projectile extends GameObject implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4L;
 	private double angle;
 	private Handler handler;
 	private boolean isOutOfRange;

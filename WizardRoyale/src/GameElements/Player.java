@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -19,8 +20,12 @@ import Main.WizardRoyale;
  * @author Leofeng, Roee, Skyfreestylez
  *@version 5/10/19
  */
-public class Player extends GameObject {
+public class Player extends GameObject implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5L;
 	private Handler handler;
 	private Image spriteRight[] = new Image[24];
 	private Image spriteLeft[] = new Image[24];

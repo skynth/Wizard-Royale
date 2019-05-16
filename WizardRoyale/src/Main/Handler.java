@@ -1,7 +1,7 @@
 package Main;
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 import GameElements.GameObject;
 import GameElements.Player;
@@ -18,9 +18,14 @@ import GameElements.Projectile;
  * 
  */
 
-public class Handler {
+public class Handler implements Serializable{
 	
-	ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 	
 	private boolean isUp = false, isDown, isLeft, isRight;
 	

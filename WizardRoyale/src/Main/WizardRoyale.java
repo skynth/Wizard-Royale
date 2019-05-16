@@ -294,7 +294,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			
 				for (Player p : handler.getPlayers()) {
 				
-					if (p.getIp().equals(host)) {
+					if (p.getIp().equals(myIP)) {
 						return;
 					}
 				
@@ -306,7 +306,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			} 
 			
 			else if (ndo.messageType.equals(NetworkDataObject.HANDSHAKE)) {
-				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeInit, 200, 200, ID.Player, myIP, handler);
+				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeInit, 200, 200, ID.Player, ndo.getSourceIP(), handler);
 			}
 			
 			Player player = null;

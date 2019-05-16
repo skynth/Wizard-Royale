@@ -100,7 +100,7 @@ public abstract class GameObject {
 	}
 	
 	public void setY(int y) {
-		this.x = y;
+		this.y = y;
 	}
 	
 	/**

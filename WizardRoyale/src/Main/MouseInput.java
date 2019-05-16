@@ -22,7 +22,8 @@ public class MouseInput extends MouseAdapter {
 	
 	private Handler handler; 
 	private Camera camera;
-	
+	private static boolean isProjectileMade = false;
+
 	/**
 	 * Creates a new instance of MouseInput
 	 * @param h the WizardRoyale's class' instance of the handler class, which handles all the events that occur in the game
@@ -31,6 +32,7 @@ public class MouseInput extends MouseAdapter {
 	public MouseInput(Handler h, Camera cam) {
 		handler = h; 
 		camera = cam;
+		isProjectileMade = false;
 	}
 	
 	public void mouseClicked(MouseEvent e) {
@@ -103,19 +105,25 @@ public class MouseInput extends MouseAdapter {
 				}
 				
 				p = new Projectile(player.getX() - (int)(WizardRoyale.WIDTH / 60), player.getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler);
-			
+				
 			}
-			
+			isProjectileMade = true;
 			player.setIsShoot(true);
 			handler.addObject(p);
 		}
 		}
+	
+	public static boolean isProjectileMade() {
+		
+		return isProjectileMade;
+	}
 		
 	
 
 	public void mouseReleased(MouseEvent e) {
 		
 	}
+
 }
 
 

@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import GameElements.GameObject;
 import GameElements.Player;
+import GameElements.Projectile;
 
 
 /**
@@ -77,6 +78,21 @@ public class Handler {
 		}
 		
 		return players;
+		
+	}
+	public ArrayList<Projectile> getProjectiles() {
+		
+		ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
+		
+		for (int i = 0; i < gameObjects.size(); i++) {
+			
+			if (gameObjects.get(i).getID() == ID.Projectile) {
+				projectiles.add((Projectile)gameObjects.get(i));
+			}
+			
+		}
+		
+		return projectiles;
 		
 	}
 	

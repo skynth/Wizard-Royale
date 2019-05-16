@@ -315,7 +315,11 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, player.getX(), player.getY());
 				
 				//needs to send over projectiles
-				//nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeShoot,new Projectile());
+				
+
+
+				if(MouseInput.isProjectileMade())
+						nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeShoot,handler.getProjectiles().get(handler.getProjectiles().size() - 1));
 
 				
 			}
@@ -327,7 +331,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 						p.setX((int)ndo.message[1]);
 						p.setY((int)ndo.message[2]);
 						
-						return;
 
 					}
 				}

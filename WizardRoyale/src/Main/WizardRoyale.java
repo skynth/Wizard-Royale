@@ -312,7 +312,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					}
 				}
 				//Not sure if this is in the right place
-				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, player.getX(), player.getY());
+				if(player != null)
+					nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, player.getX(), player.getY());
 				
 				//needs to send over projectiles
 				

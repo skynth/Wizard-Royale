@@ -142,6 +142,7 @@ public class Player extends GameObject implements Serializable{
 	 */
 	public void collide(ArrayList<GameObject> objects)
 	{
+		if(objects.size() > 0) {
 			for (int i = 0; i < objects.size(); i++) 
 			{		
 				if (objects.get(i).getID() == ID.Item) 
@@ -191,6 +192,7 @@ public class Player extends GameObject implements Serializable{
 				
 				
 			}
+	}
 	}
 	
 	/*private void movement() {

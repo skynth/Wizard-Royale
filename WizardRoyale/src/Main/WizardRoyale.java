@@ -305,7 +305,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 			} 
 			
-			else if (ndo.messageType.equals(NetworkDataObject.HANDSHAKE)) {
+			if (ndo.messageType.equals(NetworkDataObject.HANDSHAKE)) {
+				System.out.println("Handshake");
 				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeInit, 200, 200, ID.Player, myIP, handler);
 			}
 			

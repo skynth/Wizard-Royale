@@ -25,7 +25,7 @@ public class Handler implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
+	private transient ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 	
 	private boolean isUp = false, isDown, isLeft, isRight;
 	

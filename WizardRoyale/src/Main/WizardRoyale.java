@@ -308,12 +308,22 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 			}
 			
-				Player player = null;
-				for (Player p : handler.getPlayers()) {
-					if (p.getIp().equals(host)) {
-						player = p;
+			Player player = null;
+			for (Player p : handler.getPlayers()) {
+				if (p.getIp().equals(host)) {
+					player = p;
+				}
+			}
+			
+			if (ndo.message[0].equals(messageTypeMove)) {
+				for (int i = 0; i < handler.getPlayers().size(); i++) {
+					
+					if (handler.getPlayers().get(i).getIp().equals(host)) {
+						handler.getPlayers().get(i).setX((int)ndo.message[1]);
+						handler.getPlayers().get(i).setY((int)ndo.message[2]);
 					}
 				}
+			}
 				//Not sure if this is in the right place
 				if(player != null)
 					nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, player.getX(), player.getY());
@@ -323,19 +333,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 						nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeShoot,handler.getProjectiles().get(handler.getProjectiles().size() - 1));
 
 				
-			
-				
-			else if(ndo.message[0].equals(messageTypeMove)) {
-				for (Player p : handler.getPlayers()) {
-					
-					if (p.getIp().equals(host)) {
-						p.setX((int)ndo.message[1]);
-						p.setY((int)ndo.message[2]);
-						
-
-					}
-				}
-			}
 			else if(ndo.message[0].equals(messageTypeShoot)) {
 					Projectile p = (Projectile)ndo.message[1];
 					handler.addObject(p);

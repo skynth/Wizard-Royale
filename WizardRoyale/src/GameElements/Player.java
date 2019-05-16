@@ -142,7 +142,7 @@ public class Player extends GameObject implements Serializable{
 	 */
 	public void collide(ArrayList<GameObject> objects)
 	{
-		if(objects.size() > 0) {
+		if(objects != null) {
 			for (int i = 0; i < objects.size(); i++) 
 			{		
 				if (objects.get(i).getID() == ID.Item) 

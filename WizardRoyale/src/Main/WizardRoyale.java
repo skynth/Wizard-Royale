@@ -309,6 +309,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				System.out.println("client");
 				
 				Player player = new Player(100, 100, ID.Player, host, handler);
+				handler.addObject(player);
 				
 			}
 			

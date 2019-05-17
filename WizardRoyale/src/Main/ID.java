@@ -16,6 +16,8 @@ public enum ID {
 	Item(),
 	Projectile(), 
 	MedKit(),
-	//Invincibility(),
+	LargeConsumable(),
+	RegularProjectile(),
+	LargeFireProjectile(),
 
 }

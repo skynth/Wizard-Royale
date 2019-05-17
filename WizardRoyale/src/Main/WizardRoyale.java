@@ -105,7 +105,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		BufferedImageLoader loader = new BufferedImageLoader();
 		backgroundImage = loader.loadImage("Resources" + MainMenuPanel.FILE_SEP + "WizardBackground.png");
 	
-		handler.addObject(new Consumable((int)(WizardRoyale.WIDTH / 4.8), (int)(WizardRoyale.HEIGHT / 3), ID.Item, handler,ID.MedKit));
+		handler.addObject(new Consumable((int)(WizardRoyale.WIDTH / 4.8), (int)(WizardRoyale.HEIGHT / 3), ID.Item, handler,ID.LargeConsumable));
 		this.addMouseListener(new MouseInput(handler, gameCamera));
 		this.addKeyListener(new KeyInput(handler));
 		loadLevel(backgroundImage);
@@ -261,7 +261,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 		}
 		
-		handler.addObject(new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, myIP, handler));
+		handler.addObject(new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, myIP, handler,ID.RegularProjectile));
 		
 	}
 
@@ -308,7 +308,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			if (ndo.messageType.equals(NetworkDataObject.CLIENT_LIST)) {
 				System.out.println("client");
 				
-				Player player = new Player(100, 100, ID.Player, host, handler);
+				Player player = new Player(100, 100, ID.Player, host, handler,ID.RegularProjectile);
 				handler.addObject(player);
 				
 			}
@@ -325,7 +325,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					
 				}
 					
-				Player player = new Player(50, 50, ID.Player, host, handler);
+				Player player = new Player(50, 50, ID.Player, host, handler,ID.RegularProjectile);
 				handler.addObject(player);
 			}
 			

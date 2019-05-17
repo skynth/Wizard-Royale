@@ -38,12 +38,13 @@ public class Projectile extends GameObject implements Serializable{
 	 * @param y the y coordinate of the projectile
 	 * @param id the id of the projectile
 	 * @param mouseX the x coordinate of the mouse when the projectile is made/shot
-	 * @param mouseY the y corrdinate of the mouse when the projectile is made/shot
+	 * @param mouseY the y coordinate of the mouse when the projectile is made/shot
 	 * @param h the handler passed in
 	 */
-	public Projectile(int x, int y, ID id, int mouseX, int mouseY, Handler h) {
+	public Projectile(int x, int y, ID id, int mouseX, int mouseY, Handler h, ID subID) {
 		super(x, y, id);
 		handler = h;
+		this.subID = subID;
 		
 		angle = Math.atan((double)(mouseY - y) / (mouseX - x)); //Not sure if this works yet
 		handler = h;
@@ -102,6 +103,10 @@ public class Projectile extends GameObject implements Serializable{
 			if (handler.getGameObjects().get(i).getID() == ID.Wall) {
 				
 				if (this.getBounds().intersects(handler.getGameObjects().get(i).getBounds())) {
+					if(subID == ID.LargeFireProjectile )
+					{
+						handler.getGameObjects().remove(i);
+					}
 					handler.getGameObjects().remove(this);
 				}
 				

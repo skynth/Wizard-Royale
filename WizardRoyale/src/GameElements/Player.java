@@ -36,6 +36,7 @@ public class Player extends GameObject implements Serializable{
 	private int speed = 8;
 	private boolean isRight;
 	private boolean isShoot;
+	private ID projectileType;
 	private String ip;
 
 	/**
@@ -45,9 +46,10 @@ public class Player extends GameObject implements Serializable{
 	 * @param id the Id of the wizard
 	 * @param h the handler passed in
 	 */
-	public Player(int x, int y, ID id, String ip, Handler h) {
+	public Player(int x, int y, ID id, String ip, Handler h, ID projectileType) {
 		super(x, y, id);
 		handler = h;
+		this.projectileType = projectileType;
 		for(int i = 0; i < 24; i++) {
 			spriteRight[i] = Toolkit.getDefaultToolkit().createImage("Resources" + MainMenuPanel.FILE_SEP + "wizard" + MainMenuPanel.FILE_SEP + i+".gif");
 			spriteLeft[i] = Toolkit.getDefaultToolkit().createImage("Resources" + MainMenuPanel.FILE_SEP + "Wizard Left" + MainMenuPanel.FILE_SEP + i+"L.gif");
@@ -160,9 +162,10 @@ public class Player extends GameObject implements Serializable{
 									health +=50;
 								}
 						}
-//						else if(objects.get(i).getSubID() == ID.invincibility) {
-//							
-//						}
+						else if(objects.get(i).getSubID() == ID.LargeConsumable) 
+						{
+							projectileType = ID.LargeFireProjectile;
+					    }
 
 						
 
@@ -299,6 +302,16 @@ public class Player extends GameObject implements Serializable{
 	
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, (int)(WizardRoyale.WIDTH / 24), (int)(WizardRoyale.HEIGHT / 15));
+	}
+	
+	public ID getProjectileType()
+	{
+		return projectileType;
+	}
+	
+	public void setProjectileType(ID type)
+	{
+		projectileType = type;
 	}
 	
 }

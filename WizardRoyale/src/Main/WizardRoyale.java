@@ -356,8 +356,18 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 				
 				//Not sure if this is in the right place
-			if(player != null) {
-				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, player.getX(), player.getY());
+			
+			Player myPlayer = null;
+			for (Player p : handler.getPlayers()) {	
+				System.out.println("finding my player");
+				if (p.getIp().equals(myIP)) {
+						System.out.println("found my player");
+						myPlayer = p;
+				}
+			}
+			
+			if(myPlayer != null) {
+				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, myPlayer.getX(), myPlayer.getY());
 				System.out.println("sent Move");
 
 			}

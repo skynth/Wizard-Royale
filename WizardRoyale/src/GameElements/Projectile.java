@@ -29,7 +29,7 @@ public class Projectile extends GameObject implements Serializable{
 	private boolean isRight;
 	private boolean isUp;
 	
-	Image fireball = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "fireball.png");
+	private transient Image fireball = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "fireball.png");
 	/**
 	 * Creates an instance of a projectile in which shoots as soon as it's made.
 	 * 

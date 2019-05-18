@@ -15,7 +15,7 @@ import Main.WizardRoyale;
  * A class that represents an instance of a projectile. The projectile shoots as soon as it is made.
  * 
  * @author skyfreestylez
- *@version 5/10/19
+ *@version 5/17/19
  */
 public class Projectile extends GameObject implements Serializable{
 	

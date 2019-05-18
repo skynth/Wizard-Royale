@@ -10,7 +10,7 @@ import Main.ID;
  * This class represents every object in our game, for example a player or an item. It provides methods and fields that all objects in
  * our game share.
  * @author Leofeng, Roee, Sky
- * @version 5/7/19
+ * @version 5/17/19
  */
 
 public abstract class GameObject implements Serializable{

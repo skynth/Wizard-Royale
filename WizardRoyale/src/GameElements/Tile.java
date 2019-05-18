@@ -13,6 +13,7 @@ import Main.WizardRoyale;
 
 /**
  * @author Leofeng
+ * @version 5/17/19
  *
  * A class that represents a terrain object in our map. 
  *

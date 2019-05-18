@@ -18,7 +18,7 @@ import Main.WizardRoyale;
  * A class which represents in an instance of a player.
  * 
  * @author Leofeng, Roee, Skyfreestylez
- *@version 5/10/19
+ *@version 5/17/19
  */
 public class Player extends GameObject implements Serializable{
 	

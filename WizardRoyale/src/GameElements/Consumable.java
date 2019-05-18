@@ -13,7 +13,7 @@ import Main.WizardRoyale;
  * A class representing all items in which are picked up on the map.
  * 
  * @author skyfreestylez
- * @version 5/10/19
+ * @version 5/17/19
  *
  */
 public class Consumable extends GameObject implements Serializable{

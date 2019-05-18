@@ -42,24 +42,24 @@ A team mode where players can play 3v3
 3D graphics for all aspects 
 
 Class List : 
-Package : In-game classes
+Package : GameElements
 Player - represents each wizard character in the game (Has-a relationship with item class)
-Map - The map for the game, where players will fight each other (Has-a relationship with obstacle and player)
-Obstacle (represents a rectangular wall in the map the player is unable to move through)
+Tile (represents a rectangular wall in the map the player is unable to move through)
 Projectile(An instance of the projectile that the player shoots)
 GameObject (Abstract superclass of all objects in the game)
 Consumable (represents all items that the player can pick up on the map)
 
-
-
 Package : Window
-Winow : Starts a new game, generates the window
+Window : Starts a new game, generates the window
 Wizard Royale : Represents an instance of a single match, determining victory and dictating rules
 Instruction Panel: Panel that holds the instructions to the game
 Main Menu panel: Initial window with access to instruction and game panels through buttons
 Handler:  handles all changes made to all game objects while users are playing the game.
 Key Input: Dictates the key inputs
 Mouse Input: Dictates the mouse inputs
+ID : holds the IDs for all the objects in our game
+Camera : moves the map and its elements with the player so that the game is centered on the player
+BufferedImageLoader : creates a bufferedimage out of a image file
 
 Responsibilities: 
 Roee: Player, Obstacle, Game classes 
@@ -69,13 +69,13 @@ Everyone Collaborates on Multiplayer functionality and drawing surface class
 
 Credits:
 Sky: 
-Consumable class, Projectile Class, Wizard Graphics and animations implementation, Player class, Wizard Royale class, and Main Menu Panel Class
+Consumable class, Projectile Class, Wizard Graphics and animations implementation, Player class, Wizard Royale class, and Main Menu Panel Class, networking
 
 Leo: 
-Game Object class, Player class, Handler Class, Id enum, Instructions panel class, Key and mouse input classes, Main menu Panel class, window class, and Wizard Royale class.
+Game Object class, Player class, Handler Class, Id enum, Instructions panel class, Key and mouse input classes, Main menu Panel class, window class, camera class, Tile class, and Wizard Royale class, networking.
 
 Roee:
- Game Object class, Player class, Wizard royale class, Wizard graphics, and Handler class.
+ Game Object class, Player class, Wizard royale class, Wizard graphics, consumable class, handler class
 
 Graphics:
 
@@ -87,3 +87,9 @@ https://steamtradingcards.fandom.com/wiki/Category:Braveland_Wizard
 
 Background for menu or other screen? Its free...
 https://www.shutterstock.com/image-illustration/fight-scene-man-magic-wizard-staff-1282908322?src=eiJZx-2xxqY3WFt-RClTrw-1-32
+
+Walls and floor :
+https://opengameart.org/content/dungeon-tileset
+
+Fireball : Crawltiles tileset
+https://opengameart.org/content/dungeon-crawl-32x32-tiles

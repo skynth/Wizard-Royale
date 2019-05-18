@@ -316,6 +316,12 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				Player player = new Player(50, 50, ID.Player, host, handler,ID.RegularProjectile);
 				handler.addObject(player);
 			}
+			 
+				if(ndo.message[0].equals(messageTypeShoot)) {
+					System.out.print("nice");
+					Projectile projectile = (Projectile)ndo.message[1];
+					handler.addObject(projectile);
+				}
 			
 			if (ndo.message[0].equals(messageTypeMove)) {
 				for (int i = 0; i < handler.getPlayers().size(); i++) {
@@ -331,12 +337,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 					}
 				}
-			}
-			
-			if(ndo.message[0].equals(messageTypeShoot)) {
-				System.out.print("nice");
-				Projectile projectile = (Projectile)ndo.message[1];
-				handler.addObject(projectile);
 			}
 			
 			Player myPlayer = null;

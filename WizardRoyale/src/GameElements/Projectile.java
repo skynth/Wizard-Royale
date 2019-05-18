@@ -74,7 +74,9 @@ public class Projectile extends GameObject implements Serializable{
 	 */
 
 	public void render(Graphics g) {
-		g.drawImage(fireball, x, y, null);
+		//g.drawImage(fireball, x, y, null);
+		g.setColor(Color.red);
+		g.fillOval(x, y, 100, 100);
 	}
 	
 	/**

@@ -324,16 +324,11 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				for (int i = 0; i < handler.getPlayers().size(); i++) {
 					
 					if (handler.getPlayers().get(i).getIp().equals(host)) {
-<<<<<<< HEAD
-						System.out.print("success");
-						handler.getPlayers().get(i).setVelX((float)ndo.message[1]);
-						handler.getPlayers().get(i).setVelY((float)ndo.message[2]);
-=======
+
 						System.out.print("success");
 						handler.getPlayers().get(i).setVelX((float)ndo.message[1]);
 						handler.getPlayers().get(i).setVelY((float)ndo.message[2]);
 
->>>>>>> branch 'master' of https://github.com/Leofeng1/APCS-Final.git
 					}
 				}
 			}

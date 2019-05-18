@@ -97,19 +97,20 @@ public class Projectile extends GameObject implements Serializable{
 			x -= Math.cos(angle) * 15;
 			y -= Math.sin(angle) * 15;
 		}
-		
-		for (int i = 0; i < handler.getGameObjects().size(); i++) {
-			
-			if (handler.getGameObjects().get(i).getID() == ID.Wall) {
+		if(handler.getGameObjects().size() > 0) {
+			for (int i = 0; i < handler.getGameObjects().size(); i++) {
 				
-				if (this.getBounds().intersects(handler.getGameObjects().get(i).getBounds())) {
-					if(subID == ID.LargeFireProjectile )
-					{
-						handler.getGameObjects().remove(i);
+				if (handler.getGameObjects().get(i).getID() == ID.Wall) {
+					
+					if (this.getBounds().intersects(handler.getGameObjects().get(i).getBounds())) {
+						if(subID == ID.LargeFireProjectile )
+						{
+							handler.getGameObjects().remove(i);
+						}
+						handler.getGameObjects().remove(this);
 					}
-					handler.getGameObjects().remove(this);
+					
 				}
-				
 			}
 			
 		}

@@ -61,7 +61,7 @@ public class Player extends GameObject implements Serializable{
 			}
 		}
 		health = 100;
-		isRight = true;
+		isAnimationRight = true;
 		step = 0;
 		shootStep = 0;
 		this.ip = ip;

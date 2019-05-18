@@ -133,7 +133,7 @@ public class Player extends GameObject implements Serializable{
 		isShoot = s;
 	}
 	public boolean getIsRight() {
-		return isRight;
+		return isAnimationRight;
 	}
 	
 	/**

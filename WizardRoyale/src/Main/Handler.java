@@ -27,8 +27,6 @@ public class Handler implements Serializable{
 
 	private transient ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 	
-	private boolean isUp = false, isDown, isLeft, isRight;
-	
 	/**
 	 * Shifts through every GameObject currently in the game, and calls the tick method of every object in order to constantly update their status
 	 * in case any changes have been made to them

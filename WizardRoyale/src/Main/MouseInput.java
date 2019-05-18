@@ -92,7 +92,7 @@ public class MouseInput extends MouseAdapter {
 			if (player.getIsRight()) {
 				
 				if (mouseX < player.getX()) {
-					player.setRight(false);
+					player.setAnimationRight(false);
 				}
 				
 				p = new Projectile(player.getX() + (int)(WizardRoyale.WIDTH / 21), player.getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler,player.getProjectileType());
@@ -101,7 +101,7 @@ public class MouseInput extends MouseAdapter {
 			else {
 				
 				if (mouseX > player.getX()) {
-					player.setRight(true);
+					player.setAnimationRight(true);
 				}
 				
 				p = new Projectile(player.getX() - (int)(WizardRoyale.WIDTH / 60), player.getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler,player.getProjectileType());

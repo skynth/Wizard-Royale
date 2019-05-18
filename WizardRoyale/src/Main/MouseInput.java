@@ -113,11 +113,14 @@ public class MouseInput extends MouseAdapter {
 		}
 		}
 	
-	public static boolean isProjectileMade() {
+	public static boolean getIsProjectileMade() {
 		
 		return isProjectileMade;
 	}
+	public static void setIsProjectileMade(boolean b) {
 		
+		isProjectileMade = b;
+	}
 	
 
 	public void mouseReleased(MouseEvent e) {

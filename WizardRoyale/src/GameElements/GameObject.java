@@ -2,6 +2,7 @@ package GameElements;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.io.Serializable;
 
 import Main.ID;
 
@@ -12,8 +13,13 @@ import Main.ID;
  * @version 5/7/19
  */
 
-public abstract class GameObject {
+public abstract class GameObject implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * field that represents the X coordinate of an object in the game 
 	 */

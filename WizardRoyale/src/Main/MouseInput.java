@@ -95,15 +95,11 @@ public class MouseInput extends MouseAdapter {
 					player.setAnimationRight(false);
 				}
 				
-<<<<<<< HEAD
 				p = new Projectile(player.getX() + (int)(WizardRoyale.WIDTH / 21), player.getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler, player.getProjectileType(), player.getIp());
 				isProjectileMade = true;
 				player.setIsShoot(true);
 				handler.addObject(p);
-=======
-				p = new Projectile(player.getX() + (int)(WizardRoyale.WIDTH / 21), player.getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler,player.getProjectileType());
 
->>>>>>> branch 'master' of https://github.com/Leofeng1/APCS-Final.git
 			}
 			else {
 				
@@ -111,23 +107,15 @@ public class MouseInput extends MouseAdapter {
 					player.setAnimationRight(true);
 				}
 				
-<<<<<<< HEAD
 				p = new Projectile(player.getX() - (int)(WizardRoyale.WIDTH / 60), player.getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler,player.getProjectileType(), player.getIp());
 				isProjectileMade = true;
 				player.setIsShoot(true);
 				handler.addObject(p);
 			}
-=======
-				p = new Projectile(player.getX() - (int)(WizardRoyale.WIDTH / 60), player.getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler,player.getProjectileType());
->>>>>>> branch 'master' of https://github.com/Leofeng1/APCS-Final.git
 
-			}
-			isProjectileMade = true;
-			player.setIsShoot(true);
-			handler.addObject(p);
+		}
 		
-		}
-		}
+	}
 	
 	public static boolean getIsProjectileMade() {
 		

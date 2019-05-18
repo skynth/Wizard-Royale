@@ -28,6 +28,7 @@ public class Projectile extends GameObject implements Serializable{
 	private boolean isOutOfRange;
 	private boolean isRight;
 	private boolean isUp;
+	private String host;
 	
 	private transient Image fireball = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "fireball.png");
 	/**
@@ -41,10 +42,11 @@ public class Projectile extends GameObject implements Serializable{
 	 * @param mouseY the y coordinate of the mouse when the projectile is made/shot
 	 * @param h the handler passed in
 	 */
-	public Projectile(int x, int y, ID id, int mouseX, int mouseY, Handler h, ID subID) {
+	public Projectile(int x, int y, ID id, int mouseX, int mouseY, Handler h, ID subID, String host) {
 		super(x, y, id);
 		handler = h;
 		this.subID = subID;
+		this.host = host;
 		
 		angle = Math.atan((double)(mouseY - y) / (mouseX - x)); //Not sure if this works yet
 		handler = h;
@@ -122,6 +124,10 @@ public class Projectile extends GameObject implements Serializable{
 
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, (int)(WizardRoyale.WIDTH / 90), (int)(WizardRoyale.HEIGHT / 56.25));
+	}
+	
+	public String getHost() {
+		return host;
 	}
 
 	

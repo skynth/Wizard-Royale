@@ -182,7 +182,9 @@ public class Player extends GameObject implements Serializable{
 					}
 				}
 				else if(objects.get(i).getID() == ID.Projectile) {
-					if (getBounds().intersects(objects.get(i).getBounds())) {
+					Projectile p = (Projectile) objects.get(i);
+					
+					if (getBounds().intersects(objects.get(i).getBounds()) && !(p.getHost().equals(this.ip))) {
 				
 						health -= 10;
 						objects.remove(objects.get(i));

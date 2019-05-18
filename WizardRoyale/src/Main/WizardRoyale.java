@@ -354,11 +354,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				handler.addObject(projectile);
 			}
 
-
-			/*if(MouseInput.getIsProjectileMade() == true)
-				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeShoot,handler.getProjectiles().get(handler.getProjectiles().size() - 1));
-				MouseInput.setIsProjectileMade(false);
-				System.out.println("Sent Projectile");*/
 			}
 			
 		}

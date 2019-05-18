@@ -83,21 +83,21 @@ public class Projectile extends GameObject implements Serializable{
 
 	public void tick() {
 		if(isRight && isUp) {
-			x += Math.cos(angle) * 15;
-			y += Math.sin(angle) * 15;
+			x += Math.cos(angle) * 1;
+			y += Math.sin(angle) * 1;
 
 		}
 		else if(isRight && !isUp){
-			x += Math.cos(angle) * 15;
-			y += Math.sin(angle) * 15;
+			x += Math.cos(angle) * 1;
+			y += Math.sin(angle) * 1;
 		}
 		else if(isUp && !isRight) {
-			x -= Math.cos(angle) * 15;
-			y -= Math.sin(angle) * 15;
+			x -= Math.cos(angle) * 1;
+			y -= Math.sin(angle) * 1;
 		}
 		else if(!isUp && !isRight){
-			x -= Math.cos(angle) * 15;
-			y -= Math.sin(angle) * 15;
+			x -= Math.cos(angle) * 1;
+			y -= Math.sin(angle) * 1;
 		}
 		if(handler.getGameObjects() != null) {
 			for (int i = 0; i < handler.getGameObjects().size(); i++) {

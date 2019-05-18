@@ -75,8 +75,9 @@ public class Projectile extends GameObject implements Serializable{
 
 	public void render(Graphics g) {
 		//g.drawImage(fireball, x, y, null);
-		g.setColor(Color.red);
-		g.fillOval(x, y, 10, 10);
+
+		g.setColor(Color.pink);
+		g.fillOval(x, y, (int)(WizardRoyale.WIDTH / 90), (int)(WizardRoyale.HEIGHT / 56.25));
 	}
 	
 	/**
@@ -85,21 +86,28 @@ public class Projectile extends GameObject implements Serializable{
 
 	public void tick() {
 		if(isRight && isUp) {
+
 			x += Math.cos(angle) * 10;
 			y += Math.sin(angle) * 10;
 
 		}
 		else if(isRight && !isUp){
+
 			x += Math.cos(angle) * 10;
 			y += Math.sin(angle) * 10;
+
 		}
 		else if(isUp && !isRight) {
+
 			x -= Math.cos(angle) * 10;
 			y -= Math.sin(angle) * 10;
+
 		}
 		else if(!isUp && !isRight){
+
 			x -= Math.cos(angle) * 10;
 			y -= Math.sin(angle) * 10;
+
 		}
 		if(handler.getGameObjects() != null) {
 			for (int i = 0; i < handler.getGameObjects().size(); i++) {

@@ -28,7 +28,7 @@ Map that supports intuitive combat between players (includes obstacles)
 Want-To-Have features : 
 Players can pick up items around the map that increase their ability to defeat other players
 Players have a health bar that decreases as their health goes down
-Assigns a different color to each wizard in the game as well as displays each user’s username
+Assigns a different color to each wizard in the game as well as displays each userï¿½s username
 Each spell or item is creative and unique, it serves a different purpose in the game
 User interface that shows each item that they possess, and how many other players there are left
  A list of remaining players in game graphically displayed
@@ -69,13 +69,13 @@ Everyone Collaborates on Multiplayer functionality and drawing surface class
 
 Credits:
 Sky: 
-Consumable class, Projectile Class, Wizard Graphics and animations implementation, Player class, Wizard Royale class, and Main Menu Panel Class, networking
+Consumable class, Projectile Class, Wizard Graphics and animations implementation, Player class, handler class, Wizard Royale class, and Main Menu Panel Class, networking
 
 Leo: 
 Game Object class, Player class, Handler Class, Id enum, Instructions panel class, Key and mouse input classes, Main menu Panel class, window class, camera class, Tile class, and Wizard Royale class, networking.
 
 Roee:
- Game Object class, Player class, Wizard royale class, Wizard graphics, consumable class, handler class
+ Game Object class, Player class, Wizard royale class, Wizard graphics, consumable class, handler class, projectile class
 
 Graphics:
 

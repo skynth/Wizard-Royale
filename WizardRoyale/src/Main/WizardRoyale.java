@@ -349,6 +349,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 			
 			if(ndo.message[0].equals(messageTypeShoot)) {
+				System.out.print("nice");
 				Projectile projectile = (Projectile)ndo.message[1];
 				handler.addObject(projectile);
 			}

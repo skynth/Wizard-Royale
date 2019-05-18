@@ -15,15 +15,12 @@ import networking.frontend.NetworkDataObject;
  * the GameObjects to make sure they are constantly updated
  * 
  * @author Leofeng, Roee
- * @version 5/7/19
+ * @version 5/17/19
  * 
  */
 
 public class Handler implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private transient ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
@@ -69,6 +66,11 @@ public class Handler implements Serializable{
 		return gameObjects;
 	}
 	
+	/**
+	 * returns an arraylist of all the players currently in the game
+	 * @return an arraylist of all the players currently in the game
+	 */
+	
 	public ArrayList<Player> getPlayers() {
 		
 		ArrayList<Player> players = new ArrayList<Player>();
@@ -84,6 +86,12 @@ public class Handler implements Serializable{
 		return players;
 		
 	}
+	
+	/**
+	 * returns an arraylist of all the projectiles currently in the game
+	 * @return an arraylist of all the projectiles currently in the game
+	 */
+	
 	public ArrayList<Projectile> getProjectiles() {
 		
 		ArrayList<Projectile> projectiles = new ArrayList<Projectile>();

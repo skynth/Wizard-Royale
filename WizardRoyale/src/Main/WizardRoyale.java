@@ -23,7 +23,7 @@ import networking.frontend.NetworkMessenger;
  * the instructions, game, and main menu
  * 
  * @author Leofeng, skyfreestylez
- * @version 5/9/19
+ * @version 5/17/19
  * 
  */
 public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
@@ -225,6 +225,12 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		bs.show(); //makes the buffer we just drew the current buffer for the JFrame, and displays everything we drew
 	}
 	
+	/**
+	 * loads the map for our game
+	 * 
+	 * @param image the image of the map of the game
+	 */
+	
 	private void loadLevel(BufferedImage image) {
 		int w = image.getWidth();
 		int h = image.getHeight();
@@ -271,10 +277,13 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	}
 
 	public void networkMessageReceived(NetworkDataObject ndo) {
-
-		
 		
 	}
+	
+	/**
+	 * Method that is repeatedly called in tick, and takes in messages from the network messenger, then uses those messages to update 
+	 * the game on other users' games.
+	 */
 	
 	public void processNetworkMessages() {
 		

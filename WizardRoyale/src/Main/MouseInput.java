@@ -16,7 +16,7 @@ import networking.frontend.NetworkMessenger;
 /**
  * A class that handles input from the user's mouse to the game
  * @author Leofeng 
- * @version 5/10/19
+ * @version 5/17/19
  *
  */
 
@@ -25,18 +25,18 @@ public class MouseInput extends MouseAdapter {
 	private Handler handler; 
 	private Camera camera;
 	NetworkMessenger nm;
-	private static boolean isProjectileMade = false;
 
 	/**
 	 * Creates a new instance of MouseInput
 	 * @param h the WizardRoyale's class' instance of the handler class, which handles all the events that occur in the game
+	 * @param cam the game's camera that will be focused on the player
+	 * @param nm the network messenger of the game
 	 */
 	
 	public MouseInput(Handler h, Camera cam, NetworkMessenger nm) {
 		handler = h; 
 		camera = cam;
 		this.nm = nm;
-		isProjectileMade = false;
 	}
 	
 	public void mouseClicked(MouseEvent e) {
@@ -100,7 +100,6 @@ public class MouseInput extends MouseAdapter {
 				}
 				
 				p = new Projectile(player.getX() + (int)(WizardRoyale.WIDTH / 21), player.getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler, player.getProjectileType(), player.getIp());
-				//isProjectileMade = true;
 				player.setIsShoot(true);
 				handler.addObject(p);
 				nm.sendMessage(NetworkDataObject.MESSAGE, "MOUSE_SHOOT", p);
@@ -114,7 +113,6 @@ public class MouseInput extends MouseAdapter {
 				}
 				
 				p = new Projectile(player.getX() - (int)(WizardRoyale.WIDTH / 60), player.getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler,player.getProjectileType(), player.getIp());
-				isProjectileMade = true;
 				player.setIsShoot(true);
 				handler.addObject(p);
 				nm.sendMessage(NetworkDataObject.MESSAGE, "MOUSE_SHOOT", p);
@@ -124,19 +122,6 @@ public class MouseInput extends MouseAdapter {
 		
 	}
 	
-	public static boolean getIsProjectileMade() {
-		
-		return isProjectileMade;
-	}
-	public static void setIsProjectileMade(boolean b) {
-		
-		isProjectileMade = b;
-	}
-	
-
-	public void mouseReleased(MouseEvent e) {
-		isProjectileMade = false;
-	}
 
 }
 

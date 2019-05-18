@@ -10,7 +10,7 @@ import networking.frontend.NetworkManagementPanel;
 /**
  * The JFrame of our game, stores the canvas in the game class that contains and controls the graphics for our game
  * @author Leofeng 
- * @version 5/6/19
+ * @version 5/15/19
  */
 
 public class Window {

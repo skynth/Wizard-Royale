@@ -2,6 +2,13 @@ package Main;
 
 import GameElements.GameObject;
 
+/**
+ * Camera that moves to center the player when the player moves
+ * 
+ * @author Leofeng
+ * @version 5/17/19
+ */
+
 public class Camera {
 	
 	private float x;
@@ -9,41 +16,25 @@ public class Camera {
 	
 	private Handler handler;
 	
+	/**
+	 * Creates a new camera with a set xy coordinate 
+	 * 
+	 * @param x x coordinate of the camera
+	 * @param y y coordinate of the camera
+	 * @param h the handler of the game
+	 */
+	
 	public Camera(float x, float y, Handler h) {
 		handler = h;
 		this.x = x;
 		this.y = y;
 	}
 	
-	/*public void tick(GameObject object) {
-				
-		if (handler.isMoving()) {
-		
-			if (handler.isDown()) {
-				x += ((object.getX() - x) - (int)(WizardRoyale.WIDTH / 0.847) / (int)(WizardRoyale.WIDTH / 720)) * (WizardRoyale.WIDTH / 28800f);
-				y += ((object.getY() - y) - (int)(WizardRoyale.HEIGHT / 1.5) / (int)(int)(WizardRoyale.HEIGHT / 450)) * (WizardRoyale.HEIGHT / 18000f);
-			}
-		
-			if (handler.isUp()) {
-				x += ((object.getX() - x) - (int)(WizardRoyale.WIDTH / 0.847) / (int)(WizardRoyale.WIDTH / 720)) * (WizardRoyale.WIDTH / 28800f);
-				y += ((object.getY() - y) - (int)(WizardRoyale.HEIGHT / 0.9) / (int)(int)(WizardRoyale.HEIGHT / 450)) * (WizardRoyale.HEIGHT / 18000f);
-			}
-		
-			if (handler.isLeft()) {
-				x += ((object.getX() - x) - (int)(WizardRoyale.WIDTH / 0.738) / (int)(WizardRoyale.WIDTH / 720)) * (WizardRoyale.WIDTH / 28800f);
-				y += ((object.getY() - y) - (int)(WizardRoyale.HEIGHT / 1.125) / (int)(WizardRoyale.HEIGHT / 450)) * (WizardRoyale.HEIGHT / 18000f);
-			}
-		
-			if (handler.isRight()) {
-				x += ((object.getX() - x) - (int)(WizardRoyale.WIDTH / 0.929) / (int)(WizardRoyale.WIDTH / 720)) * (WizardRoyale.WIDTH / 28800f);
-				y += ((object.getY() - y) - (int)(WizardRoyale.HEIGHT / 1.125) / (int)(WizardRoyale.HEIGHT / 450)) * (WizardRoyale.HEIGHT / 18000f);
-			}
-			
-		} else {
-			x += ((object.getX() - x) - (int)(WizardRoyale.WIDTH / 0.847) / (int)(WizardRoyale.WIDTH / 720)) * (WizardRoyale.WIDTH / 28800f);
-			y += ((object.getY() - y) - (int)(WizardRoyale.HEIGHT / 1.125) / (int)(WizardRoyale.HEIGHT / 450)) * (WizardRoyale.HEIGHT / 18000f);
-		}
-	}*/
+	/**
+	 * moves the view of the camera so that it centers on an object
+	 * 
+	 * @param object the object the camera will be centering on 
+	 */
 	
 	public void tick(GameObject object) {
 		this.x += ((object.getX() - this.x) - WizardRoyale.WIDTH / 2) * 0.05f;
@@ -64,9 +55,17 @@ public class Camera {
 
 	}
 	
+	/**
+	 * @return x the x coordinate of the camera
+	 */
+	
 	public float getX() {
 		return x;
 	}
+	
+	/**
+	 * @return y the y coordinate of the camera
+	 */
 	
 	public float getY() {
 		return y;

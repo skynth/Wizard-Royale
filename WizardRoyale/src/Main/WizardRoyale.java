@@ -322,11 +322,14 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			
 			if (ndo.message[0].equals(messageTypeMove)) {
 				for (int i = 0; i < handler.getPlayers().size(); i++) {
-					
+
 					if (handler.getPlayers().get(i).getIp().equals(host)) {
+
 						System.out.print("success");
-						handler.getPlayers().get(i).setVelX((float)ndo.message[1]);
-						handler.getPlayers().get(i).setVelY((float)ndo.message[2]);
+						handler.getPlayers().get(i).setRight((boolean)ndo.message[1]);
+						handler.getPlayers().get(i).setLeft((boolean)ndo.message[2]);
+						handler.getPlayers().get(i).setUp((boolean)ndo.message[3]);
+						handler.getPlayers().get(i).setDown((boolean)ndo.message[4]);
 
 
 					}
@@ -343,7 +346,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 			
 			if(myPlayer != null) {
-				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, myPlayer.getVelX(), myPlayer.getVelY());
+				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, myPlayer.isRight(), myPlayer.isLeft(), myPlayer.isUp(), myPlayer.isDown());
 				System.out.println("sent Move");
 
 			}

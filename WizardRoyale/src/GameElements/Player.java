@@ -274,14 +274,14 @@ public class Player extends GameObject implements Serializable{
 		}
 		if (this.isLeft()) {
 			this.velX = -speed;
-			isRight = false;
+			this.isAnimationRight = false;
 		} else if (!this.isRight()) {
 			this.velX = 0;
 			
 		}
 		if (this.isRight()) {
 			this.velX = speed;
-			isRight = true;
+			this.isAnimationRight = true;
 		} else if (!this.isLeft()) {
 			this.velX = 0;
 		}

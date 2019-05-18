@@ -53,7 +53,7 @@ public class KeyInput implements KeyListener {
 				
 		if (key == KeyEvent.VK_A) {
 			player.setLeft(true);
-			player.setAnimationRight(false);
+			player.setRight(false);
 		}
 				
 		if (key == KeyEvent.VK_S) {
@@ -62,7 +62,6 @@ public class KeyInput implements KeyListener {
 				
 		if (key == KeyEvent.VK_D) {
 			player.setRight(true);
-			player.setAnimationRight(true);
 		}
 	}
 		

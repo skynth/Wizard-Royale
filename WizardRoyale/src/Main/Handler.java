@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import GameElements.GameObject;
 import GameElements.Player;
 import GameElements.Projectile;
+import networking.frontend.NetworkDataObject;
 
 
 /**
@@ -96,7 +97,7 @@ public class Handler implements Serializable{
 		}
 		
 		return projectiles;
-		
+
 	}
 	
 	/**

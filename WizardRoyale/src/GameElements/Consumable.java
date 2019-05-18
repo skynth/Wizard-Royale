@@ -74,6 +74,13 @@ public class Consumable extends GameObject implements Serializable{
 		}
 	}
 	
+	/**
+	 * Returns the boundaries of the consumable, represented by a Rectangle
+	 * 
+	 * @return A rectangle representing the boundaries of the consumable
+	 * 
+	 */
+	
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, (int)(WizardRoyale.WIDTH / 9.6), (int)(WizardRoyale.HEIGHT / 30));
 	}

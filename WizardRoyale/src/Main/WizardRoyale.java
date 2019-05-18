@@ -30,11 +30,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private static final String messageTypeInit = "CREATE_CURSOR";
 	private static final String messageTypeMove = "MOUSE_MOVE";
 	private static final String messageTypeShoot = "MOUSE_SHOOT";
-	private static final String messageTypePress = "MOUSE_PRESS";
-	private static final String messageTypeColor = "COLOR_SWITCH";
 	
 	public static String myIP;
 	
@@ -299,7 +296,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					}
 				
 			}
-				Player player = new Player(100, 100, ID.Player, host, handler,ID.RegularProjectile);
+				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile);
 				handler.addObject(player);
 				
 			}

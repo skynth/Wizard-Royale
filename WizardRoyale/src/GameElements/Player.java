@@ -138,7 +138,7 @@ public class Player extends GameObject implements Serializable{
 	
 	/**
 	 * Checks and performs actions based on collisions.
-	 * @param objects
+	 * @param objects the arraylist of all game objects in the game
 	 */
 	public void collide(ArrayList<GameObject> objects)
 	{

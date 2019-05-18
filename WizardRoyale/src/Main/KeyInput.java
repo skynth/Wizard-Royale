@@ -3,6 +3,9 @@ package Main;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+
+import GameElements.Player;
 
 /**
  * A class that handles input from the user's keyboard to the game
@@ -13,7 +16,7 @@ import java.awt.event.KeyListener;
 public class KeyInput implements KeyListener {
 	
 	Handler handler;
-	
+	Player player;
 	
 	/**
 	 * Creates a new instance of KeyInput
@@ -22,6 +25,7 @@ public class KeyInput implements KeyListener {
 	
 	public KeyInput(Handler h) {
 		handler = h;
+		
 	}
 	
 	/**
@@ -32,22 +36,31 @@ public class KeyInput implements KeyListener {
 
 	public void keyPressed(KeyEvent e) {
 		
+		ArrayList<Player> players = handler.getPlayers();
+		
+		for (int i = 0; i < players.size(); i++) {
+			if (players.get(i).getIp().equals(WizardRoyale.myIP)) {
+				player = players.get(i);
+			}
+			
+		}
+		
 		int key = e.getKeyCode();
 				
 		if (key == KeyEvent.VK_W) {
-			handler.setUp(true);
+			player.setUp(true);
 		}
 				
 		if (key == KeyEvent.VK_A) {
-			handler.setLeft(true);
+			player.setLeft(true);
 		}
 				
 		if (key == KeyEvent.VK_S) {
-			handler.setDown(true);
+			player.setDown(true);
 		}
 				
 		if (key == KeyEvent.VK_D) {
-			handler.setRight(true);
+			player.setRight(true);
 		}
 	}
 		
@@ -60,22 +73,32 @@ public class KeyInput implements KeyListener {
 	 */
 
 	public void keyReleased(KeyEvent e) {
+		
+		ArrayList<Player> players = handler.getPlayers();
+		
+		for (int i = 0; i < players.size(); i++) {
+			if (players.get(i).getIp().equals(WizardRoyale.myIP)) {
+				player = players.get(i);
+			}
+			
+		}
+		
 		int key = e.getKeyCode();
 				
 		if (key == KeyEvent.VK_W) {
-			handler.setUp(false);
+			player.setUp(false);
 		}
 				
 		if (key == KeyEvent.VK_A) {
-			handler.setLeft(false);
+			player.setLeft(false);
 		}
 				
 		if (key == KeyEvent.VK_S) {
-			handler.setDown(false);
+			player.setDown(false);
 		}
 				
 		if (key == KeyEvent.VK_D) {
-			handler.setRight(false);
+			player.setRight(false);
 		}
 	}
 		

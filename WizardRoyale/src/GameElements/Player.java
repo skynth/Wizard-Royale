@@ -27,6 +27,7 @@ public class Player extends GameObject implements Serializable{
 	 */
 	private static final long serialVersionUID = 5L;
 	private Handler handler;
+	private boolean isUp = false, isDown, isLeft, isRight;
 	private transient Image spriteRight[] = new Image[24];
 	private transient Image spriteLeft[] = new Image[24];
 	private transient Image spriteShoot[] = new Image[15];
@@ -34,7 +35,7 @@ public class Player extends GameObject implements Serializable{
 	private double step, shootStep;
 	private int health;
 	private int speed = 8;
-	private boolean isRight;
+	private boolean isAnimationRight;
 	private boolean isShoot;
 	private ID projectileType;
 	private String ip;
@@ -100,16 +101,16 @@ public class Player extends GameObject implements Serializable{
 	public void render(Graphics g) {
 
 		if(isShoot) {
-			if(isRight)
+			if(isAnimationRight)
 				g.drawImage(spriteShoot[(int)shootStep], x - (int) (WizardRoyale.WIDTH / 48), y, (int)(WizardRoyale.WIDTH / 12), (int)(WizardRoyale.HEIGHT / 15), null);
-			else if(!isRight)
+			else if(!isAnimationRight)
 				g.drawImage(spriteShootLeft[(int)shootStep], x - (int) (WizardRoyale.WIDTH / 48), y, (int)(WizardRoyale.WIDTH / 12), (int)(WizardRoyale.HEIGHT / 15), null);
 
 			shootStep += 1;
 		}
-		else if(isRight)
+		else if(isAnimationRight)
 			g.drawImage(spriteRight[(int)step], x, y, (int)(WizardRoyale.WIDTH / 24), (int)(WizardRoyale.HEIGHT / 15), null);
-		else if(!isRight)
+		else if(!isAnimationRight)
 			g.drawImage(spriteLeft[(int)step], x, y, (int)(WizardRoyale.WIDTH / 24), (int)(WizardRoyale.HEIGHT / 15), null);
 
 		step += 0.;
@@ -125,9 +126,6 @@ public class Player extends GameObject implements Serializable{
 
 	}
 	
-	public void setUp(boolean check) {
-		
-	}
 	public boolean getIsShoot() {
 		return isShoot;
 	}
@@ -264,36 +262,119 @@ public class Player extends GameObject implements Serializable{
 
 	
 	private void movement() {
-		if (handler.isUp()) {
+		if (this.isUp()) {
 			this.velY = -speed;
-		} else if (!handler.isDown()) {
+		} else if (!this.isDown()) {
 			this.velY = 0;
 		}
-		if (handler.isDown()) {
+		if (this.isDown()) {
 			this.velY = speed;
-		} else if (!handler.isUp()) {
+		} else if (!this.isUp()) {
 			this.velY = 0;
 		}
-		if (handler.isLeft()) {
+		if (this.isLeft()) {
 			this.velX = -speed;
 			isRight = false;
-		} else if (!handler.isRight()) {
+		} else if (!this.isRight()) {
 			this.velX = 0;
 			
 		}
-		if (handler.isRight()) {
+		if (this.isRight()) {
 			this.velX = speed;
 			isRight = true;
-		} else if (!handler.isLeft()) {
+		} else if (!this.isLeft()) {
 			this.velX = 0;
 		}
 	}
+	
+
 	public int getHealth() {
 		return health;
 	}
 	
+	/**
+	 * Sets the isUp variable to check
+	 * @param check the boolean variable representing whether the player has been moved up
+	 * @post : the isUp variable has been set to check
+	 */
+	
+	public void setUp(boolean check) {
+		isUp = check;
+	}
+	
+	/**
+	 * Sets the isDown variable to check
+	 * @param check the boolean variable representing whether the player has been moved down
+	 * @post : the isDown variable has been set to check
+	 */
+	
+	public void setDown(boolean check) {
+		isDown = check;
+	}
+	
+	/**
+	 * Sets the isLeft variable to check
+	 * @param check the boolean variable representing whether the player has been moved left
+	 * @post : the isLeft variable has been set to check
+	 */
+	
+	public void setLeft(boolean check) {
+		isLeft = check;
+	}
+	
+	/**
+	 * Sets the isRight variable to check
+	 * @param check the boolean variable representing whether the player has been moved right
+	 * @post : the isRight variable has been set to check
+	 */
+	
 	public void setRight(boolean check) {
 		isRight = check;
+	}
+	
+	/**
+	 * returns the isUp variable, which represents whether the 'W' key is currently being pressed
+	 * @return a boolean variable representing whether the 'W' key is currently being pressed
+	 */
+
+	public boolean isUp() {
+		return isUp;
+	}
+	
+	/**
+	 * returns the isDown variable, which represents whether the 'S' key is currently being pressed
+	 * @return a boolean variable representing whether the 'S' key is currently being pressed
+	 */
+
+	public boolean isDown() {
+		return isDown;
+	}
+	
+	/**
+	 * returns the isLeft variable, which represents whether the 'A' key is currently being pressed
+	 * @return a boolean variable representing whether the 'A' key is currently being pressed
+	 */
+
+	public boolean isLeft() {
+		return isLeft;
+	}
+	
+	/**
+	 * returns the isRight variable, which represents whether the 'D' key is currently being pressed
+	 * @return a boolean variable representing whether the 'D' key is currently being pressed
+	 */
+
+	public boolean isRight() {
+		return isRight;
+	}
+	
+	public boolean isMoving() {
+		return isRight || isLeft || isUp || isDown;
+				
+	}
+	
+	public void setAnimationRight(boolean check) {
+		isAnimationRight = check;
 	}
 	
 	public String getIp() {

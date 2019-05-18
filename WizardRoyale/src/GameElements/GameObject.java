@@ -94,6 +94,22 @@ public abstract class GameObject {
 		return x;
 	}
 	
+	public float getVelY() {
+		return velY;
+	}
+	
+	public float getVelX() {
+		return velX;
+	}
+	
+	public void setVelX(float velx) {
+		velX = velx;
+	}
+	
+	public void setVelY(float vely) {
+		velY = vely;
+	}
+	
 	
 	public void setX(int x) {
 		this.x = x;

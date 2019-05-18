@@ -96,9 +96,7 @@ public class MouseInput extends MouseAdapter {
 				}
 				
 				p = new Projectile(player.getX() + (int)(WizardRoyale.WIDTH / 21), player.getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler,player.getProjectileType());
-				isProjectileMade = true;
-				player.setIsShoot(true);
-				handler.addObject(p);
+
 			}
 			else {
 				
@@ -107,11 +105,11 @@ public class MouseInput extends MouseAdapter {
 				}
 				
 				p = new Projectile(player.getX() - (int)(WizardRoyale.WIDTH / 60), player.getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler,player.getProjectileType());
-				isProjectileMade = true;
-				player.setIsShoot(true);
-				handler.addObject(p);
-			}
 
+			}
+			isProjectileMade = true;
+			player.setIsShoot(true);
+			handler.addObject(p);
 		
 		}
 		}
@@ -127,7 +125,7 @@ public class MouseInput extends MouseAdapter {
 	
 
 	public void mouseReleased(MouseEvent e) {
-		
+		isProjectileMade = false;
 	}
 
 }

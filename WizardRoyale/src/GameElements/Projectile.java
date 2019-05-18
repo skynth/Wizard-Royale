@@ -97,7 +97,7 @@ public class Projectile extends GameObject implements Serializable{
 			x -= Math.cos(angle) * 15;
 			y -= Math.sin(angle) * 15;
 		}
-		if(handler.getGameObjects().size() > 0) {
+		if(handler != null) {
 			for (int i = 0; i < handler.getGameObjects().size(); i++) {
 				
 				if (handler.getGameObjects().get(i).getID() == ID.Wall) {

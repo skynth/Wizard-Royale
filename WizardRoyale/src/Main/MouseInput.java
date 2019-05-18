@@ -9,7 +9,9 @@ import GameElements.GameObject;
 import GameElements.Player;
 import GameElements.Projectile;
 import Main.WizardRoyale.STATE;
+import networking.frontend.NetworkDataObject;
 import networking.frontend.NetworkManagementPanel;
+import networking.frontend.NetworkMessenger;
 
 /**
  * A class that handles input from the user's mouse to the game
@@ -22,6 +24,7 @@ public class MouseInput extends MouseAdapter {
 	
 	private Handler handler; 
 	private Camera camera;
+	NetworkMessenger nm;
 	private static boolean isProjectileMade = false;
 
 	/**
@@ -29,9 +32,10 @@ public class MouseInput extends MouseAdapter {
 	 * @param h the WizardRoyale's class' instance of the handler class, which handles all the events that occur in the game
 	 */
 	
-	public MouseInput(Handler h, Camera cam) {
+	public MouseInput(Handler h, Camera cam, NetworkMessenger nm) {
 		handler = h; 
 		camera = cam;
+		this.nm = nm;
 		isProjectileMade = false;
 	}
 	
@@ -96,9 +100,11 @@ public class MouseInput extends MouseAdapter {
 				}
 				
 				p = new Projectile(player.getX() + (int)(WizardRoyale.WIDTH / 21), player.getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler, player.getProjectileType(), player.getIp());
-				isProjectileMade = true;
+				//isProjectileMade = true;
 				player.setIsShoot(true);
 				handler.addObject(p);
+				nm.sendMessage(NetworkDataObject.MESSAGE, "MOUSE_SHOOT", p);
+				
 
 			}
 			else {
@@ -111,6 +117,7 @@ public class MouseInput extends MouseAdapter {
 				isProjectileMade = true;
 				player.setIsShoot(true);
 				handler.addObject(p);
+				nm.sendMessage(NetworkDataObject.MESSAGE, "MOUSE_SHOOT", p);
 			}
 
 		}

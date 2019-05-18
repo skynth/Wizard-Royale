@@ -103,7 +103,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		backgroundImage = loader.loadImage("Resources" + MainMenuPanel.FILE_SEP + "WizardBackground.png");
 	
 		handler.addObject(new Consumable((int)(WizardRoyale.WIDTH / 4.8), (int)(WizardRoyale.HEIGHT / 3), ID.Item, handler,ID.LargeConsumable));
-		this.addMouseListener(new MouseInput(handler, gameCamera));
+		this.addMouseListener(new MouseInput(handler, gameCamera, nm));
 		this.addKeyListener(new KeyInput(handler));
 		loadLevel(backgroundImage);
 		start();
@@ -354,10 +354,10 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 
 
-			if(MouseInput.getIsProjectileMade() == true)
+			/*if(MouseInput.getIsProjectileMade() == true)
 				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeShoot,handler.getProjectiles().get(handler.getProjectiles().size() - 1));
 				MouseInput.setIsProjectileMade(false);
-				System.out.println("Sent Projectile");
+				System.out.println("Sent Projectile");*/
 			}
 			
 		}

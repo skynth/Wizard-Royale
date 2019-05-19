@@ -103,6 +103,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		backgroundImage = loader.loadImage("Resources" + MainMenuPanel.FILE_SEP + "WizardBackground.png");
 	
 		handler.addObject(new Consumable((int)(WizardRoyale.WIDTH / 4.8), (int)(WizardRoyale.HEIGHT / 3), ID.Item, handler,ID.LargeConsumable));
+		this.addMouseListener(new MouseInput(handler, gameCamera, nm));
 		this.addKeyListener(new KeyInput(handler));
 		loadLevel(backgroundImage);
 		start();
@@ -360,16 +361,13 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			
 			Player myPlayer = null;
 			for (Player p : handler.getPlayers()) {	
-				//System.out.println("finding my player");
 				if (p.getIp().equals(myIP)) {
-					//	System.out.println("found my player");
 						myPlayer = p;
 				}
 			}
 			
 			if(myPlayer != null) {
 				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, myPlayer.isRight(), myPlayer.isLeft(), myPlayer.isUp(), myPlayer.isDown());
-				//System.out.println("sent Move");
 
 			}
 

@@ -1,8 +1,10 @@
 package Main;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import GameElements.Consumable;
 import GameElements.GameObject;
 import GameElements.Player;
 import GameElements.Projectile;
@@ -128,6 +130,13 @@ public class Handler implements Serializable{
 		gameObjects.remove(object);
 	}
 	
-
+	public void spawnCollectibles(BufferedImage background)
+	{
+		for(int count = 12; count>0; count--)
+		{
+			System.out.println(background.getWidth()+" " +WizardRoyale.WIDTH);
+			gameObjects.add( new Consumable((int)(background.getWidth()*32 / (Math.random()*10+1)), (int)(background.getHeight()*32 / (Math.random()*10+1)), ID.Item, this,ID.LargeConsumable));
+		}
+	}
 
 }

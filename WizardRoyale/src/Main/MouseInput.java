@@ -99,11 +99,6 @@ public class MouseInput extends MouseAdapter {
 					player.setAnimationRight(false);
 				}
 				
-				p = new Projectile(player.getX() + (int)(WizardRoyale.WIDTH / 21), player.getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler, player.getProjectileType(), player.getIp());
-				player.setIsShoot(true);
-				handler.addObject(p);
-				nm.sendMessage(NetworkDataObject.MESSAGE, "MOUSE_SHOOT", p);
-				
 
 			}
 			else {
@@ -112,7 +107,11 @@ public class MouseInput extends MouseAdapter {
 					player.setAnimationRight(true);
 				}
 				
-				p = new Projectile(player.getX() - (int)(WizardRoyale.WIDTH / 60), player.getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler,player.getProjectileType(), player.getIp());
+
+			}
+			
+			p = new Projectile(player.getX() - (int)(WizardRoyale.WIDTH / 60), player.getY() + (int)(WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler,player.getProjectileType(), player.getIp());
+			if(p != null) {
 				player.setIsShoot(true);
 				handler.addObject(p);
 				nm.sendMessage(NetworkDataObject.MESSAGE, "MOUSE_SHOOT", p);

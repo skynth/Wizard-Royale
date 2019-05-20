@@ -109,6 +109,7 @@ public class Projectile extends GameObject implements Serializable{
 			y -= Math.sin(angle) * 10;
 
 		}
+		
 		if(handler.getGameObjects() != null) {
 			for (int i = 0; i < handler.getGameObjects().size(); i++) {
 				
@@ -138,6 +139,9 @@ public class Projectile extends GameObject implements Serializable{
 	
 	public String getHost() {
 		return host;
+	}
+	public void setHandler(Handler h) {
+		handler = h;
 	}
 
 	

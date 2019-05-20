@@ -134,7 +134,7 @@ public class Handler implements Serializable{
 	{
 		for(int count = 12; count>0; count--)
 		{
-			System.out.println(background.getWidth()+" " +WizardRoyale.WIDTH);
+			System.out.println(background.getWidth());
 			gameObjects.add( new Consumable((int)(background.getWidth()*32 / (Math.random()*10+1)), (int)(background.getHeight()*32 / (Math.random()*10+1)), ID.Item, this,ID.LargeConsumable));
 		}
 	}

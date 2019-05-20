@@ -321,9 +321,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 						}
 					
 				}
-					
-				Player player = new Player(50, 50, ID.Player, host, handler,ID.RegularProjectile);
-				handler.addObject(player);
+				
 			}
 			 
 			if(ndo.message[0].equals("MOUSE_SHOOT")) {
@@ -335,10 +333,11 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 			
 			if (ndo.message[0].equals(messageTypeMove)) {
+				
 				for (int i = 0; i < handler.getPlayers().size(); i++) {
 
 					if (handler.getPlayers().get(i).getIp().equals(host)) {
-
+						/*
 						System.out.println("success");
 						handler.getPlayers().get(i).setRight((boolean)ndo.message[1]);
 						
@@ -354,9 +353,14 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 						
 						handler.getPlayers().get(i).setUp((boolean)ndo.message[3]);
 						handler.getPlayers().get(i).setDown((boolean)ndo.message[4]);
-
+						*/
+						
+						handler.getPlayers().get(i).setX((int)ndo.message[1]);
+						handler.getPlayers().get(i).setY((int)ndo.message[2]);
+						
 
 					}
+					
 				}
 			}
 			
@@ -368,7 +372,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 			
 			if(myPlayer != null) {
-				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, myPlayer.isRight(), myPlayer.isLeft(), myPlayer.isUp(), myPlayer.isDown());
+				//nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, myPlayer.isRight(), myPlayer.isLeft(), myPlayer.isUp(), myPlayer.isDown());
+				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, myPlayer.getX(), myPlayer.getY());
 
 			}
 

@@ -116,6 +116,7 @@ public class MouseInput extends MouseAdapter {
 				player.setIsShoot(true);
 				handler.addObject(p);
 				nm.sendMessage(NetworkDataObject.MESSAGE, "MOUSE_SHOOT", p);
+				System.out.println("shot");
 			}
 
 		}

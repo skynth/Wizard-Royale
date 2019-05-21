@@ -115,10 +115,12 @@ public class MouseInput extends MouseAdapter {
 			handler.addObject(p);
 			nm.sendMessage(NetworkDataObject.MESSAGE, "MOUSE_SHOOT", p);
 			System.out.println("shot");
-
 		
-		
-	}
+		} else if (WizardRoyale.State == STATE.WINSCREEN) {
+			
+			
+			
+		}
 	}
 	
 

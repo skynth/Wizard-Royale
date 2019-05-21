@@ -13,6 +13,7 @@ import Main.Handler;
 import Main.ID;
 import Main.MainMenuPanel;
 import Main.WizardRoyale;
+import Main.WizardRoyale.STATE;
 
 /**
  * A class which represents in an instance of a player.
@@ -187,8 +188,16 @@ public class Player extends GameObject implements Serializable{
 					if (getBounds().intersects(objects.get(i).getBounds()) && !(p.getHost().equals(this.ip))) {
 				
 						health -= 10;
+						if (health <= 0) {
+							
+							if (handler.getPlayers().size() == 1) {
+								WizardRoyale.State = STATE.WINSCREEN;
+							}
+
+						}
+						
 						objects.remove(objects.get(i));
-						System.out.println(health);
+
 					}
 				}
 			

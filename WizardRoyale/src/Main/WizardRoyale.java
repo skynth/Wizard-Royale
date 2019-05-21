@@ -50,6 +50,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	private NetworkMessenger nm;
 	private MainMenuPanel menu = new MainMenuPanel();
 	private InstructionsPanel instructions = new InstructionsPanel();
+	private WinScreenPanel winscreen = new WinScreenPanel();
 	
 	private Thread thread; //thread - sub process - created to handle the game, we want to do multiple things simultaneously
 	private boolean running = false;
@@ -66,7 +67,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	public static enum STATE { 
 		MENU, 
 		GAME,
-		INSTURCTIONS;
+		INSTURCTIONS,
+		WINSCREEN;
 	}
 	
 	/**
@@ -219,6 +221,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		} else if (State == STATE.INSTURCTIONS) {
 			super.paint(g);
 			instructions.render(g);
+		} else if (State == STATE.WINSCREEN) {
+			winscreen.render(g);
 		}
 		
 		g.dispose();

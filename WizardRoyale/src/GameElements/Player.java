@@ -190,6 +190,7 @@ public class Player extends GameObject implements Serializable{
 						health -= 10;
 						if (health <= 0) {
 							
+							
 							if (handler.getPlayers().size() == 1) {
 								WizardRoyale.State = STATE.WINSCREEN;
 							}

@@ -112,7 +112,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		BufferedImageLoader loader = new BufferedImageLoader();
 		backgroundImage = loader.loadImage("Resources" + MainMenuPanel.FILE_SEP + "WizardBackground.png");
 	
-		handler.spawnCollectibles(backgroundImage);
 		this.addKeyListener(new KeyInput(handler));
 		start();
 	}
@@ -287,6 +286,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		this.nm = nm;
 		loadLevel(backgroundImage);
 		this.addMouseListener(new MouseInput(handler, gameCamera, nm, backgroundImage));
+		handler.spawnCollectibles(backgroundImage);
 	}
 
 	public void networkMessageReceived(NetworkDataObject ndo) {

@@ -283,7 +283,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	public void connectedToServer(NetworkMessenger nm) {
 		this.nm = nm;
 		loadLevel(backgroundImage);
-		this.addMouseListener(new MouseInput(handler, gameCamera, nm));
+		this.addMouseListener(new MouseInput(handler, gameCamera, nm, backgroundImage));
 	}
 
 	public void networkMessageReceived(NetworkDataObject ndo) {

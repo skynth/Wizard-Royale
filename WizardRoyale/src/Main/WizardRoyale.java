@@ -50,7 +50,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	private NetworkMessenger nm;
 	private MainMenuPanel menu = new MainMenuPanel();
 	private InstructionsPanel instructions = new InstructionsPanel();
-	private WinScreenPanel winscreen = new WinScreenPanel();
+	private WinScreenPanel winscreen;
 	
 	private Thread thread; //thread - sub process - created to handle the game, we want to do multiple things simultaneously
 	private boolean running = false;
@@ -68,7 +68,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		MENU, 
 		GAME,
 		INSTURCTIONS,
-		WINSCREEN;
+		WINSCREEN,
+		NEWGAME;
 	}
 	
 	/**
@@ -198,7 +199,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		Graphics2D g2d = (Graphics2D) g;
 		
 		if (State == STATE.GAME) {
-			
+		
 			super.paint(g);
 			
 			g2d.translate(-gameCamera.getX(), -gameCamera.getY());
@@ -211,7 +212,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				
 			}
 			
-			
 			handler.render(g);
 			g2d.translate(gameCamera.getX(), gameCamera.getY());
 			
@@ -221,8 +221,11 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		} else if (State == STATE.INSTURCTIONS) {
 			super.paint(g);
 			instructions.render(g);
-		} else if (State == STATE.WINSCREEN) {
+		} else if (State == STATE.WINSCREEN) {	
+			winscreen = new WinScreenPanel(handler.getPlayers().size());
 			winscreen.render(g);
+		} else if (State == STATE.NEWGAME) {
+
 		}
 		
 		g.dispose();
@@ -308,7 +311,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 						return;
 					}
 				
-			}
+				}
 				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile);
 				handler.addObject(player);
 				

@@ -119,7 +119,7 @@ public class MouseInput extends MouseAdapter {
 		} else if (WizardRoyale.State == STATE.WINSCREEN) {
 			
 			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 3 && mouseX <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94 && mouseY <= WizardRoyale.HEIGHT / 3 + WizardRoyale.HEIGHT / 9) {
-				WizardRoyale.State = STATE.NEWGAME;
+				WizardRoyale.State = STATE.GAME;
 			}
 			
 			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 2 && mouseX <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94 && mouseY <= WizardRoyale.HEIGHT / 2 + WizardRoyale.HEIGHT / 9) {

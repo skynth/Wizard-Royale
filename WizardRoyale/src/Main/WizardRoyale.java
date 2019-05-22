@@ -191,7 +191,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		BufferStrategy bs = this.getBufferStrategy();
 		
 		if (bs == null) {
-			this.createBufferStrategy(3); 
+			this.createBufferStrategy(5); 
 			return;
 		}
 		
@@ -224,13 +224,11 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		} else if (State == STATE.WINSCREEN) {	
 			winscreen = new WinScreenPanel(handler.getPlayers().size());
 			winscreen.render(g);
-		} else if (State == STATE.NEWGAME) {
-
-		}
-		
+		} 
 		g.dispose();
 		bs.show(); //makes the buffer we just drew the current buffer for the JFrame, and displays everything we drew
 	}
+	
 	
 	/**
 	 * loads the map for our game
@@ -388,11 +386,11 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 			}
 
-			}
-			
 		}
-		
+			
 	}
+		
+}
 
 
 

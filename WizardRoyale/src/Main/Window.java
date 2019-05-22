@@ -41,7 +41,7 @@ public class Window {
 
 	public static void main (String[] args) {
 		
-		NetworkManagementPanel nmp = new NetworkManagementPanel("SwingChat", 20, new WizardRoyale()); 
+		NetworkManagementPanel nmp = new NetworkManagementPanel("WizardRoyale", 20, new WizardRoyale()); 
 		
 	}
 	

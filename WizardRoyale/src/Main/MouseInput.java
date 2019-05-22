@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 
 import GameElements.GameObject;
 import GameElements.Player;
@@ -25,6 +26,8 @@ public class MouseInput extends MouseAdapter {
 	private Handler handler; 
 	private Camera camera;
 	NetworkMessenger nm;
+	private BufferedImage background;
+	 
 
 	/**
 	 * Creates a new instance of MouseInput
@@ -33,10 +36,12 @@ public class MouseInput extends MouseAdapter {
 	 * @param nm the network messenger of the game
 	 */
 	
-	public MouseInput(Handler h, Camera cam, NetworkMessenger nm) {
+	public MouseInput(Handler h, Camera cam, NetworkMessenger nm, BufferedImage b) {
 		handler = h; 
 		camera = cam;
 		this.nm = nm;
+		background = b;
+		
 	}
 	
 	public void mouseClicked(MouseEvent e) {
@@ -120,15 +125,34 @@ public class MouseInput extends MouseAdapter {
 			
 			if (e.getX() >= WizardRoyale.WIDTH / 3 && e.getY() >= WizardRoyale.HEIGHT / 3 && e.getX() <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94 && e.getY() <= WizardRoyale.HEIGHT / 3 + WizardRoyale.HEIGHT / 9) {
 					
+				int num = WizardRoyale.getNumOfPlayers();
+				handler.clear();
+				
 				WizardRoyale.hasMoveToStart = false;
-				for (int i = 1; i <= WizardRoyale.getNumOfPlayers(); i++) {
+				
+				for (int i = 1; i <= num; i++) {
 					
 					if (i == 1) {
-						Player p = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, WizardRoyale.myIP, handler,ID.RegularProjectile);
+						Player p = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, WizardRoyale.myIP, handler,ID.RegularProjectile, nm);
 						handler.addObject(p);
 						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.HANDSHAKE);
 					}
-					
+					else if(i == 2) {
+						Player p = new Player((int)(background.getWidth() *30), (int)(background.getHeight()*30), ID.Player, WizardRoyale.myIP, handler,ID.RegularProjectile, nm);
+						handler.addObject(p);
+						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.HANDSHAKE);
+
+					}
+					else if(i == 3) {
+						Player p = new Player((int)(background.getWidth() *30), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, WizardRoyale.myIP, handler,ID.RegularProjectile, nm);
+						handler.addObject(p);
+						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.HANDSHAKE);
+					}
+					if(i == 4) {
+						Player p = new Player((int)(WizardRoyale.WIDTH / 36), (int)(background.getHeight()*30), ID.Player, WizardRoyale.myIP, handler,ID.RegularProjectile, nm);
+						handler.addObject(p);
+						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.HANDSHAKE);
+					}	
 					
 				}
 				

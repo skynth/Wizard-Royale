@@ -161,5 +161,16 @@ public class Handler implements Serializable{
 			
 		}
 	}
+	
+	public void clear() {
+		
+		 for (int i = 0; i < gameObjects.size(); i++) {
+			 
+			 if (gameObjects.get(i).getID() == ID.Player) {
+				 gameObjects.remove(i);
+			 }
+			 
+		 }
+	}
 
 }

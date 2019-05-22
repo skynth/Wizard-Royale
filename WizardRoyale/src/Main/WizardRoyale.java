@@ -111,7 +111,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		backgroundImage = loader.loadImage("Resources" + MainMenuPanel.FILE_SEP + "WizardBackground.png");
 	
 		this.addKeyListener(new KeyInput(handler));
-		loadLevel(backgroundImage);
 		start();
 	}
 	
@@ -195,7 +194,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		BufferStrategy bs = this.getBufferStrategy();
 		
 		if (bs == null) {
-			this.createBufferStrategy(3); 
+			this.createBufferStrategy(4); 
 			return;
 		}
 		
@@ -272,8 +271,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 		}
 		
-		handler.addObject(new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, myIP, handler,ID.RegularProjectile));
-		numPlayers++;
+		handler.addObject(new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, myIP, handler,ID.RegularProjectile, nm));
 
 	}
 
@@ -283,7 +281,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 	public void connectedToServer(NetworkMessenger nm) {
 		this.nm = nm;
-		this.addMouseListener(new MouseInput(handler, gameCamera, nm));
+		loadLevel(backgroundImage);
+		this.addMouseListener(new MouseInput(handler, gameCamera, nm, backgroundImage));
 	}
 
 	public void networkMessageReceived(NetworkDataObject ndo) {
@@ -319,9 +318,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					}
 				
 				}
-				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile);
+				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile, nm);
 				handler.addObject(player);
-				numPlayers++;
 
 			}
 			
@@ -336,7 +334,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					
 				} 
 					
-				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile);
+				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile, nm);
 				handler.addObject(player);
 
 				
@@ -347,10 +345,10 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				Projectile projectile = (Projectile)ndo.message[1];
 				projectile.setHandler(handler);
 				handler.addObject(projectile);
-
+				
 			}
 			
-			if (ndo.message[0].equals(messageTypeMove)) {
+			else if (ndo.message[0].equals(messageTypeMove)) {
 				
 				for (int i = 0; i < handler.getPlayers().size(); i++) {
 
@@ -380,6 +378,10 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					}
 					
 				}
+			} else if (ndo.message[0].equals("WINSCREEN")) {
+				
+				WizardRoyale.State = STATE.WINSCREEN;
+				
 			}
 			
 			Player myPlayer = null;
@@ -392,6 +394,11 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			if(myPlayer != null) {
 				if(hasMoveToStart == false) {
 					System.out.println("Players " + numPlayers);
+					for(int i = 0; i < handler.getPlayers().size(); i++) {
+						if(handler.getPlayers().get(i).getIp().equals(myIP)) {
+							numPlayers = i+1;
+						}
+					}
 					if(numPlayers == 1) {
 						myPlayer.setX((int)(WizardRoyale.WIDTH / 36));
 						myPlayer.setY((int)(WizardRoyale.HEIGHT / 22.5));
@@ -408,6 +415,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 						myPlayer.setX((int)(WizardRoyale.WIDTH / 36));
 						myPlayer.setY((int)(backgroundImage.getHeight()*30));
 					}
+					
 					hasMoveToStart = true;
 				}
 				//nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, myPlayer.isRight(), myPlayer.isLeft(), myPlayer.isUp(), myPlayer.isDown());

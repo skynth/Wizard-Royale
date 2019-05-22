@@ -339,7 +339,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					
 				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile);
 				handler.addObject(player);
-				numPlayers++;
 
 				
 			}

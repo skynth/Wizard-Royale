@@ -144,8 +144,7 @@ public class Handler implements Serializable{
 					//System.out.println((int)(WizardRoyale.WIDTH / 25) + " " + (int)(WizardRoyale.HEIGHT / 30));
 					//System.out.println((int)(WizardRoyale.WIDTH / 45)+ " " + (int)(WizardRoyale.HEIGHT / 28.125)+ " " + wall.getBounds());
 					//System.out.println(wall.getBounds().intersects(c.getBounds()) + " " + wall.getBounds() + " " + c.getBounds());
-					System.out.print(gameObjects);
-					if(wall.getSubID()==ID.Wall || wall.getBounds().intersects(c.getBounds()))
+					if( wall.getBounds().intersects(c.getBounds()))
 					{
 						System.out.println((int)(WizardRoyale.WIDTH / 45)+ " " + (int)(WizardRoyale.HEIGHT / 28.125)+ " " + wall.getBounds());
 						onWall = true;

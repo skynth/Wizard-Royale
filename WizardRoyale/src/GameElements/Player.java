@@ -80,7 +80,7 @@ public class Player extends GameObject implements Serializable{
 		{
 			handler.getGameObjects().remove(this);
 			
-			if (handler.getPlayers().size() == 0) {
+			if (handler.getPlayers().size() == 1) {
 				WizardRoyale.State = STATE.WINSCREEN;
 				nm.sendMessage(NetworkDataObject.MESSAGE, "WINSCREEN");
 			}

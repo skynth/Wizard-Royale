@@ -355,7 +355,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					String serverHost = ndo.serverHost.toString().substring(1);
 					if(myPlayer.getIp().equals(serverHost.toString())) {
 						isReadyToMove = true;
-						System.out.println("YAY" + myPlayer.getIp() + ", " + ndo.serverHost.toString());
+						System.out.println(handler.getPlayers().size());
 						nm.sendMessage(NetworkDataObject.MESSAGE, messageTypePlayerList, handler.getPlayers());
 
 					}

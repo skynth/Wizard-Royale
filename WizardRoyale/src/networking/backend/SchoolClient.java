@@ -1,6 +1,7 @@
 package networking.backend;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -13,8 +14,12 @@ import networking.frontend.NetworkDataObject;
 import networking.frontend.NetworkListener;
 import networking.frontend.NetworkMessenger;
 
-public class SchoolClient implements NetworkMessenger {
+public class SchoolClient implements NetworkMessenger, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6L;
 	private InetAddress server;
 	private InetAddress myIP;
 

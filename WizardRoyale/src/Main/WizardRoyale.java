@@ -310,12 +310,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		Queue<NetworkDataObject> queue = nm.getQueuedMessages();
 		
 		while (!queue.isEmpty()) {
-			Player myPlayer = null;
-			for (Player p : handler.getPlayers()) {	
-				if (p.getIp().equals(myIP)) {
-						myPlayer = p;
-				}
-			}
+
 			NetworkDataObject ndo = queue.poll();
 			String host = ndo.getSourceIP();
 			
@@ -347,7 +342,12 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					
 				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile, nm);
 				handler.addObject(player);
-				
+				Player myPlayer = null;
+				for (Player p : handler.getPlayers()) {	
+					if (p.getIp().equals(myIP)) {
+							myPlayer = p;
+					}
+				}
 				if(myPlayer != null) {
 					if(myPlayer.getIp().equals(ndo.serverHost.toString())) {
 						System.out.println(myPlayer.getIp() + ", " + ndo.serverHost.toString());
@@ -358,7 +358,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 				
 			}
-			 
+			
 			if(ndo.message[0].equals("MOUSE_SHOOT")) {
 				System.out.println("Got mouse shoot");
 				Projectile projectile = (Projectile)ndo.message[1];
@@ -407,11 +407,18 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			
 
 			if(ndo.message[0].equals(messageTypePlayerList)) {
+				System.out.println("got player list");
 				ArrayList<Player> players = (ArrayList<Player>) ndo.message[1];
 				for(int i = 0; i < players.size(); i++) {
 					if(players.get(i).getIp().equals(myIP)) {
 						numPlayers = i + 1;
 					}
+				}
+			}
+			Player myPlayer = null;
+			for (Player p : handler.getPlayers()) {	
+				if (p.getIp().equals(myIP)) {
+						myPlayer = p;
 				}
 			}
 				if(hasMoveToStart == false && numPlayers > 0) {

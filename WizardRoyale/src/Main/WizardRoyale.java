@@ -195,7 +195,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		BufferStrategy bs = this.getBufferStrategy();
 		
 		if (bs == null) {
-			this.createBufferStrategy(3); 
+			this.createBufferStrategy(4); 
 			return;
 		}
 		

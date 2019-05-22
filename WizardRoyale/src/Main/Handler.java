@@ -138,5 +138,16 @@ public class Handler implements Serializable{
 			gameObjects.add( new Consumable((int)(background.getWidth()*32 / (Math.random()*10+1)), (int)(background.getHeight()*32 / (Math.random()*10+1)), ID.Item, this,ID.LargeConsumable));
 		}
 	}
+	
+	public void clear() {
+		
+		 for (int i = 0; i < gameObjects.size(); i++) {
+			 
+			 if (gameObjects.get(i).getID() == ID.Player) {
+				 gameObjects.remove(i);
+			 }
+			 
+		 }
+	}
 
 }

@@ -34,8 +34,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	private static final String messageTypeShoot = "MOUSE_SHOOT";
 	
 	public static String myIP;
-	private static int numPlayers;
-	private boolean hasMoveToStart;
+	public static int numPlayers;
+	public static boolean hasMoveToStart;
 
 	
 	/**

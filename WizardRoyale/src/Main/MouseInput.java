@@ -119,7 +119,8 @@ public class MouseInput extends MouseAdapter {
 		} else if (WizardRoyale.State == STATE.WINSCREEN) {
 			
 			if (e.getX() >= WizardRoyale.WIDTH / 3 && e.getY() >= WizardRoyale.HEIGHT / 3 && e.getX() <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94 && e.getY() <= WizardRoyale.HEIGHT / 3 + WizardRoyale.HEIGHT / 9) {
-				
+					
+				WizardRoyale.hasMoveToStart = false;
 				for (int i = 1; i <= WizardRoyale.getNumOfPlayers(); i++) {
 					
 					if (i == 1) {

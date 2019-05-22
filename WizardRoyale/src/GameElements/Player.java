@@ -14,6 +14,8 @@ import Main.ID;
 import Main.MainMenuPanel;
 import Main.WizardRoyale;
 import Main.WizardRoyale.STATE;
+import networking.frontend.NetworkDataObject;
+import networking.frontend.NetworkMessenger;
 
 /**
  * A class which represents in an instance of a player.
@@ -40,6 +42,7 @@ public class Player extends GameObject implements Serializable{
 	private boolean isShoot;
 	private ID projectileType;
 	private String ip;
+	private NetworkMessenger nm;
 
 	/**
 	 * Creates a new instance of a player (Wizard)
@@ -48,7 +51,7 @@ public class Player extends GameObject implements Serializable{
 	 * @param id the Id of the wizard
 	 * @param h the handler passed in
 	 */
-	public Player(int x, int y, ID id, String ip, Handler h, ID projectileType) {
+	public Player(int x, int y, ID id, String ip, Handler h, ID projectileType, NetworkMessenger nm) {
 		super(x, y, id);
 		handler = h;
 		this.projectileType = projectileType;
@@ -66,6 +69,7 @@ public class Player extends GameObject implements Serializable{
 		step = 0;
 		shootStep = 0;
 		this.ip = ip;
+		this.nm =  nm;
 	}
 	
 	public void tick() {
@@ -75,9 +79,10 @@ public class Player extends GameObject implements Serializable{
 		if(health <= 0)
 		{
 			handler.getGameObjects().remove(this);
-			//if (handler.getPlayers().size()  1) {
+			if (handler.getPlayers().size() == 1) {
 				WizardRoyale.State = STATE.WINSCREEN;
-			//}
+				nm.sendMessage(NetworkDataObject.MESSAGE, "WINSCREEN");
+			}
 		}
 		
 		this.collide(handler.getGameObjects());

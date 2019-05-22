@@ -320,7 +320,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					}
 				
 				}
-				numOfPlayers++;
 				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile);
 				handler.addObject(player);
 				numPlayers++;
@@ -338,7 +337,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					
 				} 
 					
-				numOfPlayers++;
 				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile);
 				handler.addObject(player);
 				numPlayers++;
@@ -401,16 +399,16 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 						myPlayer.setY((int)(WizardRoyale.HEIGHT / 22.5));
 					}
 					else if(numPlayers == 2) {
-						myPlayer.setX((int)(backgroundImage.getWidth() *32));
-						myPlayer.setY((int)(backgroundImage.getHeight()*32));
+						myPlayer.setX((int)(backgroundImage.getWidth() *30));
+						myPlayer.setY((int)(backgroundImage.getHeight()*30));
 					}
 					else if(numPlayers == 3) {
-						myPlayer.setX((int)(backgroundImage.getWidth() *32));
+						myPlayer.setX((int)(backgroundImage.getWidth() *30));
 						myPlayer.setY((int)(WizardRoyale.HEIGHT / 22.5));
 					}
 					else if(numPlayers == 4) {
 						myPlayer.setX((int)(WizardRoyale.WIDTH / 36));
-						myPlayer.setY((int)(backgroundImage.getHeight()*32));
+						myPlayer.setY((int)(backgroundImage.getHeight()*30));
 					}
 					hasMoveToStart = true;
 				}

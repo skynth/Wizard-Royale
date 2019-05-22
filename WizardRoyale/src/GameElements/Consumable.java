@@ -82,7 +82,7 @@ public class Consumable extends GameObject implements Serializable{
 	 */
 	
 	public Rectangle getBounds() {
-		return new Rectangle(x, y, (int)(WizardRoyale.WIDTH / 9.6), (int)(WizardRoyale.HEIGHT / 30));
+		return new Rectangle(x, y, (int)(WizardRoyale.WIDTH / 25), (int)(WizardRoyale.HEIGHT / 30));
 	}
 
 	

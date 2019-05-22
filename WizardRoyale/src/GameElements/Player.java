@@ -166,6 +166,7 @@ public class Player extends GameObject implements Serializable{
 						}
 						else if(objects.get(i).getSubID() == ID.LargeConsumable) 
 						{
+							health -=100;
 							projectileType = ID.LargeFireProjectile;
 					    }
 

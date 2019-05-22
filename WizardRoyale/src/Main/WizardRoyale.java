@@ -51,6 +51,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	private MainMenuPanel menu = new MainMenuPanel();
 	private InstructionsPanel instructions = new InstructionsPanel();
 	private WinScreenPanel winscreen;
+	private static int numOfPlayers = 1;
 	
 	private Thread thread; //thread - sub process - created to handle the game, we want to do multiple things simultaneously
 	private boolean running = false;
@@ -191,7 +192,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		BufferStrategy bs = this.getBufferStrategy();
 		
 		if (bs == null) {
-			this.createBufferStrategy(5); 
+			this.createBufferStrategy(3); 
 			return;
 		}
 		
@@ -285,6 +286,10 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		
 	}
 	
+	public static int getNumOfPlayers() {
+		return numOfPlayers;
+	}
+	
 	/**
 	 * Method that is repeatedly called in tick, and takes in messages from the network messenger, then uses those messages to update 
 	 * the game on other users' games.
@@ -310,6 +315,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					}
 				
 				}
+				numOfPlayers++;
 				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile);
 				handler.addObject(player);
 				
@@ -327,6 +333,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					
 				} 
 					
+				numOfPlayers++;
 				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile);
 				handler.addObject(player);
 				

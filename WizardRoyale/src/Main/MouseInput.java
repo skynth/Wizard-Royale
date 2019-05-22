@@ -118,8 +118,22 @@ public class MouseInput extends MouseAdapter {
 		
 		} else if (WizardRoyale.State == STATE.WINSCREEN) {
 			
-			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 3 && mouseX <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94 && mouseY <= WizardRoyale.HEIGHT / 3 + WizardRoyale.HEIGHT / 9) {
+			if (e.getX() >= WizardRoyale.WIDTH / 3 && e.getY() >= WizardRoyale.HEIGHT / 3 && e.getX() <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94 && e.getY() <= WizardRoyale.HEIGHT / 3 + WizardRoyale.HEIGHT / 9) {
+				
+				for (int i = 1; i <= WizardRoyale.getNumOfPlayers(); i++) {
+					
+					if (i == 1) {
+						Player p = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, WizardRoyale.myIP, handler,ID.RegularProjectile);
+						handler.addObject(p);
+						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.HANDSHAKE);
+					}
+					
+					
+				}
+				
 				WizardRoyale.State = STATE.GAME;
+				
+				
 			}
 			
 			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 2 && mouseX <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94 && mouseY <= WizardRoyale.HEIGHT / 2 + WizardRoyale.HEIGHT / 9) {

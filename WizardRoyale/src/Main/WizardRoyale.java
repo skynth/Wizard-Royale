@@ -274,7 +274,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		}
 		
 		handler.addObject(new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, myIP, handler,ID.RegularProjectile, nm));
-		//numPlayers++;
+		numPlayers++;
 
 	}
 
@@ -325,7 +325,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				}
 				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile, nm);
 				handler.addObject(player);
-				//numPlayers++;
+				numPlayers++;
 
 			}
 			
@@ -343,24 +343,24 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile, nm);
 				handler.addObject(player);
 				Player myPlayer = null;
-				for (Player p : handler.getPlayers()) {	
-					if (p.getIp().equals(myIP)) {
-							myPlayer = p;
+//				for (Player p : handler.getPlayers()) {	
+//					if (p.getIp().equals(myIP)) {
+//							myPlayer = p;
+//					}
+//				}
+//				if(myPlayer != null) {
+//					System.out.println("not null, " + ndo.serverHost.toString() + ", " + myPlayer.getIp());
+//					String serverHost = ndo.serverHost.toString().substring(1);
+//					if(myPlayer.getIp().equals(serverHost.toString())) {
+//						isReadyToMove = true;
+//						System.out.println(handler.getPlayers().size());
+//						nm.sendMessage(NetworkDataObject.MESSAGE, messageTypePlayerList, handler.getPlayers());
+//
 					}
-				}
-				if(myPlayer != null) {
-					System.out.println("not null, " + ndo.serverHost.toString() + ", " + myPlayer.getIp());
-					String serverHost = ndo.serverHost.toString().substring(1);
-					if(myPlayer.getIp().equals(serverHost.toString())) {
-						isReadyToMove = true;
-						System.out.println(handler.getPlayers().size());
-						nm.sendMessage(NetworkDataObject.MESSAGE, messageTypePlayerList, handler.getPlayers());
-
-					}
-				}
+				
 
 				
-			}
+			
 			
 			if(ndo.message[0].equals("MOUSE_SHOOT")) {
 				System.out.println("Got mouse shoot");
@@ -409,24 +409,24 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 			
 
-			if(ndo.message[0].equals(messageTypePlayerList)) {
-				System.out.println("got player list");
-				ArrayList<Player> players = (ArrayList<Player>) ndo.message[1];
-				for(int i = 0; i < players.size(); i++) {
-					if(players.get(i).getIp().equals(myIP)) {
-						numPlayers = i + 1;
-					}
-				}
-				isReadyToMove = true;
-
-			}
+//			if(ndo.message[0].equals(messageTypePlayerList)) {
+//				System.out.println("got player list");
+//				ArrayList<Player> players = (ArrayList<Player>) ndo.message[1];
+//				for(int i = 0; i < players.size(); i++) {
+//					if(players.get(i).getIp().equals(myIP)) {
+//						numPlayers = i + 1;
+//					}
+//				}
+//				isReadyToMove = true;
+//
+//			}
 			Player myPlayer = null;
 			for (Player p : handler.getPlayers()) {	
 				if (p.getIp().equals(myIP)) {
 						myPlayer = p;
 				}
 			}
-				if(hasMoveToStart == false && numPlayers > 0 && isReadyToMove) {
+				if(hasMoveToStart == false && numPlayers > 0) {
 					System.out.println("Players " + numPlayers);
 					if(numPlayers == 1) {
 						myPlayer.setX((int)(WizardRoyale.WIDTH / 36));

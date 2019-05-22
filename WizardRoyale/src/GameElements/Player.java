@@ -75,6 +75,9 @@ public class Player extends GameObject implements Serializable{
 		if(health <= 0)
 		{
 			handler.getGameObjects().remove(this);
+			//if (handler.getPlayers().size()  1) {
+				WizardRoyale.State = STATE.WINSCREEN;
+			//}
 		}
 		
 		this.collide(handler.getGameObjects());
@@ -188,14 +191,6 @@ public class Player extends GameObject implements Serializable{
 					if (getBounds().intersects(objects.get(i).getBounds()) && !(p.getHost().equals(this.ip))) {
 				
 						health -= 10;
-						if (health <= 0) {
-							
-							
-							if (handler.getPlayers().size() == 1) {
-								WizardRoyale.State = STATE.WINSCREEN;
-							}
-
-						}
 						
 						objects.remove(objects.get(i));
 

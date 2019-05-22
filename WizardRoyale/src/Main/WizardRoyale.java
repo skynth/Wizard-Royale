@@ -38,6 +38,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	public static String myIP;
 	public static int numPlayers;
 	public static boolean hasMoveToStart;
+	private boolean isReadyToMove;
 
 	
 	/**
@@ -105,6 +106,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		}
 		
 		hasMoveToStart = false;
+		isReadyToMove = false;
 		new Window(WIDTH, HEIGHT, "Wizard Royale", this);
 		handler = new Handler();
 		gameCamera = new Camera(0, 0, handler);
@@ -349,8 +351,10 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					}
 				}
 				if(myPlayer != null) {
+					System.out.println("not null");
 					if(myPlayer.getIp().equals(ndo.serverHost.toString())) {
-						System.out.println(myPlayer.getIp() + ", " + ndo.serverHost.toString());
+						isReadyToMove = true;
+						System.out.println("YAY" + myPlayer.getIp() + ", " + ndo.serverHost.toString());
 						nm.sendMessage(NetworkDataObject.MESSAGE, messageTypePlayerList, handler.getPlayers());
 
 					}
@@ -414,6 +418,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 						numPlayers = i + 1;
 					}
 				}
+				isReadyToMove = true;
+
 			}
 			Player myPlayer = null;
 			for (Player p : handler.getPlayers()) {	
@@ -421,7 +427,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 						myPlayer = p;
 				}
 			}
-				if(hasMoveToStart == false && numPlayers > 0) {
+				if(hasMoveToStart == false && numPlayers > 0 && isReadyToMove) {
 					System.out.println("Players " + numPlayers);
 					if(numPlayers == 1) {
 						myPlayer.setX((int)(WizardRoyale.WIDTH / 36));

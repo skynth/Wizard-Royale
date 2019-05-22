@@ -34,6 +34,9 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	private static final String messageTypeShoot = "MOUSE_SHOOT";
 	
 	public static String myIP;
+	private static int numPlayers;
+	private boolean hasMoveToStart;
+
 	
 	/**
 	 * field that represents the width of the window in which our game is contained in
@@ -98,6 +101,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			e.printStackTrace();
 		}
 		
+		hasMoveToStart = false;
 		new Window(WIDTH, HEIGHT, "Wizard Royale", this);
 		handler = new Handler();
 		gameCamera = new Camera(0, 0, handler);
@@ -271,7 +275,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		}
 		
 		handler.addObject(new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, myIP, handler,ID.RegularProjectile));
-		
+		numPlayers++;
+
 	}
 
 	public void receiveUpdate(String hostname, Object[] message) {
@@ -314,13 +319,13 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				}
 				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile);
 				handler.addObject(player);
-				
+				numPlayers++;
+
 			}
 			
 
 			 if (ndo.messageType.equals(NetworkDataObject.HANDSHAKE)) {
 				System.out.println("Handshake");
-
 				for (Player p : handler.getPlayers()) {
 					
 						if (p.getIp().equals(host)) {
@@ -331,7 +336,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					
 				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile);
 				handler.addObject(player);
-				
+				numPlayers++;
+
 				
 			}
 			 
@@ -383,6 +389,21 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 			
 			if(myPlayer != null) {
+				if(hasMoveToStart == false) {
+					if(numPlayers == 1) {
+						myPlayer.setX((int)(WizardRoyale.WIDTH / 36));
+						myPlayer.setY((int)(WizardRoyale.HEIGHT / 22.5));
+					}
+					else if(numPlayers == 2) {
+						
+					}
+					else if(numPlayers == 3) {
+						
+					}
+					else if(numPlayers == 4) {
+						
+					}
+				}
 				//nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, myPlayer.isRight(), myPlayer.isLeft(), myPlayer.isUp(), myPlayer.isDown());
 				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, myPlayer.getX(), myPlayer.getY());
 

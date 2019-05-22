@@ -26,7 +26,7 @@ public class Tile extends GameObject implements Serializable {
 	private Image wallImageRight = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "wallRight.png");
 	private Image wallImageLeft = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "wallleft.png");
 	private Image wallImageUp = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "wall1.png");
-	private ID subID;
+
 	
 	/**
 	 * Creates a new block of terrain, with xy coordinates and a subID to tell what terrain it is
@@ -68,5 +68,7 @@ public class Tile extends GameObject implements Serializable {
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, (int)(WizardRoyale.WIDTH / 45), (int)(WizardRoyale.HEIGHT / 28.125));
 	}
+	
+	
 
 }

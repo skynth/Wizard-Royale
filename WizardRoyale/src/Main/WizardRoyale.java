@@ -110,7 +110,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		BufferedImageLoader loader = new BufferedImageLoader();
 		backgroundImage = loader.loadImage("Resources" + MainMenuPanel.FILE_SEP + "WizardBackground.png");
 	
-		handler.spawnCollectibles(backgroundImage);
 		this.addKeyListener(new KeyInput(handler));
 		loadLevel(backgroundImage);
 		start();

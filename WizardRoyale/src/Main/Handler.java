@@ -137,16 +137,24 @@ public class Handler implements Serializable{
 			boolean added = false;
 			while(!added)
 			{
-				Consumable c = new Consumable((int)(background.getWidth()*32 / (Math.random()*10+1)), (int)(background.getHeight()*32 / (Math.random()*10+1)), ID.Item, this,ID.LargeConsumable);
+				Consumable c;
+				int rand = (int)(Math.random()*2+1);
+				if(rand == 1)
+				{
+					 c = new Consumable((int)(background.getWidth()*32 / (Math.random()*10+1)), (int)(background.getHeight()*32 / (Math.random()*10+1)), ID.Item, this,ID.MedKit);
+				}
+				else
+				{
+					c = new Consumable((int)(background.getWidth()*32 / (Math.random()*10+1)), (int)(background.getHeight()*32 / (Math.random()*10+1)), ID.Item, this,ID.LargeConsumable);
+				}
+				
 				boolean onWall = false;
 				for(GameObject wall: gameObjects)
 				{
-					//System.out.println((int)(WizardRoyale.WIDTH / 25) + " " + (int)(WizardRoyale.HEIGHT / 30));
-					//System.out.println((int)(WizardRoyale.WIDTH / 45)+ " " + (int)(WizardRoyale.HEIGHT / 28.125)+ " " + wall.getBounds());
-					//System.out.println(wall.getBounds().intersects(c.getBounds()) + " " + wall.getBounds() + " " + c.getBounds());
+				
 					if( wall.getBounds().intersects(c.getBounds()))
 					{
-						System.out.println((int)(WizardRoyale.WIDTH / 45)+ " " + (int)(WizardRoyale.HEIGHT / 28.125)+ " " + wall.getBounds());
+						
 						onWall = true;
 					}
 				}
@@ -160,6 +168,7 @@ public class Handler implements Serializable{
 			
 		}
 	}
+
 	
 	public void clear() {
 		

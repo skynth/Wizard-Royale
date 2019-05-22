@@ -8,12 +8,10 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Queue;
 
-import GameElements.Consumable;
-import GameElements.GameObject;
+
 import GameElements.Player;
 import GameElements.Projectile;
 import GameElements.Tile;
-import networking.backend.SchoolServer;
 import networking.frontend.NetworkDataObject;
 import networking.frontend.NetworkListener;
 import networking.frontend.NetworkMessenger;

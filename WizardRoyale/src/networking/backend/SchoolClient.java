@@ -19,7 +19,7 @@ public class SchoolClient implements NetworkMessenger, Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6L;
+	private static final long serialVersionUID = 10L;
 	private InetAddress server;
 	private InetAddress myIP;
 

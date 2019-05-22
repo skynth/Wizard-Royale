@@ -395,19 +395,24 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			
 			if(myPlayer != null) {
 				if(hasMoveToStart == false) {
+					System.out.println("Players " + numPlayers);
 					if(numPlayers == 1) {
 						myPlayer.setX((int)(WizardRoyale.WIDTH / 36));
 						myPlayer.setY((int)(WizardRoyale.HEIGHT / 22.5));
 					}
 					else if(numPlayers == 2) {
-						
+						myPlayer.setX((int)(backgroundImage.getWidth() *32));
+						myPlayer.setY((int)(backgroundImage.getHeight()*32));
 					}
 					else if(numPlayers == 3) {
-						
+						myPlayer.setX((int)(backgroundImage.getWidth() *32));
+						myPlayer.setY((int)(WizardRoyale.HEIGHT / 22.5));
 					}
 					else if(numPlayers == 4) {
-						
+						myPlayer.setX((int)(WizardRoyale.WIDTH / 36));
+						myPlayer.setY((int)(backgroundImage.getHeight()*32));
 					}
+					hasMoveToStart = true;
 				}
 				//nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, myPlayer.isRight(), myPlayer.isLeft(), myPlayer.isUp(), myPlayer.isDown());
 				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, myPlayer.getX(), myPlayer.getY());

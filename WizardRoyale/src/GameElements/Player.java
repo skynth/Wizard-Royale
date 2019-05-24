@@ -181,8 +181,8 @@ public class Player extends GameObject implements Serializable{
 							
 							if (armor >= 30) {
 								armor = 50;
-							}
-							armor += 20;
+							} else 
+								armor += 20;
 						}
 
 						

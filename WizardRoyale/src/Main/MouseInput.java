@@ -14,7 +14,7 @@ import networking.frontend.NetworkMessenger;
  * A class that handles input from the user's mouse to the game
  * 
  * @author Leofeng
- * @version 5/17/19
+ * @version 5/24/19
  *
  */
 
@@ -140,6 +140,8 @@ public class MouseInput extends MouseAdapter {
 			if (e.getX() >= WizardRoyale.WIDTH / 3 && e.getY() >= WizardRoyale.HEIGHT / 3
 					&& e.getX() <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94
 					&& e.getY() <= WizardRoyale.HEIGHT / 3 + WizardRoyale.HEIGHT / 9) {
+				
+				nm.sendMessage(NetworkDataObject.MESSAGE, "NEWGAME");
 
 				//int num = WizardRoyale.getNumOfPlayers();
 				System.out.println("Players after death: " + WizardRoyale.numPlayers);

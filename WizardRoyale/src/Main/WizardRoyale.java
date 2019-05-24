@@ -460,6 +460,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			
 			if (ndo.message[0].equals("NEWGAME")) {
 				
+				handler.clear();
 				WizardRoyale.State = STATE.GAME;
 				
 			}

@@ -302,6 +302,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		nm.sendMessage(NetworkDataObject.MESSAGE, "CONSUMABLES", consumables);
 		System.out.println("Consumable sent");
 
+
 	}
 
 	public void networkMessageReceived(NetworkDataObject ndo) {
@@ -328,6 +329,15 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 			NetworkDataObject ndo = queue.poll();
 			String host = ndo.getSourceIP();
+			
+			 if (ndo.message[0].equals("CONSUMABLES")) {
+				 ArrayList<Consumable> consumables = (ArrayList<Consumable>) (ndo.message[1]);
+	
+				 for (int i = 0; i < consumables.size(); i++) {
+					 handler.addObject(consumables.get(i));
+				 }
+				 
+			 }	
 			
 			if (ndo.messageType.equals(NetworkDataObject.CLIENT_LIST)) {
 				System.out.println("client");
@@ -383,7 +393,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					 handler.addObject(consumables.get(i));
 				 }
 				 
-			 }			
+			 }		
+		
 			
 			
 			if(ndo.message[0].equals("MOUSE_SHOOT")) {

@@ -434,10 +434,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				WizardRoyale.State = STATE.WINSCREEN;
 				
 			}
-			
-
-			
-
+		
 //			if(ndo.message[0].equals(messageTypePlayerList)) {
 //				System.out.println("got player list");
 //				ArrayList<Player> players = (ArrayList<Player>) ndo.message[1];
@@ -477,7 +474,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				}
 				//nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, myPlayer.isRight(), myPlayer.isLeft(), myPlayer.isUp(), myPlayer.isDown());
 				nm.sendMessage(NetworkDataObject.MESSAGE, "MOVE", myPlayer.getX(), myPlayer.getY());
-
 			
 
 		}

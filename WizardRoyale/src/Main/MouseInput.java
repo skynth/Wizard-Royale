@@ -1,17 +1,14 @@
 package Main;
 
-import java.awt.Rectangle;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
-import GameElements.GameObject;
 import GameElements.Player;
 import GameElements.Projectile;
 import Main.WizardRoyale.STATE;
 import networking.frontend.NetworkDataObject;
-import networking.frontend.NetworkManagementPanel;
 import networking.frontend.NetworkMessenger;
 
 /**

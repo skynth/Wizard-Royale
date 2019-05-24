@@ -124,9 +124,11 @@ public class MouseInput extends MouseAdapter {
 		} else if (WizardRoyale.State == STATE.WINSCREEN) {
 			
 			if (e.getX() >= WizardRoyale.WIDTH / 3 && e.getY() >= WizardRoyale.HEIGHT / 3 && e.getX() <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94 && e.getY() <= WizardRoyale.HEIGHT / 3 + WizardRoyale.HEIGHT / 9) {
-					
+				
+				
 				int num = WizardRoyale.getNumOfPlayers();
 				handler.clear();
+				WizardRoyale.numPlayers = 0;
 				
 				WizardRoyale.hasMoveToStart = false;
 				
@@ -135,26 +137,40 @@ public class MouseInput extends MouseAdapter {
 					if (i == 1) {
 						Player p = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, WizardRoyale.myIP, handler,ID.RegularProjectile, nm);
 						handler.addObject(p);
+						WizardRoyale.numPlayers++;
 						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.HANDSHAKE);
+						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.CLIENT_LIST);
+
 					}
 					else if(i == 2) {
 						Player p = new Player((int)(background.getWidth() *30), (int)(background.getHeight()*30), ID.Player, WizardRoyale.myIP, handler,ID.RegularProjectile, nm);
 						handler.addObject(p);
+						WizardRoyale.numPlayers++;
 						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.HANDSHAKE);
+						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.CLIENT_LIST);
+
 
 					}
 					else if(i == 3) {
 						Player p = new Player((int)(background.getWidth() *30), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, WizardRoyale.myIP, handler,ID.RegularProjectile, nm);
 						handler.addObject(p);
+						WizardRoyale.numPlayers++;
 						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.HANDSHAKE);
+						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.CLIENT_LIST);
+
 					}
 					if(i == 4) {
 						Player p = new Player((int)(WizardRoyale.WIDTH / 36), (int)(background.getHeight()*30), ID.Player, WizardRoyale.myIP, handler,ID.RegularProjectile, nm);
 						handler.addObject(p);
+						WizardRoyale.numPlayers++;
 						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.HANDSHAKE);
+						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.CLIENT_LIST);
+
 					}	
 					
 				}
+				//nm.sendMessage(NetworkDataObject.CLIENT_LIST);
+
 				
 				WizardRoyale.State = STATE.GAME;
 				

@@ -141,16 +141,24 @@ public class MouseInput extends MouseAdapter {
 					&& e.getX() <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94
 					&& e.getY() <= WizardRoyale.HEIGHT / 3 + WizardRoyale.HEIGHT / 9) {
 
-				int num = WizardRoyale.getNumOfPlayers() + 1;
-				System.out.println("Players after death: " + num);
+				//int num = WizardRoyale.getNumOfPlayers();
+				System.out.println("Players after death: " + WizardRoyale.numPlayers);
 				handler.clear();
 				WizardRoyale.numPlayers = 0;
-				WizardRoyale.hasMoveToStart = false;
 
-				for (int i = 0; i < num; i++) {
-					Player p = new Player((int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5),
+				for (int i = 0; i < 2; i++) {
+					if(WizardRoyale.connectedIPs.get(i).equals(WizardRoyale.serverIP)) {
+						Player p = new Player((int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5),
 							ID.Player, WizardRoyale.connectedIPs.get(i), handler, ID.RegularProjectile, nm);
-					handler.addObject(p);
+						handler.addObject(p);
+
+					}
+					else {
+						Player p = new Player((int) (WizardRoyale.bgWidth* 30), (int) (WizardRoyale.bgHeight* 30),
+								ID.Player, WizardRoyale.connectedIPs.get(i), handler, ID.RegularProjectile, nm);
+						handler.addObject(p);
+
+					}
 					WizardRoyale.numPlayers++;
 					
 

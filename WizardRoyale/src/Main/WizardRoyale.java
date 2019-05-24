@@ -36,8 +36,9 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	public static String myIP;
 	public static int numPlayers;
 	public static boolean hasMoveToStart;
-	private boolean isReadyToMove;
+	public static String serverIP = "";
 	public static ArrayList<String> connectedIPs;
+
 
 	/**
 	 * field that represents the width of the window in which our game is contained
@@ -87,6 +88,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	private Image floorImage = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "Floor.png");
 
 	private BufferedImage backgroundImage = null;
+	public static int bgWidth, bgHeight;
 
 	/**
 	 * Constructor that creates a new instance of our game. The constructor also
@@ -95,6 +97,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	 */
 
 	public WizardRoyale() {
+		
 
 		try {
 			myIP = InetAddress.getLocalHost().toString();
@@ -108,13 +111,14 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		connectedIPs.add(myIP);
 
 		hasMoveToStart = false;
-		isReadyToMove = false;
 		new Window(WIDTH, HEIGHT, "Wizard Royale", this);
 		handler = new Handler();
 		gameCamera = new Camera(0, 0, handler);
 
 		BufferedImageLoader loader = new BufferedImageLoader();
 		backgroundImage = loader.loadImage("Resources" + MainMenuPanel.FILE_SEP + "WizardBackground.png");
+		bgWidth = backgroundImage.getWidth();
+		bgHeight = backgroundImage.getHeight();
 
 		start();
 	}
@@ -315,7 +319,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	 */
 
 	public void processNetworkMessages() {
-
+		
 		if (nm == null)
 			return;
 
@@ -325,6 +329,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 			NetworkDataObject ndo = queue.poll();
 			String host = ndo.getSourceIP();
+			serverIP = ndo.serverHost.toString().substring(1);
+
 
 			if (ndo.messageType.equals(NetworkDataObject.CLIENT_LIST)) {
 				// ||ndo.message[0].equals(messageTypeRestart)
@@ -468,7 +474,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				}
 			}
 			//System.out.println("server " + ndo.serverHost.toString() + ", " + myIP);
-			if (ndo.serverHost.toString().substring(1).equals(myIP)) {
+			if (serverIP.equals(myIP)) {
 				hasMoveToStart = true;
 			}
 			if (hasMoveToStart == false && numPlayers > 0) {

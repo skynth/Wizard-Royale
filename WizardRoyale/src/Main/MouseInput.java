@@ -129,7 +129,6 @@ public class MouseInput extends MouseAdapter {
 				int num = WizardRoyale.getNumOfPlayers();
 				handler.clear();
 				WizardRoyale.numPlayers = 0;
-				
 				WizardRoyale.hasMoveToStart = false;
 				
 				for (int i = 1; i <= num; i++) {

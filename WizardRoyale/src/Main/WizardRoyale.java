@@ -289,17 +289,15 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		loadLevel(backgroundImage);
 		this.addMouseListener(new MouseInput(handler, gameCamera, nm, backgroundImage));
 		handler.spawnCollectibles(backgroundImage);
-		ArrayList<Consumable> consumables = new ArrayList<Consumable>();
 		
 		for (int i = 0; i < handler.getGameObjects().size(); i++) {
 			System.out.println("Size: " + handler.getGameObjects().size());
 			if (handler.getGameObjects().get(i).getID() == ID.Item) {
-				consumables.add((Consumable) handler.getGameObjects().get(i));
+				Consumable consumable = (Consumable) handler.getGameObjects().get(i);
+				this.nm.sendMessage(NetworkDataObject.MESSAGE,"CONSUMABLES", consumable.getX(), consumable.getY(), consumable.getSubID());
 			}
 				
 		}
-		
-		this.nm.sendMessage(NetworkDataObject.MESSAGE,"CONSUMABLES", consumables);
 		System.out.println("Consumable sent");
 
 	}
@@ -377,16 +375,10 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 			 
 			 if (ndo.message[0].equals("CONSUMABLES")) {
-				 ArrayList<Consumable> consumables = (ArrayList<Consumable>) ndo.message[1];
 				 System.out.println("Got consumable from other guy");
-				 for (int i = 0; i < consumables.size(); i++) {
-					 handler.addObject(consumables.get(i));
-				 }
-				 
+				 handler.addObject(new Consumable((int) ndo.message[1], (int) ndo.message[2], ID.Item, handler, (ID) ndo.message[3]));
 			 }		
-		
-			
-			
+
 			if(ndo.message[0].equals("MOUSE_SHOOT")) {
 				System.out.println("Got mouse shoot");
 				Projectile projectile = (Projectile)ndo.message[1];

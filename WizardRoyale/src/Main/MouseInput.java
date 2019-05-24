@@ -143,7 +143,7 @@ public class MouseInput extends MouseAdapter {
 					&& e.getX() <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94
 					&& e.getY() <= WizardRoyale.HEIGHT / 3 + WizardRoyale.HEIGHT / 9) {
 
-				int num = WizardRoyale.getNumOfPlayers();
+				int num = WizardRoyale.getNumOfPlayers() + 1;
 				System.out.println("Players after death: " + num);
 				handler.clear();
 				WizardRoyale.numPlayers = 0;

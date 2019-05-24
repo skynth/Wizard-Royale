@@ -299,7 +299,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				
 		}
 		
-		nm.sendMessage(NetworkDataObject.MESSAGE,"CONSUMABLES", consumables);
+		this.nm.sendMessage(NetworkDataObject.MESSAGE,"CONSUMABLES", consumables);
 	}
 
 	public void networkMessageReceived(NetworkDataObject ndo) {

@@ -27,9 +27,9 @@ public class Consumable extends GameObject implements Serializable{
 	private static final long serialVersionUID = 2L;
 	private boolean isPickedUp;
 	private Handler handler;
-	private Image medKitImage = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "medicalKit.png");
-	private Image fireImage = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "fireConsumable.png");
-	private Image armorImage = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "cloak3.png");
+	private transient Image medKitImage = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "medicalKit.png");
+	private transient Image fireImage = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "fireConsumable.png");
+	private transient Image armorImage = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "cloak3.png");
 	/**
 	 * Constructs an instance of Consumable, given its type
 	 * 

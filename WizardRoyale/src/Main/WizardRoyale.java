@@ -8,7 +8,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Queue;
 
-
+import GameElements.Consumable;
 import GameElements.Player;
 import GameElements.Projectile;
 import GameElements.Tile;
@@ -289,6 +289,17 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		loadLevel(backgroundImage);
 		this.addMouseListener(new MouseInput(handler, gameCamera, nm, backgroundImage));
 		handler.spawnCollectibles(backgroundImage);
+		ArrayList<Consumable> consumables = new ArrayList<Consumable>();
+		
+		for (int i = 0; i < handler.getGameObjects().size(); i++) {
+			
+			if (handler.getGameObjects().get(i).getID() == ID.Item) {
+				consumables.add((Consumable) handler.getGameObjects().get(i));
+			}
+				
+		}
+		
+		nm.sendMessage(NetworkDataObject.MESSAGE, "CONSUMABLES", consumables);
 	}
 
 	public void networkMessageReceived(NetworkDataObject ndo) {
@@ -361,10 +372,16 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 //						System.out.println(handler.getPlayers().size());
 //						nm.sendMessage(NetworkDataObject.MESSAGE, messageTypePlayerList, handler.getPlayers());
 //
-					}
-				
-
-				
+			}
+			 
+			 if (ndo.message[0].equals("CONSUMABLES")) {
+				 ArrayList<Consumable> consumables = (ArrayList<Consumable>) ndo.message[1];
+	
+				 for (int i = 0; i < consumables.size(); i++) {
+					 handler.addObject(consumables.get(i));
+				 }
+				 
+			 }			
 			
 			
 			if(ndo.message[0].equals("MOUSE_SHOOT")) {

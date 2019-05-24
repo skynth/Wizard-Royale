@@ -24,6 +24,8 @@ public class MouseInput extends MouseAdapter {
 	private Camera camera;
 	NetworkMessenger nm;
 	private BufferedImage background;
+	public static int recoilTimer = 0;
+
 	 
 
 	/**
@@ -84,6 +86,8 @@ public class MouseInput extends MouseAdapter {
 			
 		} else if (WizardRoyale.State == STATE.GAME) {
 			
+			if(recoilTimer == 0) {
+			
 			Player player = null;
 			
 			for (Player p : handler.getPlayers()) {
@@ -93,6 +97,7 @@ public class MouseInput extends MouseAdapter {
 				}
 				
 			}
+			
 			
 			Projectile p = null;
 			
@@ -117,6 +122,9 @@ public class MouseInput extends MouseAdapter {
 			player.setIsShoot(true);
 			handler.addObject(p);
 			nm.sendMessage(NetworkDataObject.MESSAGE, "MOUSE_SHOOT", p);
+			recoilTimer = 30;
+			}
+			
 		
 		} else if (WizardRoyale.State == STATE.WINSCREEN) {
 			

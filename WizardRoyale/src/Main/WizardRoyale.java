@@ -5,7 +5,6 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
 import java.util.Queue;
 
 import GameElements.Consumable;
@@ -171,6 +170,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	
 	private void tick() {
 		
+		MouseInput.recoilTimer--;
 		if (State == STATE.GAME) {
 			
 			for (Player p : handler.getPlayers()) {

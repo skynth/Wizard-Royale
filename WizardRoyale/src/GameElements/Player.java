@@ -12,6 +12,7 @@ import java.util.LinkedList;
 import Main.Handler;
 import Main.ID;
 import Main.MainMenuPanel;
+import Main.MouseInput;
 import Main.WizardRoyale;
 import Main.WizardRoyale.STATE;
 import networking.frontend.NetworkDataObject;
@@ -76,7 +77,6 @@ public class Player extends GameObject implements Serializable{
 	public void tick() {
 		x += velX;
 		y += velY;
-		
 		if(health <= 0)
 		{
 			handler.getGameObjects().remove(this);

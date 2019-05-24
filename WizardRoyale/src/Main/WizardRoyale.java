@@ -28,7 +28,15 @@ import networking.frontend.NetworkMessenger;
 public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	
 	private static final long serialVersionUID = 1L;
+<<<<<<< HEAD
 
+=======
+	
+	private static final String messageTypeMove = "MOUSE_MOVE";
+	private static final String messageTypeShoot = "MOUSE_SHOOT";
+	private static final String messageTypePlayerList = "PLAYER_LIST";
+	private static final String messageTypeRestart = "RESTART";
+>>>>>>> branch 'master' of https://github.com/Leofeng1/APCS-Final.git
 	
 	public static String myIP;
 	public static int numPlayers;
@@ -338,7 +346,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 			
 
-			 if (ndo.messageType.equals(NetworkDataObject.HANDSHAKE)) {
+			 if (ndo.messageType.equals(NetworkDataObject.HANDSHAKE) ||ndo.message[0].equals(messageTypeRestart) ) {
 				hasMoveToStart = true;
 				System.out.println("Handshake");
 				for (Player p : handler.getPlayers()) {

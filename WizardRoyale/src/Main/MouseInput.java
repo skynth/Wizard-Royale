@@ -137,16 +137,14 @@ public class MouseInput extends MouseAdapter {
 						Player p = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, WizardRoyale.myIP, handler,ID.RegularProjectile, nm);
 						handler.addObject(p);
 						WizardRoyale.numPlayers++;
-						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.HANDSHAKE);
-						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.CLIENT_LIST);
+						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART");
 
 					}
 					else if(i == 2) {
 						Player p = new Player((int)(background.getWidth() *30), (int)(background.getHeight()*30), ID.Player, WizardRoyale.myIP, handler,ID.RegularProjectile, nm);
 						handler.addObject(p);
 						WizardRoyale.numPlayers++;
-						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.HANDSHAKE);
-						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.CLIENT_LIST);
+						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART");
 
 
 					}
@@ -154,16 +152,14 @@ public class MouseInput extends MouseAdapter {
 						Player p = new Player((int)(background.getWidth() *30), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, WizardRoyale.myIP, handler,ID.RegularProjectile, nm);
 						handler.addObject(p);
 						WizardRoyale.numPlayers++;
-						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.HANDSHAKE);
-						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.CLIENT_LIST);
+						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART");
 
 					}
-					if(i == 4) {
+					else if(i == 4) {
 						Player p = new Player((int)(WizardRoyale.WIDTH / 36), (int)(background.getHeight()*30), ID.Player, WizardRoyale.myIP, handler,ID.RegularProjectile, nm);
 						handler.addObject(p);
 						WizardRoyale.numPlayers++;
-						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.HANDSHAKE);
-						nm.sendMessage(NetworkDataObject.MESSAGE, NetworkDataObject.CLIENT_LIST);
+						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART");
 
 					}	
 					

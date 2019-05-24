@@ -286,7 +286,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		this.nm = nm;
 		loadLevel(backgroundImage);
 		this.addMouseListener(new MouseInput(handler, gameCamera, nm, backgroundImage));
-		this.addKeyListener(new KeyInput(handler, nm));
+		this.addKeyListener(new KeyInput(handler));
 		handler.spawnCollectibles(backgroundImage);
 	}
 

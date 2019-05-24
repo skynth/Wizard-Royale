@@ -19,7 +19,6 @@ public class KeyInput implements KeyListener {
 
 	Handler handler;
 	Player player;
-	NetworkMessenger nm;
 
 	/**
 	 * Creates a new instance of KeyInput
@@ -28,9 +27,8 @@ public class KeyInput implements KeyListener {
 	 *          handles all the events that occur in the game
 	 */
 
-	public KeyInput(Handler h, NetworkMessenger nm) {
+	public KeyInput(Handler h) {
 		handler = h;
-		this.nm = nm;
 	}
 
 	/**

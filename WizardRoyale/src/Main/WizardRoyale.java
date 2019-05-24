@@ -295,6 +295,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	public void networkMessageReceived(NetworkDataObject ndo) {
 		
 	}
+
 	
 	public static int getNumOfPlayers() {
 		return numOfPlayers;
@@ -480,6 +481,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		}
 			
 	}
+	
+	
 		
 }
 

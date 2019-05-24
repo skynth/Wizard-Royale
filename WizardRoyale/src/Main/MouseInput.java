@@ -144,41 +144,47 @@ public class MouseInput extends MouseAdapter {
 					&& e.getY() <= WizardRoyale.HEIGHT / 3 + WizardRoyale.HEIGHT / 9) {
 
 				int num = WizardRoyale.getNumOfPlayers();
+				System.out.println("Players after death: " + num);
 				handler.clear();
 				WizardRoyale.numPlayers = 0;
 				WizardRoyale.hasMoveToStart = false;
 
 				for (int i = 1; i <= num; i++) {
+					Player p = new Player((int) (WizardRoyale.WIDTH / 36 + 10 * i), (int) (WizardRoyale.HEIGHT / 22.5),
+							ID.Player, WizardRoyale.myIP, handler, ID.RegularProjectile, nm);
+					handler.addObject(p);
+					WizardRoyale.numPlayers++;
+					
 
-					if (i == 1) {
-						Player p = new Player((int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5),
-								ID.Player, WizardRoyale.myIP, handler, ID.RegularProjectile, nm);
-						handler.addObject(p);
-						WizardRoyale.numPlayers++;
-						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART");
-
-					} else if (i == 2) {
-						Player p = new Player((int) (background.getWidth() * 30), (int) (background.getHeight() * 30),
-								ID.Player, WizardRoyale.myIP, handler, ID.RegularProjectile, nm);
-						handler.addObject(p);
-						WizardRoyale.numPlayers++;
-						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART");
-
-					} else if (i == 3) {
-						Player p = new Player((int) (background.getWidth() * 30), (int) (WizardRoyale.HEIGHT / 22.5),
-								ID.Player, WizardRoyale.myIP, handler, ID.RegularProjectile, nm);
-						handler.addObject(p);
-						WizardRoyale.numPlayers++;
-						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART");
-
-					} else if (i == 4) {
-						Player p = new Player((int) (WizardRoyale.WIDTH / 36), (int) (background.getHeight() * 30),
-								ID.Player, WizardRoyale.myIP, handler, ID.RegularProjectile, nm);
-						handler.addObject(p);
-						WizardRoyale.numPlayers++;
-						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART");
-
-					}
+//					if (i == 1) {
+//						Player p = new Player((int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5),
+//								ID.Player, WizardRoyale.myIP, handler, ID.RegularProjectile, nm);
+//						handler.addObject(p);
+//						WizardRoyale.numPlayers++;
+//						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART");
+//
+//					} else if (i == 2) {
+//						Player p = new Player((int) (background.getWidth() * 30), (int) (background.getHeight() * 30),
+//								ID.Player, WizardRoyale.myIP, handler, ID.RegularProjectile, nm);
+//						handler.addObject(p);
+//						WizardRoyale.numPlayers++;
+//						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART");
+//
+//					} else if (i == 3) {
+//						Player p = new Player((int) (background.getWidth() * 30), (int) (WizardRoyale.HEIGHT / 22.5),
+//								ID.Player, WizardRoyale.myIP, handler, ID.RegularProjectile, nm);
+//						handler.addObject(p);
+//						WizardRoyale.numPlayers++;
+//						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART");
+//
+//					} else if (i == 4) {
+//						Player p = new Player((int) (WizardRoyale.WIDTH / 36), (int) (background.getHeight() * 30),
+//								ID.Player, WizardRoyale.myIP, handler, ID.RegularProjectile, nm);
+//						handler.addObject(p);
+//						WizardRoyale.numPlayers++;
+//						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART");
+//
+//					}
 
 				}
 				// nm.sendMessage(NetworkDataObject.CLIENT_LIST);

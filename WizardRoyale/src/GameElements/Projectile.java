@@ -122,7 +122,7 @@ public class Projectile extends GameObject implements Serializable{
 					if (this.getBounds().intersects(handler.getGameObjects().get(i).getBounds())) {
 						if(subID == ID.LargeFireProjectile )
 						{
-							
+							handler.removeObject(handler.getGameObjects().get(i));
 						}
 						handler.getGameObjects().remove(this);
 					}

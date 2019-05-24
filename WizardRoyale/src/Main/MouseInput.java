@@ -138,6 +138,7 @@ public class MouseInput extends MouseAdapter {
 						handler.addObject(p);
 						WizardRoyale.numPlayers++;
 						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART");
+						
 
 					}
 					else if(i == 2) {

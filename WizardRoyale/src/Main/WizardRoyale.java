@@ -317,7 +317,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			NetworkDataObject ndo = queue.poll();
 			String host = ndo.getSourceIP();
 			
-			if (ndo.messageType.equals(NetworkDataObject.CLIENT_LIST)) {
+			if (ndo.messageType.equals(NetworkDataObject.CLIENT_LIST)||ndo.message[0].equals(messageTypeRestart)) {
 				System.out.println("client");
 				for (Player p : handler.getPlayers()) {
 					
@@ -341,7 +341,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 			
 
-			 if (ndo.messageType.equals(NetworkDataObject.HANDSHAKE) ||ndo.message[0].equals(messageTypeRestart) ) {
+			 if (ndo.messageType.equals(NetworkDataObject.HANDSHAKE)  ) {
+				
 				hasMoveToStart = true;
 				System.out.println("Handshake");
 				for (Player p : handler.getPlayers()) {

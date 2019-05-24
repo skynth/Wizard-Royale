@@ -79,8 +79,10 @@ public class Handler implements Serializable{
 		
 		for (int i = 0; i < gameObjects.size(); i++) {
 			
-			if (gameObjects.get(i).getID() == ID.Player) {
-				players.add((Player)gameObjects.get(i));
+			if(gameObjects != null) {
+				if (gameObjects.get(i).getID() == ID.Player) {
+					players.add((Player)gameObjects.get(i));
+				}
 			}
 			
 		}

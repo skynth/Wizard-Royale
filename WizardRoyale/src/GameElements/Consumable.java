@@ -66,7 +66,7 @@ public class Consumable extends GameObject implements Serializable{
 	 * @param g the instance of the graphics class that will handle drawing everything in the WizardRoyale class
 	 */
 	public void render(Graphics g) {
-		if(subID == ID.MedKit)
+		/*if(subID == ID.MedKit)
 		{
 			g.drawImage(medKitImage, x, y, (int)(WizardRoyale.WIDTH / 30), (int)(WizardRoyale.HEIGHT / 25), null);
 		}
@@ -75,7 +75,7 @@ public class Consumable extends GameObject implements Serializable{
 			g.drawImage(fireImage, x, y, (int)(WizardRoyale.WIDTH / 45), (int)(WizardRoyale.HEIGHT / 28.125), null);
 		} else if (subID == ID.Armor) {
 			g.drawImage(armorImage, x, y, (int)(WizardRoyale.WIDTH / 45), (int)(WizardRoyale.HEIGHT / 28.125), null);
-		}
+		}*/
 	}
 
 	/**

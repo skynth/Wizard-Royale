@@ -2,11 +2,14 @@ package GameElements;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.io.Serializable;
 
 import Main.Handler;
 import Main.ID;
+import Main.MainMenuPanel;
 import Main.WizardRoyale;
 
 /**
@@ -24,7 +27,8 @@ public class Consumable extends GameObject implements Serializable{
 	private static final long serialVersionUID = 2L;
 	private boolean isPickedUp;
 	private Handler handler;
-	
+	private Image medKitImage = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "medicalKit.png");
+	private Image fireImage = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "fireConsumable.png");
 	/**
 	 * Constructs an instance of Consumable, given its type
 	 * 
@@ -61,8 +65,14 @@ public class Consumable extends GameObject implements Serializable{
 	 * @param g the instance of the graphics class that will handle drawing everything in the WizardRoyale class
 	 */
 	public void render(Graphics g) {
-		g.setColor(Color.blue);
-		g.fillRect(x, y, (int)(WizardRoyale.WIDTH / 25), (int)(WizardRoyale.HEIGHT / 30));
+		if(subID == ID.MedKit)
+		{
+			g.drawImage(medKitImage, x, y, (int)(WizardRoyale.WIDTH / 30), (int)(WizardRoyale.HEIGHT / 25), null);
+		}
+		else if(subID == ID.LargeConsumable)
+		{
+			g.drawImage(fireImage, x, y, (int)(WizardRoyale.WIDTH / 45), (int)(WizardRoyale.HEIGHT / 28.125), null);
+		}
 	}
 
 	/**

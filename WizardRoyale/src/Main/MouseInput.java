@@ -23,7 +23,6 @@ public class MouseInput extends MouseAdapter {
 	private Handler handler;
 	private Camera camera;
 	NetworkMessenger nm;
-	private BufferedImage background;
 	public static int recoilTimer = 0;
 
 	/**
@@ -39,7 +38,6 @@ public class MouseInput extends MouseAdapter {
 		handler = h;
 		camera = cam;
 		this.nm = nm;
-		background = b;
 
 	}
 
@@ -149,9 +147,9 @@ public class MouseInput extends MouseAdapter {
 				WizardRoyale.numPlayers = 0;
 				WizardRoyale.hasMoveToStart = false;
 
-				for (int i = 1; i <= num; i++) {
-					Player p = new Player((int) (WizardRoyale.WIDTH / 36 + 10 * i), (int) (WizardRoyale.HEIGHT / 22.5),
-							ID.Player, WizardRoyale.myIP, handler, ID.RegularProjectile, nm);
+				for (int i = 0; i < num; i++) {
+					Player p = new Player((int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5),
+							ID.Player, WizardRoyale.connectedIPs.get(i), handler, ID.RegularProjectile, nm);
 					handler.addObject(p);
 					WizardRoyale.numPlayers++;
 					

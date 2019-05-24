@@ -5,6 +5,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Queue;
 
 import GameElements.Consumable;
@@ -36,6 +37,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	public static int numPlayers;
 	public static boolean hasMoveToStart;
 	private boolean isReadyToMove;
+	public static ArrayList<String> connectedIPs;
 
 	
 	/**
@@ -101,6 +103,9 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
+		
+		connectedIPs = new ArrayList<String>();
+		connectedIPs.add(myIP);
 		
 		hasMoveToStart = false;
 		isReadyToMove = false;
@@ -345,6 +350,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 			 if (ndo.messageType.equals(NetworkDataObject.HANDSHAKE)  ) {
 				
+				connectedIPs.add(host);
 				hasMoveToStart = true;
 				System.out.println("Handshake");
 				for (Player p : handler.getPlayers()) {
@@ -366,7 +372,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					
 				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile, nm);
 				handler.addObject(player);
-				Player myPlayer = null;
+				//Player myPlayer = null;
 //				for (Player p : handler.getPlayers()) {	
 //					if (p.getIp().equals(myIP)) {
 //							myPlayer = p;

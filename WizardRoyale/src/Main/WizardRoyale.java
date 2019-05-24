@@ -292,7 +292,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		ArrayList<Consumable> consumables = new ArrayList<Consumable>();
 		
 		for (int i = 0; i < handler.getGameObjects().size(); i++) {
-			System.out.println("Size: " + handler.getGameObjects().size());
 			if (handler.getGameObjects().get(i).getID() == ID.Item) {
 				consumables.add((Consumable) handler.getGameObjects().get(i));
 			}
@@ -300,7 +299,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		}
 		
 		this.nm.sendMessage(NetworkDataObject.MESSAGE,"CONSUMABLES", consumables);
-		System.out.println("Consumable sent");
+		System.out.println("Consumable sent " + consumables.size());
 
 	}
 

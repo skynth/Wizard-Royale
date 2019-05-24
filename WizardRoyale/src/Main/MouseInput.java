@@ -143,7 +143,6 @@ public class MouseInput extends MouseAdapter {
 				
 				nm.sendMessage(NetworkDataObject.MESSAGE, "NEWGAME");
 
-				//int num = WizardRoyale.getNumOfPlayers();
 				System.out.println("Players after death: " + WizardRoyale.numPlayers);
 				handler.clear();
 				WizardRoyale.numPlayers = 0;
@@ -153,14 +152,16 @@ public class MouseInput extends MouseAdapter {
 						Player p = new Player((int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5),
 							ID.Player, WizardRoyale.connectedIPs.get(i), handler, ID.RegularProjectile, nm);
 						handler.addObject(p);
-
+						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART", (int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5), WizardRoyale.connectedIPs.get(i));
 					}
 					else {
 						Player p = new Player((int) (WizardRoyale.bgWidth* 30), (int) (WizardRoyale.bgHeight* 30),
 								ID.Player, WizardRoyale.connectedIPs.get(i), handler, ID.RegularProjectile, nm);
 						handler.addObject(p);
+						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART", (int) (WizardRoyale.bgWidth* 30), (int) (WizardRoyale.bgHeight* 30), WizardRoyale.connectedIPs.get(i));
 
 					}
+					
 					WizardRoyale.numPlayers++;
 					
 

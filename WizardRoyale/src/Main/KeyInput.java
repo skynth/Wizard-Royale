@@ -5,6 +5,8 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 import GameElements.Player;
+import networking.frontend.NetworkDataObject;
+import networking.frontend.NetworkMessenger;
 
 /**
  * A class that handles input from the user's keyboard to the game
@@ -17,6 +19,7 @@ public class KeyInput implements KeyListener {
 
 	Handler handler;
 	Player player;
+	NetworkMessenger nm;
 
 	/**
 	 * Creates a new instance of KeyInput
@@ -25,9 +28,9 @@ public class KeyInput implements KeyListener {
 	 *          handles all the events that occur in the game
 	 */
 
-	public KeyInput(Handler h) {
+	public KeyInput(Handler h, NetworkMessenger nm) {
 		handler = h;
-
+		this.nm = nm;
 	}
 
 	/**
@@ -52,19 +55,23 @@ public class KeyInput implements KeyListener {
 		if (WizardRoyale.numPlayers > 1) {
 			if (key == KeyEvent.VK_W) {
 				player.setUp(true);
+				nm.sendMessage(NetworkDataObject.MESSAGE, "MOVE", player.getX(), player.getY());
 			}
 
 			if (key == KeyEvent.VK_A) {
 				player.setLeft(true);
 				player.setRight(false);
+				nm.sendMessage(NetworkDataObject.MESSAGE, "MOVE", player.getX(), player.getY());
 			}
 
 			if (key == KeyEvent.VK_S) {
 				player.setDown(true);
+				nm.sendMessage(NetworkDataObject.MESSAGE, "MOVE", player.getX(), player.getY());
 			}
 
 			if (key == KeyEvent.VK_D) {
 				player.setRight(true);
+				nm.sendMessage(NetworkDataObject.MESSAGE, "MOVE", player.getX(), player.getY());
 			}
 		}
 
@@ -110,5 +117,6 @@ public class KeyInput implements KeyListener {
 	public void keyTyped(KeyEvent arg0) {
 
 	}
+
 
 }

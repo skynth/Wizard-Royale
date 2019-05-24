@@ -28,10 +28,7 @@ import networking.frontend.NetworkMessenger;
 public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	
 	private static final long serialVersionUID = 1L;
-	
-	private static final String messageTypeMove = "MOUSE_MOVE";
-	private static final String messageTypeShoot = "MOUSE_SHOOT";
-	private static final String messageTypePlayerList = "PLAYER_LIST";
+
 	
 	public static String myIP;
 	public static int numPlayers;
@@ -112,7 +109,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		BufferedImageLoader loader = new BufferedImageLoader();
 		backgroundImage = loader.loadImage("Resources" + MainMenuPanel.FILE_SEP + "WizardBackground.png");
 	
-		this.addKeyListener(new KeyInput(handler));
 		start();
 	}
 	
@@ -188,8 +184,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			
 		}
 		processNetworkMessages();
-		
-
+	
 	}
 	
 	private void render() {
@@ -288,11 +283,9 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		this.nm = nm;
 		loadLevel(backgroundImage);
 		this.addMouseListener(new MouseInput(handler, gameCamera, nm, backgroundImage));
+		this.addKeyListener(new KeyInput(handler, nm));
 		handler.spawnCollectibles(backgroundImage);
-		
-
-		
-		}
+	}
 
 	
 
@@ -396,7 +389,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				
 			}
 			
-			else if (ndo.message[0].equals(messageTypeMove)) {
+			else if (ndo.message[0].equals("MOVE")) {
 				
 				for (int i = 0; i < handler.getPlayers().size(); i++) {
 
@@ -419,7 +412,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 						handler.getPlayers().get(i).setDown((boolean)ndo.message[4]);*/
 						
 						if((int)ndo.message[1] > handler.getPlayers().get(i).getX()) {
-								handler.getPlayers().get(i).setAnimationRight(true);
+							handler.getPlayers().get(i).setAnimationRight(true);
 						}
 						else if((int)ndo.message[1] < handler.getPlayers().get(i).getX()) {
 							handler.getPlayers().get(i).setAnimationRight(false);
@@ -479,7 +472,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					hasMoveToStart = true;
 				}
 				//nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, myPlayer.isRight(), myPlayer.isLeft(), myPlayer.isUp(), myPlayer.isDown());
-				nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, myPlayer.getX(), myPlayer.getY());
 
 			
 

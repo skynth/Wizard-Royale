@@ -55,23 +55,19 @@ public class KeyInput implements KeyListener {
 		if (WizardRoyale.numPlayers > 1) {
 			if (key == KeyEvent.VK_W) {
 				player.setUp(true);
-				nm.sendMessage(NetworkDataObject.MESSAGE, "MOVE", player.getX(), player.getY());
 			}
 
 			if (key == KeyEvent.VK_A) {
 				player.setLeft(true);
 				player.setRight(false);
-				nm.sendMessage(NetworkDataObject.MESSAGE, "MOVE", player.getX(), player.getY());
 			}
 
 			if (key == KeyEvent.VK_S) {
 				player.setDown(true);
-				nm.sendMessage(NetworkDataObject.MESSAGE, "MOVE", player.getX(), player.getY());
 			}
 
 			if (key == KeyEvent.VK_D) {
 				player.setRight(true);
-				nm.sendMessage(NetworkDataObject.MESSAGE, "MOVE", player.getX(), player.getY());
 			}
 		}
 

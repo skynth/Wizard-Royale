@@ -290,14 +290,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		this.addMouseListener(new MouseInput(handler, gameCamera, nm, backgroundImage));
 		handler.spawnCollectibles(backgroundImage);
 		
-		for (int i = 0; i < handler.getGameObjects().size(); i++) {
-			
-			if (handler.getGameObjects().get(i).getID() == ID.Item) {
-				Consumable consumable = (Consumable) handler.getGameObjects().get(i);
-				this.nm.sendMessage(NetworkDataObject.MESSAGE,"CONSUMABLES", consumable.getX(), consumable.getY(), consumable.getSubID());
-			}
-				
-		}
+
 		
 		}
 
@@ -340,6 +333,14 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile, nm);
 				handler.addObject(player);
 				numPlayers++;
+				for (int i = 0; i < handler.getGameObjects().size(); i++) {
+					
+					if (handler.getGameObjects().get(i).getID() == ID.Item) {
+						Consumable consumable = (Consumable) handler.getGameObjects().get(i);
+						this.nm.sendMessage(NetworkDataObject.MESSAGE,"CONSUMABLES", consumable.getX(), consumable.getY(), consumable.getSubID());
+					}
+						
+				}
 
 			}
 			
@@ -354,7 +355,14 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 						}
 						
 				numPlayers++;
+				for (int i = 0; i < handler.getGameObjects().size(); i++) {
 					
+					if (handler.getGameObjects().get(i).getID() == ID.Item) {
+						Consumable consumable = (Consumable) handler.getGameObjects().get(i);
+						this.nm.sendMessage(NetworkDataObject.MESSAGE,"CONSUMABLES", consumable.getX(), consumable.getY(), consumable.getSubID());
+					}
+						
+				}
 				} 
 					
 				Player player = new Player((int)(WizardRoyale.WIDTH / 36), (int)(WizardRoyale.HEIGHT / 22.5), ID.Player, host, handler,ID.RegularProjectile, nm);

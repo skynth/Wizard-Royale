@@ -476,6 +476,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					hasMoveToStart = true;
 				}
 				//nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove, myPlayer.isRight(), myPlayer.isLeft(), myPlayer.isUp(), myPlayer.isDown());
+				nm.sendMessage(NetworkDataObject.MESSAGE, "MOVE", myPlayer.getX(), myPlayer.getY());
 
 			
 

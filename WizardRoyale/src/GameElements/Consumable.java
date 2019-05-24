@@ -29,6 +29,7 @@ public class Consumable extends GameObject implements Serializable{
 	private Handler handler;
 	private Image medKitImage = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "medicalKit.png");
 	private Image fireImage = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "fireConsumable.png");
+	private Image armorImage = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "cloak3.png");
 	/**
 	 * Constructs an instance of Consumable, given its type
 	 * 
@@ -72,6 +73,8 @@ public class Consumable extends GameObject implements Serializable{
 		else if(subID == ID.LargeConsumable)
 		{
 			g.drawImage(fireImage, x, y, (int)(WizardRoyale.WIDTH / 45), (int)(WizardRoyale.HEIGHT / 28.125), null);
+		} else if (subID == ID.Armor) {
+			g.drawImage(armorImage, x, y, (int)(WizardRoyale.WIDTH / 45), (int)(WizardRoyale.HEIGHT / 28.125), null);
 		}
 	}
 

@@ -132,20 +132,24 @@ public class Handler implements Serializable{
 	
 	public void spawnCollectibles(BufferedImage background)
 	{
-		for(int count = 12; count>0; count--)
+		for(int count = 20; count>0; count--)
 		{
 			boolean added = false;
 			while(!added)
 			{
-				Consumable c;
-				int rand = (int)(Math.random()*2+1);
+				Consumable c = null;
+				int rand = (int)(Math.random()*3+1);
 				if(rand == 1)
 				{
-					 c = new Consumable((int)(background.getWidth()*32 / (Math.random()*10+1)), (int)(background.getHeight()*32 / (Math.random()*10+1)), ID.Item, this,ID.MedKit);
+					 c = new Consumable((int)(144 * 32 * Math.random()), (int)(144 * 32 * Math.random()), ID.Item, this,ID.MedKit);
 				}
-				else
+				else if (rand == 2)
 				{
-					c = new Consumable((int)(background.getWidth()*32 / (Math.random()*10+1)), (int)(background.getHeight()*32 / (Math.random()*10+1)), ID.Item, this,ID.LargeConsumable);
+					c = new Consumable((int)(144 * 32 * Math.random()), (int)(144 * 32 * Math.random()), ID.Item, this,ID.LargeConsumable);
+				} 
+				else if (rand == 3) 
+				{
+					c = new Consumable((int)(144 * 32 * Math.random()), (int)(144 * 32 * Math.random()), ID.Item, this, ID.Armor);
 				}
 				
 				boolean onWall = false;

@@ -16,6 +16,7 @@ public enum ID {
 	Item(),
 	Projectile(), 
 	MedKit(),
+	Armor(),
 	LargeConsumable(),
 	RegularProjectile(),
 	LargeFireProjectile(),

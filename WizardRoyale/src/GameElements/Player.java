@@ -37,6 +37,7 @@ public class Player extends GameObject implements Serializable{
 	private transient Image spriteShootLeft[] = new Image[15];
 	private double step, shootStep;
 	private int health;
+	private int armor;
 	private int speed = 8;
 	private boolean isAnimationRight;
 	private boolean isShoot;
@@ -133,6 +134,8 @@ public class Player extends GameObject implements Serializable{
 		
 		g.setColor(Color.green);
 		g.fillRect(this.x, this.y + WizardRoyale.HEIGHT / 15, (WizardRoyale.WIDTH / 24) * health/100, 10);
+		g.setColor(Color.cyan);
+		g.fillRect(this.x, this.y + WizardRoyale.HEIGHT / 15 + 10, (WizardRoyale.WIDTH / 24) * armor/50, 10);
 
 	}
 	
@@ -172,9 +175,15 @@ public class Player extends GameObject implements Serializable{
 						}
 						else if(objects.get(i).getSubID() == ID.LargeConsumable) 
 						{
-							
 							projectileType = ID.LargeFireProjectile;
-					    }
+					    } 
+						else if (objects.get(i).getSubID() == ID.Armor) {
+							
+							if (armor >= 30) {
+								armor = 50;
+							}
+							armor += 20;
+						}
 
 						
 
@@ -196,8 +205,18 @@ public class Player extends GameObject implements Serializable{
 					Projectile p = (Projectile) objects.get(i);
 					
 					if (getBounds().intersects(objects.get(i).getBounds()) && !(p.getHost().equals(this.ip))) {
-				
-						health -= 10;
+						
+						if (armor > 0) {
+							
+							if (armor < p.getDamage()) {
+								armor = 0;
+								health -= p.getDamage() - armor;
+							} else {
+								armor -= p.getDamage();
+							}
+						} else {
+							health -= 10;
+						}
 						
 						objects.remove(objects.get(i));
 

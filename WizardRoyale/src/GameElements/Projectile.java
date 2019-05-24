@@ -11,6 +11,7 @@ import Main.Handler;
 import Main.ID;
 import Main.MainMenuPanel;
 import Main.WizardRoyale;
+import networking.frontend.NetworkMessenger;
 /**
  * A class that represents an instance of a projectile. The projectile shoots as soon as it is made.
  * 
@@ -25,10 +26,12 @@ public class Projectile extends GameObject implements Serializable{
 	private static final long serialVersionUID = 4L;
 	private double angle;
 	private Handler handler;
+	private int damage;
 	private boolean isOutOfRange;
 	private boolean isRight;
 	private boolean isUp;
 	private String host;
+	NetworkMessenger nm;
 	
 	private transient Image fireball = Toolkit.getDefaultToolkit().getImage("Resources" + MainMenuPanel.FILE_SEP + "fireball.png");
 	/**
@@ -48,6 +51,8 @@ public class Projectile extends GameObject implements Serializable{
 		this.subID = subID;
 		this.host = host;
 		
+		damage = 10;
+		
 		angle = Math.atan((double)(mouseY - y) / (mouseX - x)); //Not sure if this works yet
 		handler = h;
 		isOutOfRange = false;
@@ -65,7 +70,6 @@ public class Projectile extends GameObject implements Serializable{
 			isUp = false;
 		}
 	
-
 	}
 	
 	/**
@@ -76,7 +80,7 @@ public class Projectile extends GameObject implements Serializable{
 	public void render(Graphics g) {
 		//g.drawImage(fireball, x, y, null);
 
-		g.setColor(Color.pink);
+		g.setColor(Color.red);
 		g.fillOval(x, y, (int)(WizardRoyale.WIDTH / 90), (int)(WizardRoyale.HEIGHT / 56.25));
 	}
 	
@@ -118,7 +122,7 @@ public class Projectile extends GameObject implements Serializable{
 					if (this.getBounds().intersects(handler.getGameObjects().get(i).getBounds())) {
 						if(subID == ID.LargeFireProjectile )
 						{
-							handler.getGameObjects().remove(i);
+							
 						}
 						handler.getGameObjects().remove(this);
 					}
@@ -140,6 +144,11 @@ public class Projectile extends GameObject implements Serializable{
 	public String getHost() {
 		return host;
 	}
+	
+	public int getDamage() {
+		return damage;
+	}
+	
 	public void setHandler(Handler h) {
 		handler = h;
 	}

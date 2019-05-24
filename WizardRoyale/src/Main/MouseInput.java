@@ -155,7 +155,7 @@ public class MouseInput extends MouseAdapter {
 						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART");
 
 					}
-					if(i == 4) {
+					else if(i == 4) {
 						Player p = new Player((int)(WizardRoyale.WIDTH / 36), (int)(background.getHeight()*30), ID.Player, WizardRoyale.myIP, handler,ID.RegularProjectile, nm);
 						handler.addObject(p);
 						WizardRoyale.numPlayers++;

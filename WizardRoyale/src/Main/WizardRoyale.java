@@ -108,7 +108,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		}
 
 		connectedIPs = new ArrayList<String>();
-		//connectedIPs.add(myIP);
+		connectedIPs.add(myIP);
 
 		hasMoveToStart = false;
 		new Window(WIDTH, HEIGHT, "Wizard Royale", this);
@@ -339,7 +339,11 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 				}
 				
-				connectedIPs.add(host);
+				if (connectedIPs.indexOf(host) == -1) {
+				
+					connectedIPs.add(host);
+				
+				}
 				
 				Player player = new Player((int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5),
 						ID.Player, host, handler, ID.RegularProjectile, nm);
@@ -367,7 +371,11 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 						return;
 					}
 					
-					connectedIPs.add(host);
+					if (connectedIPs.indexOf(host) == -1) {
+						
+						connectedIPs.add(host);
+					
+					}
 
 					numPlayers++;
 					for (int i = 0; i < handler.getGameObjects().size(); i++) {

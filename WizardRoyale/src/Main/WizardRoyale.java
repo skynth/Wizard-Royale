@@ -101,7 +101,9 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
-
+		
+		handler = new Handler();
+		
 		connectedIPs = new ArrayList<String>();
 		connectedIPs.add(myIP);
 

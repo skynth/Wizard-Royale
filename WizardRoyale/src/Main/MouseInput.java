@@ -4,6 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
+import GameElements.Consumable;
 import GameElements.Player;
 import GameElements.Projectile;
 import Main.WizardRoyale.STATE;
@@ -147,6 +148,17 @@ public class MouseInput extends MouseAdapter {
 				System.out.println("Players after death: " + WizardRoyale.numPlayers);
 				handler.clear();
 				handler.spawnCollectibles();
+				
+				for (int i = 0; i < handler.getGameObjects().size(); i++) {
+
+					if (handler.getGameObjects().get(i).getID() == ID.Item) {
+						Consumable consumable = (Consumable) handler.getGameObjects().get(i);
+						this.nm.sendMessage(NetworkDataObject.MESSAGE, "CONSUMABLES", consumable.getX(),
+								consumable.getY(), consumable.getSubID());
+					}
+
+				}
+				
 				WizardRoyale.numPlayers = 0;
 
 				for (int i = 0; i < 2; i++) {

@@ -95,6 +95,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 	public WizardRoyale() {
 		
+		handler = new Handler();
+		
 		try {
 			myIP = InetAddress.getLocalHost().toString();
 			myIP = myIP.substring(myIP.indexOf('/') + 1);
@@ -102,7 +104,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			e.printStackTrace();
 		}
 		
-		handler = new Handler();
 		
 		connectedIPs = new ArrayList<String>();
 		connectedIPs.add(myIP);
@@ -406,6 +407,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			
 			if (ndo.message[0].equals("RESET")) {
 				handler.clear();
+				handler.spawnCollectibles();
 				WizardRoyale.State = STATE.GAME;
 				newGame = true;
 				

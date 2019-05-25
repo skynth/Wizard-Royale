@@ -196,9 +196,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 			handler.tick();
 
-		} else if (State == STATE.MENU) {
-
-		}
+		} 
 		processNetworkMessages();
 
 	}
@@ -333,7 +331,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 
 			if (ndo.messageType.equals(NetworkDataObject.CLIENT_LIST)) {
-				// ||ndo.message[0].equals(messageTypeRestart)
 				connectedIPs.add(host);
 				System.out.println("client");
 				for (Player p : handler.getPlayers()) {
@@ -399,6 +396,10 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 //						System.out.println(handler.getPlayers().size());
 //						nm.sendMessage(NetworkDataObject.MESSAGE, messageTypePlayerList, handler.getPlayers());
 //
+			}
+			
+			if (ndo.message[0].equals("NEW PLAYER")) {
+				handler.addObject(new Player((int)ndo.message[1], (int)ndo.message[2], ID.Player, (String) ndo.message[3], handler, ID.RegularProjectile, nm));
 			}
 			
 			if (ndo.message[0].equals("RESET")) {

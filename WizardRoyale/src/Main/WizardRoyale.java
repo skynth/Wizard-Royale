@@ -419,13 +419,11 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 
 			if (ndo.message[0].equals("CONSUMABLES")) {
-				System.out.println("Got consumable from other guy");
 				handler.addObject(new Consumable((int) ndo.message[1], (int) ndo.message[2], ID.Item, handler,
 						(ID) ndo.message[3]));
 			}
 
 			if (ndo.message[0].equals("MOUSE_SHOOT")) {
-				System.out.println("Got mouse shoot");
 				Projectile projectile = (Projectile) ndo.message[1];
 				projectile.setHandler(handler);
 				handler.addObject(projectile);

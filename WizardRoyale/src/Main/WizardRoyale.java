@@ -407,6 +407,15 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			if (ndo.message[0].equals("RESET")) {
 				handler.clear();
 				handler.spawnCollectibles();
+				for (int i = 0; i < handler.getGameObjects().size(); i++) {
+
+					if (handler.getGameObjects().get(i).getID() == ID.Item) {
+						Consumable consumable = (Consumable) handler.getGameObjects().get(i);
+						this.nm.sendMessage(NetworkDataObject.MESSAGE, "CONSUMABLES", consumable.getX(),
+								consumable.getY(), consumable.getSubID());
+					}
+
+				}
 				WizardRoyale.State = STATE.GAME;
 				newGame = true;
 				

@@ -17,7 +17,7 @@ import networking.frontend.NetworkDataObject;
  * the GameObjects to make sure they are constantly updated
  * 
  * @author Leofeng, Roee
- * @version 5/17/19
+ * @version 5/24/19
  * 
  */
 

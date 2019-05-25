@@ -300,7 +300,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		loadLevel(backgroundImage);
 		this.addMouseListener(new MouseInput(handler, gameCamera, nm, backgroundImage));
 		this.addKeyListener(new KeyInput(handler));
-		handler.spawnCollectibles(backgroundImage);
+		handler.spawnCollectibles();
 	}
 
 	public void networkMessageReceived(NetworkDataObject ndo) {
@@ -393,20 +393,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				Player player = new Player((int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5),
 						ID.Player, host, handler, ID.RegularProjectile, nm);
 				handler.addObject(player);
-				// Player myPlayer = null;
-//				for (Player p : handler.getPlayers()) {	
-//					if (p.getIp().equals(myIP)) {
-//							myPlayer = p;
-//					}
-//				}
-//				if(myPlayer != null) {
-//					System.out.println("not null, " + ndo.serverHost.toString() + ", " + myPlayer.getIp());
-//					String serverHost = ndo.serverHost.toString().substring(1);
-//					if(myPlayer.getIp().equals(serverHost.toString())) {
-//						isReadyToMove = true;
-//						System.out.println(handler.getPlayers().size());
-//						nm.sendMessage(NetworkDataObject.MESSAGE, messageTypePlayerList, handler.getPlayers());
-//
+
 			}
 			
 			if (ndo.message[0].equals("NEW_PLAYER") && !ndo.getSourceIP().equals(myIP)) {
@@ -436,22 +423,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				for (int i = 0; i < handler.getPlayers().size(); i++) {
 
 					if (handler.getPlayers().get(i).getIp().equals(host)) {
-
-						/*
-						 * System.out.println("success");
-						 * handler.getPlayers().get(i).setRight((boolean)ndo.message[1]);
-						 * 
-						 * if ((boolean)ndo.message[1] == true) {
-						 * handler.getPlayers().get(i).setAnimationRight(true); }
-						 * 
-						 * handler.getPlayers().get(i).setLeft((boolean)ndo.message[2]);
-						 * 
-						 * if ((boolean)ndo.message[1] == true) {
-						 * handler.getPlayers().get(i).setAnimationRight(false); }
-						 * 
-						 * handler.getPlayers().get(i).setUp((boolean)ndo.message[3]);
-						 * handler.getPlayers().get(i).setDown((boolean)ndo.message[4]);
-						 */
 
 						if ((int) ndo.message[1] > handler.getPlayers().get(i).getX()) {
 							handler.getPlayers().get(i).setAnimationRight(true);
@@ -488,7 +459,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					myPlayer = p;
 				}
 			}
-			//System.out.println("server " + ndo.serverHost.toString() + ", " + myIP);
+
 			if (serverIP.equals(myIP)) {
 				hasMoveToStart = true;
 			}
@@ -510,8 +481,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				}
 				hasMoveToStart = true;
 			}
-			// nm.sendMessage(NetworkDataObject.MESSAGE, messageTypeMove,
-			// myPlayer.isRight(), myPlayer.isLeft(), myPlayer.isUp(), myPlayer.isDown());
+			
 			if (myPlayer != null) {
 				nm.sendMessage(NetworkDataObject.MESSAGE, "MOVE", myPlayer.getX(), myPlayer.getY());
 				System.out.println("SENT MOVE");

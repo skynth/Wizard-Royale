@@ -40,6 +40,10 @@ public class Tile extends GameObject implements Serializable {
 		super(x , y, id);
 		this.subID = subID;
 	}
+	
+	/**
+	 * Continually draws the walls 
+	 */
 
 	public void render(Graphics g) {
 		if (subID == ID.Wall) {

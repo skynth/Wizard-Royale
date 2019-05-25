@@ -54,6 +54,7 @@ Window : Starts a new game, generates the window
 Wizard Royale : Represents an instance of a single match, determining victory and dictating rules
 Instruction Panel: Panel that holds the instructions to the game
 Main Menu panel: Initial window with access to instruction and game panels through buttons
+WinScreenPanel : the panel for the screen that appears when a player wins
 Handler:  handles all changes made to all game objects while users are playing the game.
 Key Input: Dictates the key inputs
 Mouse Input: Dictates the mouse inputs

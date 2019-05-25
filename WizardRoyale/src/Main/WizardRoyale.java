@@ -406,6 +406,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			
 			if (ndo.message[0].equals("RESET")) {
 				handler.clear();
+				handler.spawnCollectibles();
 				WizardRoyale.State = STATE.GAME;
 				newGame = true;
 				

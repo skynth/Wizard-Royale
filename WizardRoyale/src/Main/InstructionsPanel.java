@@ -34,7 +34,7 @@ public class InstructionsPanel {
 
 	public void render(Graphics g) {
 		
-		g.drawImage(background, 0, 0, null);
+		g.drawImage(background, 0, 0, (int)(WizardRoyale.WIDTH ), (int)(WizardRoyale.HEIGHT ),null);
 		Font font0 = new Font("arial", Font.BOLD, (int)(WizardRoyale.WIDTH / 28.8));
 		g.setFont(font0);
 		

@@ -27,11 +27,6 @@ public class Handler implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private transient ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
-	NetworkMessenger nm;
-	
-	public Handler(NetworkMessenger nm) {
-		this.nm = nm;
-	}
 	
 	/**
 	 * Shifts through every GameObject currently in the game, and calls the tick method of every object in order to constantly update their status
@@ -155,21 +150,18 @@ public class Handler implements Serializable{
 				if(rand == 1)
 				{
 					 c = new Consumable((int)(144 * 32 * Math.random()), (int)(144 * 32 * Math.random()), ID.Item, this,ID.MedKit);						
-					 this.nm.sendMessage(NetworkDataObject.MESSAGE, "CONSUMABLES", c.getX(),
-										c.getY(), c.getSubID());		
+	
 					 
 				}
 				else if (rand == 2)
 				{
 					c = new Consumable((int)(144 * 32 * Math.random()), (int)(144 * 32 * Math.random()), ID.Item, this,ID.LargeConsumable);
-					 this.nm.sendMessage(NetworkDataObject.MESSAGE, "CONSUMABLES", c.getX(),
-								c.getY(), c.getSubID());	
+
 				} 
 				else if (rand == 3) 
 				{
 					c = new Consumable((int)(144 * 32 * Math.random()), (int)(144 * 32 * Math.random()), ID.Item, this, ID.Armor);
-					 this.nm.sendMessage(NetworkDataObject.MESSAGE, "CONSUMABLES", c.getX(),
-								c.getY(), c.getSubID());	
+
 				}
 				
 				boolean onWall = false;

@@ -108,7 +108,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		}
 
 		connectedIPs = new ArrayList<String>();
-		connectedIPs.add(myIP);
+		//connectedIPs.add(myIP);
 
 		hasMoveToStart = false;
 		new Window(WIDTH, HEIGHT, "Wizard Royale", this);

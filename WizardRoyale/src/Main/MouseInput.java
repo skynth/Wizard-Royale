@@ -157,9 +157,10 @@ public class MouseInput extends MouseAdapter {
 						
 						if (i == 0) {
 							nm.sendMessage(NetworkDataObject.MESSAGE, "NEW_PLAYER", (int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5), WizardRoyale.connectedIPs.get(i));
-						} else
-					
+						} else {
 						nm.sendMessage(NetworkDataObject.MESSAGE, "NEW_PLAYER", (int) (WizardRoyale.bgWidth* 30), (int) (WizardRoyale.bgHeight* 30), WizardRoyale.connectedIPs.get(i));
+					
+						}
 					}
 					else {
 						Player p = new Player((int) (WizardRoyale.bgWidth* 30), (int) (WizardRoyale.bgHeight* 30),
@@ -169,10 +170,11 @@ public class MouseInput extends MouseAdapter {
 						if (i == 1) {
 							nm.sendMessage(NetworkDataObject.MESSAGE, "NEW_PLAYER", (int) (WizardRoyale.bgWidth* 30), (int) (WizardRoyale.bgHeight* 30), WizardRoyale.connectedIPs.get(i));
 						}
-						else
+						else {
 						nm.sendMessage(NetworkDataObject.MESSAGE, "NEW_PLAYER", (int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5), WizardRoyale.connectedIPs.get(i));
-
+						}
 					}
+					
 					WizardRoyale.numPlayers++;
 					
 

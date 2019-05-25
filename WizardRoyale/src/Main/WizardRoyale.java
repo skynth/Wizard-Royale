@@ -34,7 +34,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	private static final String messageTypePlayerList = "PLAYER_LIST";
 	private static final String messageTypeRestart = "RESTART";
 	public static String myIP;
-	public static boolean newGame = false;
 	public static int numPlayers;
 	public static boolean hasMoveToStart;
 	public static String serverIP = "";
@@ -401,22 +400,15 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 //						nm.sendMessage(NetworkDataObject.MESSAGE, messageTypePlayerList, handler.getPlayers());
 //
 			}
-			
-			if (ndo.message[0].equals("RESTART")) { 
-				handler.addObject(new Player((int)ndo.message[1], (int)ndo.message[2], ID.Player, (String)ndo.message[3], handler, ID.RegularProjectile, nm));
-				
-				if (ndo.message[3].equals(myIP)) {
-					gameCamera = new Camera((int)ndo.message[1], (int)ndo.message[2], handler);
-				}
-
-			}
 
 			if (ndo.message[0].equals("CONSUMABLES")) {
+				System.out.println("Got consumable from other guy");
 				handler.addObject(new Consumable((int) ndo.message[1], (int) ndo.message[2], ID.Item, handler,
 						(ID) ndo.message[3]));
 			}
 
 			if (ndo.message[0].equals("MOUSE_SHOOT")) {
+				System.out.println("Got mouse shoot");
 				Projectile projectile = (Projectile) ndo.message[1];
 				projectile.setHandler(handler);
 				handler.addObject(projectile);
@@ -463,13 +455,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 				WizardRoyale.State = STATE.WINSCREEN;
 
 			}
-			
-			if (ndo.message[0].equals("NEWGAME")) {
-				newGame = true;
-				handler.clear();
-				WizardRoyale.State = STATE.GAME;
-				
-			}
 
 //			if(ndo.message[0].equals(messageTypePlayerList)) {
 //				System.out.println("got player list");
@@ -492,7 +477,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			if (serverIP.equals(myIP)) {
 				hasMoveToStart = true;
 			}
-			if (hasMoveToStart == false && numPlayers > 0 && newGame == false) {
+			if (hasMoveToStart == false && numPlayers > 0) {
 
 				System.out.println("Players " + numPlayers);
 				if (numPlayers == 1) {

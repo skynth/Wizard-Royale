@@ -342,7 +342,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 						return;
 					}
 
-				}
+			}
 				Player player = new Player((int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5),
 						ID.Player, host, handler, ID.RegularProjectile, nm);
 				handler.addObject(player);
@@ -399,6 +399,11 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 //						System.out.println(handler.getPlayers().size());
 //						nm.sendMessage(NetworkDataObject.MESSAGE, messageTypePlayerList, handler.getPlayers());
 //
+			}
+			
+			if (ndo.message[0].equals("RESET")) {
+				handler.clear();
+				WizardRoyale.State = STATE.GAME;
 			}
 
 			if (ndo.message[0].equals("CONSUMABLES")) {

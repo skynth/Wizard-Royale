@@ -408,7 +408,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 //
 			}
 			
-			if (ndo.message[0].equals("NEW PLAYER") && ndo.getSourceIP() != myIP) {
+			if (ndo.message[0].equals("NEW PLAYER") && !ndo.getSourceIP().equals(myIP)) {
 				handler.addObject(new Player((int)ndo.message[1], (int)ndo.message[2], ID.Player, (String) ndo.message[3], handler, ID.RegularProjectile, nm));
 			}
 			

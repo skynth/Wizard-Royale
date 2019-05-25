@@ -107,7 +107,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 		hasMoveToStart = false;
 		new Window(WIDTH, HEIGHT, "Wizard Royale", this);
-		handler = new Handler();
 		gameCamera = new Camera(0, 0, handler);
 
 		BufferedImageLoader loader = new BufferedImageLoader();
@@ -292,6 +291,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	public void connectedToServer(NetworkMessenger nm) {
 		this.nm = nm;
 		loadLevel(backgroundImage);
+		handler = new Handler(nm);
 		this.addMouseListener(new MouseInput(handler, gameCamera, nm, backgroundImage));
 		this.addKeyListener(new KeyInput(handler));
 		handler.spawnCollectibles();
@@ -350,7 +350,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 						ID.Player, host, handler, ID.RegularProjectile, nm);
 				handler.addObject(player);
 				numPlayers++;
-				for (int i = 0; i < handler.getGameObjects().size(); i++) {
+				/*for (int i = 0; i < handler.getGameObjects().size(); i++) {
 
 					if (handler.getGameObjects().get(i).getID() == ID.Item) {
 						Consumable consumable = (Consumable) handler.getGameObjects().get(i);
@@ -358,7 +358,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 								consumable.getY(), consumable.getSubID());
 					}
 
-				}
+				}*/
 
 			}
 
@@ -379,7 +379,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 					}
 
 					numPlayers++;
-					for (int i = 0; i < handler.getGameObjects().size(); i++) {
+					/*for (int i = 0; i < handler.getGameObjects().size(); i++) {
 
 						if (handler.getGameObjects().get(i).getID() == ID.Item) {
 							Consumable consumable = (Consumable) handler.getGameObjects().get(i);
@@ -387,7 +387,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 									consumable.getY(), consumable.getSubID());
 						}
 
-					}
+					}*/
 				}
 
 				Player player = new Player((int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5),

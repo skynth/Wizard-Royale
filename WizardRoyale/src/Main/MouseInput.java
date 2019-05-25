@@ -150,6 +150,8 @@ public class MouseInput extends MouseAdapter {
 				WizardRoyale.numPlayers = 0;
 
 				for (int i = 0; i < 2; i++) {
+					
+					
 					if(WizardRoyale.connectedIPs.get(i).equals(WizardRoyale.serverIP)) {
 						
 						if (i == 0) {
@@ -157,17 +159,19 @@ public class MouseInput extends MouseAdapter {
 
 							ID.Player, WizardRoyale.connectedIPs.get(i), handler, ID.RegularProjectile, nm);
 							handler.addObject(p);
-							System.out.print("test1");
+							System.out.println("test1");
 							nm.sendMessage(NetworkDataObject.MESSAGE, "NEW_PLAYER", (int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5), WizardRoyale.connectedIPs.get(i));
 							
 
 						} else {
-						System.out.print("test2");
+						System.out.println("test2");
 
-						Player p = new Player((int) (WizardRoyale.bgWidth* 30), (int) (WizardRoyale.bgHeight* 30),
-						ID.Player, WizardRoyale.connectedIPs.get(i), handler, ID.RegularProjectile, nm);
+						Player p = new Player((int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5),
+
+								ID.Player, WizardRoyale.connectedIPs.get(i), handler, ID.RegularProjectile, nm);
+
 						handler.addObject(p);
-						nm.sendMessage(NetworkDataObject.MESSAGE, "NEW_PLAYER", (int) (WizardRoyale.bgWidth* 30), (int) (WizardRoyale.bgHeight* 30), WizardRoyale.connectedIPs.get(i));
+						nm.sendMessage(NetworkDataObject.MESSAGE, "NEW_PLAYER", (int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5), WizardRoyale.connectedIPs.get(i));
 
 
 
@@ -176,7 +180,7 @@ public class MouseInput extends MouseAdapter {
 					else {
 						
 						if (i == 1) {
-							System.out.print("test3");
+							System.out.println("test3: " + WizardRoyale.connectedIPs.get(i) + ", " + WizardRoyale.serverIP);
 
 							Player p = new Player((int) (WizardRoyale.bgWidth* 30), (int) (WizardRoyale.bgHeight* 30),
 
@@ -187,16 +191,11 @@ public class MouseInput extends MouseAdapter {
 
 						}
 						else {
-							System.out.print("test4");
-
-							Player p = new Player((int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5),
-
+							System.out.println("test4");
+							Player p = new Player((int) (WizardRoyale.bgWidth* 30), (int) (WizardRoyale.bgHeight* 30),
 									ID.Player, WizardRoyale.connectedIPs.get(i), handler, ID.RegularProjectile, nm);
-
-							handler.addObject(p);
-							nm.sendMessage(NetworkDataObject.MESSAGE, "NEW_PLAYER", (int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5), WizardRoyale.connectedIPs.get(i));
-
-						
+									handler.addObject(p);
+									nm.sendMessage(NetworkDataObject.MESSAGE, "NEW_PLAYER", (int) (WizardRoyale.bgWidth* 30), (int) (WizardRoyale.bgHeight* 30), WizardRoyale.connectedIPs.get(i));
 
 						}
 					}

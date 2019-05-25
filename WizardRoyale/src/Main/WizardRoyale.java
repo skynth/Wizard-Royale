@@ -34,6 +34,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	private static final String messageTypePlayerList = "PLAYER_LIST";
 	private static final String messageTypeRestart = "RESTART";
 	public static String myIP;
+	private boolean newGame = false;
 	public static int numPlayers;
 	public static boolean hasMoveToStart;
 	public static String serverIP = "";
@@ -403,6 +404,11 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			
 			if (ndo.message[0].equals("RESTART")) { 
 				handler.addObject(new Player((int)ndo.message[1], (int)ndo.message[2], ID.Player, (String)ndo.message[3], handler, ID.RegularProjectile, nm));
+				
+				if (ndo.message[3].equals(myIP)) {
+					gameCamera = new Camera((int)ndo.message[1], (int)ndo.message[2], handler);
+				}
+
 			}
 
 			if (ndo.message[0].equals("CONSUMABLES")) {
@@ -459,7 +465,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 			
 			if (ndo.message[0].equals("NEWGAME")) {
-				
+				newGame = true;
 				handler.clear();
 				WizardRoyale.State = STATE.GAME;
 				
@@ -486,7 +492,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			if (serverIP.equals(myIP)) {
 				hasMoveToStart = true;
 			}
-			if (hasMoveToStart == false && numPlayers > 0) {
+			if (hasMoveToStart == false && numPlayers > 0 && newGame == false) {
 
 				System.out.println("Players " + numPlayers);
 				if (numPlayers == 1) {

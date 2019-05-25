@@ -34,7 +34,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	private static final String messageTypePlayerList = "PLAYER_LIST";
 	private static final String messageTypeRestart = "RESTART";
 	public static String myIP;
-	private boolean newGame = false;
+	public static boolean newGame = false;
 	public static int numPlayers;
 	public static boolean hasMoveToStart;
 	public static String serverIP = "";

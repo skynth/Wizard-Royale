@@ -142,6 +142,7 @@ public class MouseInput extends MouseAdapter {
 					&& e.getY() <= WizardRoyale.HEIGHT / 3 + WizardRoyale.HEIGHT / 9) {
 				
 				nm.sendMessage(NetworkDataObject.MESSAGE, "RESET"); 
+				WizardRoyale.newGame = true;
 				
 				System.out.println("Players after death: " + WizardRoyale.numPlayers);
 				handler.clear();

@@ -59,6 +59,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	private InstructionsPanel instructions = new InstructionsPanel();
 	private WinScreenPanel winscreen;
 	private static int numOfPlayers = 1;
+	public static boolean newGame;
 
 	private Thread thread; // thread - sub process - created to handle the game, we want to do multiple
 							// things simultaneously
@@ -403,6 +404,8 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			if (ndo.message[0].equals("RESET")) {
 				handler.clear();
 				WizardRoyale.State = STATE.GAME;
+				newGame = true;
+				
 			}
 
 			if (ndo.message[0].equals("CONSUMABLES")) {
@@ -463,7 +466,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			if (serverIP.equals(myIP)) {
 				hasMoveToStart = true;
 			}
-			if (myPlayer != null && hasMoveToStart == false && numPlayers > 0) {
+			if (myPlayer != null && hasMoveToStart == false && numPlayers > 0 && newGame == false) {
 
 				System.out.println("Players " + numPlayers);
 				if (numPlayers == 1) {

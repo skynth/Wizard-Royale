@@ -12,6 +12,7 @@ import GameElements.Consumable;
 import GameElements.Player;
 import GameElements.Projectile;
 import GameElements.Tile;
+import networking.backend.SchoolServer;
 import networking.frontend.NetworkDataObject;
 import networking.frontend.NetworkListener;
 import networking.frontend.NetworkMessenger;
@@ -96,7 +97,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	public WizardRoyale() {
 		
 		handler = new Handler();
-		
 		try {
 			myIP = InetAddress.getLocalHost().toString();
 			myIP = myIP.substring(myIP.indexOf('/') + 1);

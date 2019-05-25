@@ -44,7 +44,7 @@ public class SchoolServer implements NetworkMessenger {
     	
     	this.programID = programID;
     	this.myIP = myIP;
-    	
+    	maxConnections = 2;
         listening = false;
         this.writers = new ArrayList<ClientWriter>();
         this.readers = new ArrayList<ClientReader>();

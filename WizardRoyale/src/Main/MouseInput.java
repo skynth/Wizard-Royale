@@ -144,6 +144,7 @@ public class MouseInput extends MouseAdapter {
 				//int num = WizardRoyale.getNumOfPlayers();
 				
 				nm.sendMessage(NetworkDataObject.MESSAGE, "RESET");
+				
 				System.out.println("Players after death: " + WizardRoyale.numPlayers);
 				handler.clear();
 				WizardRoyale.numPlayers = 0;

@@ -197,6 +197,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			handler.tick();
 
 		} 
+		System.out.println(connectedIPs + " ");
 		processNetworkMessages();
 
 	}

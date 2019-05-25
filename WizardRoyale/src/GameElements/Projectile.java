@@ -141,13 +141,25 @@ public class Projectile extends GameObject implements Serializable{
 		return new Rectangle(x, y, (int)(WizardRoyale.WIDTH / 90), (int)(WizardRoyale.HEIGHT / 56.25));
 	}
 	
+	/*
+	 * @return the IP of the computer this projectile came from
+	 */
+	
 	public String getHost() {
 		return host;
 	}
 	
+	/*
+	 * returns the damage that this projectile will deal
+	 */
+	
 	public int getDamage() {
 		return damage;
 	}
+	
+	/*
+	 * Sets the handler of the projectile to a new one
+	 */
 	
 	public void setHandler(Handler h) {
 		handler = h;

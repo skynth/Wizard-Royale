@@ -14,7 +14,7 @@ import networking.frontend.NetworkMessenger;
  * A class that handles input from the user's mouse to the game
  * 
  * @author Leofeng
- * @version 5/17/19
+ * @version 5/24/19
  *
  */
 

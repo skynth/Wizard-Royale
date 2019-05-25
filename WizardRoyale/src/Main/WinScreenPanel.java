@@ -13,11 +13,9 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 /**
- * Class that represents the panel for the main menu of our game, seen when the game is first opened. Contains play, help, and quit buttons
- * that will change the state of the game
- * 
- * @author Leofeng, skyfreestylez
- * @version : 5/9/19
+ * The panel that shows up when a player defeats the other one
+ * @author Leofeng
+ * @version : 5/24/19
  * 
  */
 
@@ -28,7 +26,7 @@ public class WinScreenPanel {
 	int playerNumber;
 	
 	/**
-	 * Constructs a new instance of the main menu panel by initializing the menu's fields
+	 * Constructs a new instance of the win screen panel by initializing its fields
 	 */
 	
 	public WinScreenPanel(int playerNumber) {
@@ -38,7 +36,7 @@ public class WinScreenPanel {
 	}
 	
 	/**
-	 * Draws all the images on the main menu screen
+	 * Draws everything on the win screen panel
 	 * @param g the instance of the graphics class that will handle drawing everything in the WizardRoyale class
 	 * @post the graphics of the main menu will be drawn onto g
 	 */

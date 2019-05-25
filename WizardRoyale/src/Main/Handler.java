@@ -17,7 +17,7 @@ import networking.frontend.NetworkDataObject;
  * the GameObjects to make sure they are constantly updated
  * 
  * @author Leofeng, Roee
- * @version 5/17/19
+ * @version 5/24/19
  * 
  */
 
@@ -132,6 +132,11 @@ public class Handler implements Serializable{
 		gameObjects.remove(object);
 	}
 	
+	/*
+	 * Spawns all the items present in our game at the beginning of the match
+	 * 
+	 */
+	
 	public void spawnCollectibles()
 	{
 		for(int count = 20; count>0; count--)
@@ -174,7 +179,10 @@ public class Handler implements Serializable{
 			
 		}
 	}
-
+	
+	/*
+	 * Clears all the items in the map
+	 */
 	
 	public void clear() {
 		

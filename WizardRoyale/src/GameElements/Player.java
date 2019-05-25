@@ -22,13 +22,10 @@ import networking.frontend.NetworkMessenger;
  * A class which represents in an instance of a player.
  * 
  * @author Leofeng, Roee, Skyfreestylez
- *@version 5/17/19
+ *@version 5/24/19
  */
 public class Player extends GameObject implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5L;
 	private Handler handler;
 	private boolean isUp = false, isDown, isLeft, isRight;
@@ -74,6 +71,11 @@ public class Player extends GameObject implements Serializable{
 		this.nm =  nm;
 	}
 	
+	/**
+	 * Updates the player's coordinates and checks if it collides with any other gameObjects
+	 * 
+	 */
+	
 	public void tick() {
 		x += velX;
 		y += velY;
@@ -108,6 +110,11 @@ public class Player extends GameObject implements Serializable{
 
 			
 	}
+	
+	/**
+	 * Constantly updates the graphics of the player
+	 * 
+	 */
 
 	public void render(Graphics g) {
 
@@ -139,12 +146,24 @@ public class Player extends GameObject implements Serializable{
 
 	}
 	
+	/*
+	 *@return whether the player is shooting or not 
+	 */
+	
 	public boolean getIsShoot() {
 		return isShoot;
 	}
+	
+	/*
+	 * Sets the variable that determines whether the player is shooting or not
+	 */
 	public void setIsShoot(boolean s) {
 		isShoot = s;
 	}
+	
+	/*
+	 * Checks if the player is facing right or not
+	 */
 	public boolean getIsRight() {
 		return isAnimationRight;
 	}
@@ -228,70 +247,6 @@ public class Player extends GameObject implements Serializable{
 			}
 	}
 	}
-	
-	/*private void movement() {
-		if (handler.isUp()) {
-			velY = -7.5f;
-			
-			if (handler.isLeft()) {
-				isRight = false;
-				velY = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);
-				velX = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);	
-			}
-			else if (handler.isRight()) {
-				isRight = true;
-				velY = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);
-				velX = (float) Math.sqrt(Math.pow(7.5, 2) / 2);	
-			}
-			
-		} else if (handler.isDown()) {
-			velY = 7.5f;
-			
-			if (handler.isLeft()) {
-				isRight = false;
-				velY = (float) Math.sqrt(Math.pow(7.5, 2) / 2);
-				velX = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);	
-			}
-			else if (handler.isRight()) {
-				isRight = true;
-				velY = (float) Math.sqrt(Math.pow(7.5, 2) / 2);
-				velX = (float) Math.sqrt(Math.pow(7.5, 2) / 2);	
-			}
-			
-		} else if (!handler.isDown() && !handler.isUp()) {
-			velY = 0;
-		}
-		
-		if (handler.isLeft()) {
-			velX = -7.5f;
-			isRight = false;
-			
-			if (handler.isDown()) {
-				velX = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);
-				velY = (float) Math.sqrt(Math.pow(7.5, 2) / 2);
-			}
-			else if (handler.isUp()) {
-				velX = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);
-				velY = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);
-			}
-			
-		} else if (handler.isRight()) {
-			velX = 7.5f;
-			isRight = true;
-			
-			if (handler.isDown()) {
-				velX = (float) Math.sqrt(Math.pow(7.5, 2) / 2);
-				velY = (float) Math.sqrt(Math.pow(7.5, 2) / 2);
-			}
-			else if (handler.isUp()) {
-				velX = (float) Math.sqrt(Math.pow(7.5, 2) / 2);
-				velY = -(float) Math.sqrt(Math.pow(7.5, 2) / 2);
-			}
-			
-		} else if (!handler.isLeft() && !handler.isRight()) {
-			velX = 0;
-		}
-	}*/
 
 	
 	private void movement() {
@@ -321,6 +276,9 @@ public class Player extends GameObject implements Serializable{
 	}
 	
 
+	/*
+	 * @return the health of the player
+	 */
 	public int getHealth() {
 		return health;
 	}
@@ -401,14 +359,26 @@ public class Player extends GameObject implements Serializable{
 		return isRight;
 	}
 	
+	/*
+	 * @return whether the player is moving or not
+	 */
+	
 	public boolean isMoving() {
 		return isRight || isLeft || isUp || isDown;
 				
 	}
 	
+	/*
+	 * Sets the player facing right or left
+	 */
+	
 	public void setAnimationRight(boolean check) {
 		isAnimationRight = check;
 	}
+	
+	/*
+	 * @return the IP from this player's computer
+	 */
 	
 	public String getIp() {
 		return ip;
@@ -418,10 +388,17 @@ public class Player extends GameObject implements Serializable{
 		return new Rectangle(x, y, (int)(WizardRoyale.WIDTH / 24), (int)(WizardRoyale.HEIGHT / 15));
 	}
 	
+	/*
+	 * @return the type of projectile this player will shoot
+	 */
 	public ID getProjectileType()
 	{
 		return projectileType;
 	}
+	
+	/*
+	 * Sets the player's projectile to another type
+	 */
 	
 	public void setProjectileType(ID type)
 	{

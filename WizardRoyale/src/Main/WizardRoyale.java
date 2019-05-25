@@ -29,10 +29,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final String messageTypeMove = "MOUSE_MOVE";
-	private static final String messageTypeShoot = "MOUSE_SHOOT";
-	private static final String messageTypePlayerList = "PLAYER_LIST";
-	private static final String messageTypeRestart = "RESTART";
 	public static String myIP;
 	public static int numPlayers;
 	public static boolean hasMoveToStart;
@@ -99,7 +95,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 	public WizardRoyale() {
 		
-
 		try {
 			myIP = InetAddress.getLocalHost().toString();
 			myIP = myIP.substring(myIP.indexOf('/') + 1);
@@ -295,6 +290,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	public void receiveUpdate(String hostname, Object[] message) {
 
 	}
+	
 
 	public void connectedToServer(NetworkMessenger nm) {
 		this.nm = nm;
@@ -307,6 +303,10 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 	public void networkMessageReceived(NetworkDataObject ndo) {
 
 	}
+	
+	/*
+	 * @return the number of players present in the game
+	 */
 
 	public static int getNumOfPlayers() {
 		return numOfPlayers;
@@ -444,17 +444,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 			}
 
-//			if(ndo.message[0].equals(messageTypePlayerList)) {
-//				System.out.println("got player list");
-//				ArrayList<Player> players = (ArrayList<Player>) ndo.message[1];
-//				for(int i = 0; i < players.size(); i++) {
-//					if(players.get(i).getIp().equals(myIP)) {
-//						numPlayers = i + 1;
-//					}
-//				}
-//				isReadyToMove = true;
-//
-//			}
 			Player myPlayer = null;
 			for (Player p : handler.getPlayers()) {
 				if (p.getIp().equals(myIP)) {

@@ -132,7 +132,7 @@ public class Handler implements Serializable{
 		gameObjects.remove(object);
 	}
 	
-	public void spawnCollectibles(BufferedImage background)
+	public void spawnCollectibles()
 	{
 		for(int count = 20; count>0; count--)
 		{
@@ -180,7 +180,7 @@ public class Handler implements Serializable{
 		
 		 for (int i = 0; i < gameObjects.size(); i++) {
 			 
-			 if (gameObjects.get(i).getID() == ID.Player) {
+			 if (gameObjects.get(i).getID() == ID.Player || gameObjects.get(i).getID() == ID.Item) {
 				 gameObjects.remove(i);
 			 }
 			 

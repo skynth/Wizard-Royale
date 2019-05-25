@@ -98,7 +98,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		try {
 			myIP = InetAddress.getLocalHost().toString();
 			myIP = myIP.substring(myIP.indexOf('/') + 1);
-			System.out.print(myIP);
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
@@ -193,7 +192,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			handler.tick();
 
 		} 
-		System.out.println(connectedIPs + " ");
 		processNetworkMessages();
 
 	}
@@ -283,7 +281,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 		handler.addObject(new Player((int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5), ID.Player,
 				myIP, handler, ID.RegularProjectile, nm));
 		numPlayers++;
-		System.out.println("tick Players" + numPlayers);
 
 	}
 
@@ -421,7 +418,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 
 			else if (ndo.message[0].equals("MOVE")) {
-				System.out.println("GOT MOVE");
 
 				for (int i = 0; i < handler.getPlayers().size(); i++) {
 
@@ -476,7 +472,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			
 			if (myPlayer != null) {
 				nm.sendMessage(NetworkDataObject.MESSAGE, "MOVE", myPlayer.getX(), myPlayer.getY());
-				System.out.println("SENT MOVE");
 			}
 
 		}

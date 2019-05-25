@@ -79,8 +79,13 @@ public class Projectile extends GameObject implements Serializable{
 
 	public void render(Graphics g) {
 		//g.drawImage(fireball, x, y, null);
+		if(this.subID.name().equals("LargeFireProjectile")) {
+			g.setColor(Color.blue);
 
-		g.setColor(Color.red);
+		}
+		else {
+			g.setColor(Color.red);
+		}
 		g.fillOval(x, y, (int)(WizardRoyale.WIDTH / 90), (int)(WizardRoyale.HEIGHT / 56.25));
 	}
 	

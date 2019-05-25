@@ -68,33 +68,33 @@ public class MouseInput extends MouseAdapter {
 
 		if (WizardRoyale.State == STATE.MENU) {
 
-			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 4.5
+			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 4
 					&& mouseX <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94
-					&& mouseY <= WizardRoyale.HEIGHT / 4.5 + WizardRoyale.HEIGHT / 9) {
+					&& mouseY <= WizardRoyale.HEIGHT / 4 + WizardRoyale.HEIGHT / 9) {
 				WizardRoyale.State = STATE.GAME;
 			}
 
-			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 2.57
+			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 2.4
 					&& mouseX <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94
-					&& mouseY <= WizardRoyale.HEIGHT / 2.57 + WizardRoyale.HEIGHT / 9) {
+					&& mouseY <= WizardRoyale.HEIGHT / 2.4 + WizardRoyale.HEIGHT / 9) {
 				WizardRoyale.State = STATE.INSTURCTIONS;
 			}
 
-			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 1.8
-					&& mouseX <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94
-					&& mouseY <= WizardRoyale.HEIGHT / 1.8 + WizardRoyale.HEIGHT / 9) {
-			}
+//			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 1.8
+//					&& mouseX <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94
+//					&& mouseY <= WizardRoyale.HEIGHT / 1.8 + WizardRoyale.HEIGHT / 9) {
+//			}
 
-			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 1.38
+			if (mouseX >= WizardRoyale.WIDTH / 3 && mouseY >= WizardRoyale.HEIGHT / 1.71
 					&& mouseX <= WizardRoyale.WIDTH / 3 + WizardRoyale.WIDTH / 2.94
-					&& mouseY <= WizardRoyale.HEIGHT / 1.38 + WizardRoyale.HEIGHT / 9) {
+					&& mouseY <= WizardRoyale.HEIGHT / 1.71 + WizardRoyale.HEIGHT / 9) {
 				System.exit(1);
 			}
 
 		} else if (WizardRoyale.State == STATE.GAME) {
 
 			if (recoilTimer <= 0) {
-				recoilTimer = 30;
+				recoilTimer = 15;
 
 				Player player = null;
 

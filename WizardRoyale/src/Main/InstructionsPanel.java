@@ -61,6 +61,10 @@ public class InstructionsPanel {
 	  	g.setFont(font0);
 	  	g.drawString("Walk over Items to pick them up", WizardRoyale.WIDTH / 25, (int) (WizardRoyale.HEIGHT / 2.15));
 	  	
+	  	g.drawString("Kill your opponent to win!", WizardRoyale.WIDTH / 25, (int) (WizardRoyale.HEIGHT / 1.7));
+	  	g.drawString("Press \"P\" to go back to menu", WizardRoyale.WIDTH / 25, (int) (WizardRoyale.HEIGHT / 1.3));
+
+	  	
 	  	g.drawImage(medKitImage, WizardRoyale.WIDTH / 2 + WizardRoyale.WIDTH / 23, (int) (WizardRoyale.HEIGHT / 5.2), (int)(WizardRoyale.WIDTH / 30), (int)(WizardRoyale.HEIGHT / 25), null);
 	  	g.drawString("Restores 30 HP", WizardRoyale.WIDTH / 2 + (int) (WizardRoyale.WIDTH / 12.5), (int) (WizardRoyale.HEIGHT / 4.5));
 	  	
@@ -68,8 +72,9 @@ public class InstructionsPanel {
 	  	g.drawString("Gives 30 Armor", WizardRoyale.WIDTH / 2 + (int) (WizardRoyale.WIDTH / 12.5), (int) (WizardRoyale.HEIGHT / 3.3));
 	  	
 	  	g.drawImage(fireImage, WizardRoyale.WIDTH / 2 + WizardRoyale.WIDTH / 23, (int) (WizardRoyale.HEIGHT / 2.9), (int)(WizardRoyale.WIDTH / 30), (int)(WizardRoyale.HEIGHT / 25), null);
-	  	g.drawString("", WizardRoyale.WIDTH / 2 + (int) (WizardRoyale.WIDTH / 12.5), (int) (WizardRoyale.HEIGHT / 4.2));
-	    
+	  	g.drawString("Upgrades your projectiles", WizardRoyale.WIDTH / 2 + (int) (WizardRoyale.WIDTH / 12.5), (int) (WizardRoyale.HEIGHT / 2.6));
+	  	g.drawString("So they break walls", WizardRoyale.WIDTH / 2 + (int) (WizardRoyale.WIDTH / 13), (int) (WizardRoyale.HEIGHT / 2.2));
+
 		
 	}
 

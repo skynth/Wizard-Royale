@@ -26,7 +26,7 @@ public class MainMenuPanel {
 	private Rectangle playButton;
 	private Rectangle helpButton;
 	private Rectangle quitButton;
-	private Rectangle serverButton;
+	//private Rectangle serverButton;
 	private Image[] wizardGif = new Image[24];
 	/**
 	 * Constant String variable that acts as a file separator 
@@ -41,10 +41,11 @@ public class MainMenuPanel {
 	 */
 	
 	public MainMenuPanel() {
-		playButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 4.5), (int)(WizardRoyale.WIDTH / 2.94), WizardRoyale.HEIGHT / 9);
-		helpButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 2.57), (int)(WizardRoyale.WIDTH / 2.94), WizardRoyale.HEIGHT / 9);
-		serverButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 1.8), (int)(WizardRoyale.WIDTH / 2.94),  WizardRoyale.HEIGHT / 9);
-		quitButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 1.38), (int)(WizardRoyale.WIDTH / 2.94), WizardRoyale.HEIGHT / 9);
+		//System.out.println(WizardRoyale.HEIGHT);
+		playButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 4), (int)(WizardRoyale.WIDTH / 2.94), WizardRoyale.HEIGHT / 9);
+		helpButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 2.4), (int)(WizardRoyale.WIDTH / 2.94), WizardRoyale.HEIGHT / 9);
+		//serverButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 1.8), (int)(WizardRoyale.WIDTH / 2.94),  WizardRoyale.HEIGHT / 9);
+		quitButton = new Rectangle(WizardRoyale.WIDTH / 3, (int)(WizardRoyale.HEIGHT / 1.71), (int)(WizardRoyale.WIDTH / 2.94), WizardRoyale.HEIGHT / 9);
 		for(int i = 0; i < 24; i++)
 			wizardGif[i] = Toolkit.getDefaultToolkit().createImage("Resources" + FILE_SEP + "wizard" + MainMenuPanel.FILE_SEP +i+".gif");
 
@@ -82,7 +83,7 @@ public class MainMenuPanel {
 		g2d.draw(helpButton);
 		g2d.draw(playButton);
 		g2d.draw(quitButton);
-		g2d.draw(serverButton);
+		//g2d.draw(serverButton);
 		
 		g.setColor(Color.CYAN);
 
@@ -97,10 +98,10 @@ public class MainMenuPanel {
 	    g.setFont(font1);
 	    g.drawString("Help", x, y);
 	    
-	    x = serverButton.x + (serverButton.width - metrics.stringWidth("Servers")) / 2;
-	    y = serverButton.y + ((serverButton.height - metrics.getHeight()) / 2) + metrics.getAscent();
-	    g.setFont(font1);
-	    g.drawString("Servers", x, y);
+	    //x = serverButton.x + (serverButton.width - metrics.stringWidth("Servers")) / 2;
+	    //y = serverButton.y + ((serverButton.height - metrics.getHeight()) / 2) + metrics.getAscent();
+	    //g.setFont(font1);
+	    //g.drawString("Servers", x, y);
 		
 	    x = quitButton.x + (quitButton.width - metrics.stringWidth("Quit")) / 2;
 	    y = quitButton.y + ((quitButton.height - metrics.getHeight()) / 2) + metrics.getAscent();

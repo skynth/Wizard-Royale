@@ -2,9 +2,11 @@ package Main;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.lang.Thread.State;
 import java.util.ArrayList;
 
 import GameElements.Player;
+import Main.WizardRoyale.STATE;
 
 
 /**
@@ -49,6 +51,10 @@ public class KeyInput implements KeyListener {
 		}
 
 		int key = e.getKeyCode();
+		if(key == KeyEvent.VK_P && WizardRoyale.State == STATE.INSTURCTIONS) {
+			System.out.println("MENU");
+			WizardRoyale.State = STATE.MENU;
+		}
 		if (WizardRoyale.numPlayers > 1) {
 			if (key == KeyEvent.VK_W) {
 				player.setUp(true);
@@ -66,6 +72,7 @@ public class KeyInput implements KeyListener {
 			if (key == KeyEvent.VK_D) {
 				player.setRight(true);
 			}
+
 		}
 
 	}

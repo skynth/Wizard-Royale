@@ -148,23 +148,23 @@ public class MouseInput extends MouseAdapter {
 				handler.clear();
 				WizardRoyale.numPlayers = 2;
 
-				for (int i = 0; i < 2; i++) {
+				//for (int i = 0; i < 2; i++) {
 					
-					if(WizardRoyale.connectedIPs.get(i).equals(WizardRoyale.serverIP)) {
+					//if(WizardRoyale.connectedIPs.get(i).equals(WizardRoyale.serverIP)) {
 						Player p = new Player((int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5),
-							ID.Player, WizardRoyale.connectedIPs.get(i), handler, ID.RegularProjectile, nm);
+							ID.Player, WizardRoyale.connectedIPs.get(0), handler, ID.RegularProjectile, nm);
 						handler.addObject(p);
-						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART", (int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5), WizardRoyale.connectedIPs.get(i));
-					} else {
-						 Player p = new Player((int) (WizardRoyale.bgWidth* 30), (int) (WizardRoyale.bgHeight* 30),
-								ID.Player, WizardRoyale.connectedIPs.get(i), handler, ID.RegularProjectile, nm);
-						handler.addObject(p);
-						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART", (int) (WizardRoyale.bgWidth* 30), (int) (WizardRoyale.bgHeight* 30), WizardRoyale.connectedIPs.get(i));
+						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART", (int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5), WizardRoyale.connectedIPs.get(0));
+				//	} else {
+						Player p1 = new Player((int) (WizardRoyale.bgWidth* 30), (int) (WizardRoyale.bgHeight* 30),
+								ID.Player, WizardRoyale.connectedIPs.get(1), handler, ID.RegularProjectile, nm);
+						handler.addObject(p1);
+						nm.sendMessage(NetworkDataObject.MESSAGE, "RESTART", (int) (WizardRoyale.bgWidth* 30), (int) (WizardRoyale.bgHeight* 30), WizardRoyale.connectedIPs.get(1));
 
-					}
-				}
+					//}
+				//}
 					
-					WizardRoyale.numPlayers++;
+					//WizardRoyale.numPlayers++;
 					
 
 //					if (i == 1) {

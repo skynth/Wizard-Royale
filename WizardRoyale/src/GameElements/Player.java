@@ -42,6 +42,7 @@ public class Player extends GameObject implements Serializable{
 	private ID projectileType;
 	private String ip;
 	private NetworkMessenger nm;
+	private int projTimer = 0;
 
 	/**
 	 * Creates a new instance of a player (Wizard)
@@ -107,7 +108,10 @@ public class Player extends GameObject implements Serializable{
 		if (y > 31 * 128) {
 			y = 31 * 128;
 		}
-
+		projTimer--;
+		if(projTimer <= 0) {
+			projectileType = ID.RegularProjectile;
+		}
 			
 	}
 	
@@ -195,6 +199,7 @@ public class Player extends GameObject implements Serializable{
 						else if(objects.get(i).getSubID() == ID.LargeConsumable) 
 						{
 							projectileType = ID.LargeFireProjectile;
+							projTimer = 360;
 					    } 
 						else if (objects.get(i).getSubID() == ID.Armor) {
 							

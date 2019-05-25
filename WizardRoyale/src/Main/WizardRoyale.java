@@ -421,7 +421,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 
 			else if (ndo.message[0].equals("MOVE")) {
-				System.out.println("GOT MOVE");
 
 				for (int i = 0; i < handler.getPlayers().size(); i++) {
 
@@ -487,7 +486,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			
 			if (myPlayer != null) {
 				nm.sendMessage(NetworkDataObject.MESSAGE, "MOVE", myPlayer.getX(), myPlayer.getY());
-				System.out.println("SENT MOVE");
 			}
 
 		}

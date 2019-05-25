@@ -463,7 +463,7 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			if (serverIP.equals(myIP)) {
 				hasMoveToStart = true;
 			}
-			if (hasMoveToStart == false && numPlayers > 0) {
+			if (myPlayer != null && hasMoveToStart == false && numPlayers > 0) {
 
 				System.out.println("Players " + numPlayers);
 				if (numPlayers == 1) {

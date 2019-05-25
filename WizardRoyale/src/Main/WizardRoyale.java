@@ -326,7 +326,9 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 
 			NetworkDataObject ndo = queue.poll();
 			String host = ndo.getSourceIP();
-			serverIP = ndo.serverHost.toString().substring(1);
+			serverIP = ndo.serverHost.toString().substring(ndo.serverHost.toString().indexOf('/') + 1);
+			myIP = myIP.substring(myIP.indexOf('/') + 1);
+
 
 			if (ndo.messageType.equals(NetworkDataObject.CLIENT_LIST)) {
 				

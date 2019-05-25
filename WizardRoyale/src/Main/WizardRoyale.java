@@ -369,7 +369,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			if (ndo.messageType.equals(NetworkDataObject.HANDSHAKE)) {
 
 				hasMoveToStart = true;
-				System.out.println("Handshake");
 				for (Player p : handler.getPlayers()) {
 
 					if (p.getIp().equals(host)) {
@@ -471,7 +470,6 @@ public class WizardRoyale extends Canvas implements Runnable, NetworkListener {
 			}
 			if (myPlayer != null && hasMoveToStart == false && numPlayers > 0 && newGame == false) {
 
-				System.out.println("Players " + numPlayers);
 				if (numPlayers == 1) {
 					myPlayer.setX((int) (WizardRoyale.WIDTH / 36));
 					myPlayer.setY((int) (WizardRoyale.HEIGHT / 22.5));

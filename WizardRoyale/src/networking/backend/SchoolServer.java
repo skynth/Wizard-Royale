@@ -44,7 +44,7 @@ public class SchoolServer implements NetworkMessenger {
     	
     	this.programID = programID;
     	this.myIP = myIP;
-    	maxConnections = 1;
+    	maxConnections = 2;
     	System.out.println(maxConnections);
         listening = false;
         this.writers = new ArrayList<ClientWriter>();
@@ -94,7 +94,7 @@ public class SchoolServer implements NetworkMessenger {
     }
     
     public void setMaxConnections(int max) {
-    	this.maxConnections = max;
+    	this.maxConnections = 2;
     }
     
     public synchronized void sendMessage(String messageType, Object... message) {
@@ -205,7 +205,7 @@ public class SchoolServer implements NetworkMessenger {
     	            while (listening) {
     	                Socket s = serverSocket.accept();
     	                
-    	                System.out.println("Server connected to " + s.getInetAddress().getHostAddress());
+    	                System.out.println("Server connected to " + s.getInetAddress().getHostAddress() + "and" + readers.size() + " and " + maxConnections );
     	                
     	                if (maxConnections == readers.size()) {
     	                	System.out.println("At maximum capacity: " + maxConnections + ". Dropping connection.");

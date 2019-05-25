@@ -117,7 +117,6 @@ public class MouseInput extends MouseAdapter {
 					p = new Projectile(player.getX() + (int) (WizardRoyale.WIDTH / 20),
 							player.getY() + (int) (WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler,
 							player.getProjectileType(), player.getIp());
-					System.out.println("new right");
 				}
 
 				else {
@@ -128,7 +127,6 @@ public class MouseInput extends MouseAdapter {
 					p = new Projectile(player.getX() - (int) (WizardRoyale.WIDTH / 60),
 							player.getY() + (int) (WizardRoyale.HEIGHT / 60), ID.Projectile, mouseX, mouseY, handler,
 							player.getProjectileType(), player.getIp());
-					System.out.println("new left");
 				}
 
 				player.setIsShoot(true);
@@ -145,7 +143,6 @@ public class MouseInput extends MouseAdapter {
 				nm.sendMessage(NetworkDataObject.MESSAGE, "RESET"); 
 				WizardRoyale.newGame = true;
 				
-				System.out.println("Players after death: " + WizardRoyale.numPlayers);
 				handler.clear();
 				handler.spawnCollectibles();
 				
@@ -171,12 +168,10 @@ public class MouseInput extends MouseAdapter {
 
 							ID.Player, WizardRoyale.connectedIPs.get(i), handler, ID.RegularProjectile, nm);
 							handler.addObject(p);
-							System.out.println("test1");
 							nm.sendMessage(NetworkDataObject.MESSAGE, "NEW_PLAYER", (int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5), WizardRoyale.connectedIPs.get(i));
 							
 
 						} else {
-						System.out.println("test2");
 
 						Player p = new Player((int) (WizardRoyale.WIDTH / 36), (int) (WizardRoyale.HEIGHT / 22.5),
 
@@ -192,7 +187,6 @@ public class MouseInput extends MouseAdapter {
 					else {
 						
 						if (i == 1) {
-							System.out.println("test3: " + WizardRoyale.connectedIPs.get(i) + ", " + WizardRoyale.serverIP);
 
 							Player p = new Player((int) (WizardRoyale.bgWidth* 30), (int) (WizardRoyale.bgHeight* 30),
 
@@ -203,7 +197,6 @@ public class MouseInput extends MouseAdapter {
 
 						}
 						else {
-							System.out.println("test4");
 							Player p = new Player((int) (WizardRoyale.bgWidth* 30), (int) (WizardRoyale.bgHeight* 30),
 									ID.Player, WizardRoyale.connectedIPs.get(i), handler, ID.RegularProjectile, nm);
 									handler.addObject(p);

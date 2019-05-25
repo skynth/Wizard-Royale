@@ -52,7 +52,6 @@ public class KeyInput implements KeyListener {
 
 		int key = e.getKeyCode();
 		if(key == KeyEvent.VK_P && WizardRoyale.State == STATE.INSTURCTIONS) {
-			System.out.println("MENU");
 			WizardRoyale.State = STATE.MENU;
 		}
 		if (WizardRoyale.numPlayers > 1) {

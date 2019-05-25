@@ -2,14 +2,14 @@ Wizard Royale README
 Roee Haiby, Leo Feng, Sky Ng-Thow-Hing
 
 Introduction : 
-You, a powerful wizard, have been put in a battle arena with up to 4 other players. Strategically dispose of your opponents until you are the last wizard standing. Avoid enemy projectiles and pick up spells, powerups, as well as state of the art equipment located in random locations around the map. Explore the map and think of revolutionary strategies in order to survive and emerge victorious. In addition, This game is designed for all individuals over the age of 6, as the game includes some mild violence in forms of combat. This game is especially enjoyable for those who enjoy battle royale formatted games, and fun games where you can compete against your friends. 
+You, a powerful wizard, have been put in a battle arena 1 other player. Strategically dispose of your opponent and become the last wizard standing. Avoid enemy projectiles and pick up spells, powerups, as well as state of the art equipment located in random locations around the map. Explore the map and think of revolutionary strategies in order to survive and emerge victorious. In addition, This game is designed for all individuals over the age of 6, as the game includes some mild violence in forms of combat. This game is especially enjoyable for those who enjoy battle royale formatted games, and fun games where you can compete against your friends. 
 
 Play Wizard Royale today and see if you have what it takes to become the best!
 
 Instructions : 
 Click on CONTROLS to view the game controls screen
 Click on CREATE SERVER to create a new server so others can join.
-Click on JOIN SERVER to join an existing server.
+Click on JOIN SERVER to join an existing server (Will not work if server is maxed out).
 
 In game controls : 
 WASD to move your character up, left, down, and right respectively
@@ -69,8 +69,11 @@ Sky: Projectiles and consumables classes, artwork
 Everyone Collaborates on Multiplayer functionality and drawing surface class
 
 Credits:
+
+We decided not to have 5 players in a game as stated in the Must-Have section. This is due to the lag created by more than 2 players.
+
 Sky: 
-Consumable class, Projectile Class, Wizard Graphics and animations implementation, Player class, handler class, Wizard Royale class, and Main Menu Panel Class, networking
+Consumable class, Projectile Class, Wizard Graphics and animations implementation, Player class, handler class, Wizard Royale class, and Main Menu Panel Class, networking, menus
 
 Leo: 
 Game Object class, Player class, Handler Class, Id enum, Instructions panel class, Key and mouse input classes, Main menu Panel class, window class, camera class, Tile class, and Wizard Royale class, networking.
@@ -80,17 +83,16 @@ Roee:
 
 Graphics:
 
-Wizard
+Wizard:
 https://opengameart.org/content/wizard-5
 Under CC0 domain (No copyright free to public)
-Title page background
+Title page background:
 https://steamtradingcards.fandom.com/wiki/Category:Braveland_Wizard
-
-Background for menu or other screen? Its free...
-https://www.shutterstock.com/image-illustration/fight-scene-man-magic-wizard-staff-1282908322?src=eiJZx-2xxqY3WFt-RClTrw-1-32
 
 Walls and floor :
 https://opengameart.org/content/dungeon-tileset
 
-Fireball : Crawltiles tileset
-https://opengameart.org/content/dungeon-crawl-32x32-tiles
+Newtork template:
+Networking demo - (Server based Network)
+
+
